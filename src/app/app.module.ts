@@ -11,17 +11,26 @@ import 'hammerjs';
 
 //import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+// routing 
+import { RouterModule, Routes } from '@angular/router';
+import { routes } from './app-routing/routes';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
     /*ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
