@@ -1,0 +1,53 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    min-width: 150px;
+    width: 100%;
+}
+
+.text-area-styles{
+    text-align: justify;
+  text-justify: inter-word;
+    direction: rtl;
+    line-height: normal;
+}
+.mat-form-field-styles{
+    width: 90%; padding: 0; margin: 0;        
+}
+
+
+.text-area-div-styles{
+    transition: all 0.3s ease-in-out 0s;
+    border:2px solid #e0e2e6; border-radius: 5px; margin-top: 10px;
+}
+.text-area-div-styles:focus-within{
+    border: 2px solid #123C69 !important;
+    -webkit-box-shadow: 0 0 5px #123c6957;
+       -moz-box-shadow: 0 0 5px #123c6957;
+            box-shadow: 0 0 5px #123c6957;
+}
+
+.input-focus-hover{
+    border:2px solid white; 
+    border-radius: 5px; 
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out 0s;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+
+}
+
+.input-focus-hover:focus-within{
+    border: 2px solid #123C69 !important;
+    -webkit-box-shadow: 0 0 5px #123c6957;
+       -moz-box-shadow: 0 0 5px #123c6957;
+            box-shadow: 0 0 5px #123c6957;
+}
+.mat-form-field-wrapper{
+    padding:0 !important;
+}

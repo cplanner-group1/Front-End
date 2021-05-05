@@ -1,0 +1,25 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    min-width: 150px;
+    width: 100%;
+}
+
+
+.chart-expansion-headers-align .mat-expansion-panel-header-title,
+.chart-expansion-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.chart-expansion-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-expansion-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
