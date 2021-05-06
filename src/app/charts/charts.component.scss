@@ -23,3 +23,18 @@
 .chart-expansion-headers-align .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
+
+
+//table 
+.example-container {
+  max-height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.search-expansion .mat-expansion-panel-body{
+  padding:0;
+}

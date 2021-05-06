@@ -7,11 +7,10 @@
                 <mat-expansion-panel >
                   <mat-expansion-panel-header>
                     <mat-panel-title class="font-iran-sans-FA">
-                      اطلاعات دانشگاه و رشته
+                      اطلاعات اولیه
                     </mat-panel-title>
                     <mat-panel-description class="font-iran-sans-FA">
-                      هر آنچه که مربوط به دانشگاه و رشته است را تغییر بده
-
+                      اطلاعات دانشگاه و رشته
                       <mat-icon style="float:left;">account_circle</mat-icon>
                     </mat-panel-description>
                   </mat-expansion-panel-header>
@@ -34,28 +33,125 @@
                     </div>
                   </div>
                 </mat-expansion-panel>
-                <mat-expansion-panel >
+                <mat-expansion-panel class="search-expansion">
                     <mat-expansion-panel-header>
                       <mat-panel-title class="font-iran-sans-FA">
-                        انتخاب چارت درسی
+                        انتخاب چارت
                       </mat-panel-title>
                       <mat-panel-description class="font-iran-sans-FA">
-                        بین چارت های موجود جستجو کن
+                        کار خودت رو راحت کن
                         <mat-icon style="float:left;">search</mat-icon>
                       </mat-panel-description>
                     </mat-expansion-panel-header>
                     <!--<p class="font-iran-sans-FA">توضیحات</p>-->
                     <div class="container-fluid" style="padding: 0; margin:0;">
-                      <div class="row" style="width: 100%; margin: 0;">
-                            <div class="col-md-12">
-                                <!-- table view for charts  -->
+                        <div class="row" style="width: 100%; margin: 0;">
+                            <div class="col-md-12 p-0 m-0" style="padding: 0; margin:0;" >
+                              <mat-tab-group>
+                                <mat-tab class="font-iran-sans-FA" label="بر اساس رشته و دانشگاه">
+                                   <div class="container-fluid">
+                                     <div class="row">
+                                       
+                                        <div class="col-md-12 p-4" style="margin:0;">
+                                          <button mat-raised-button class="font-iran-sans-FA">جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
+                                        </div>
+                                        <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                                          <!-- table view for charts  -->
+                                          <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
+                                            <thead class="thead" style="border-top: none;">
+                                              <tr style="border-top: none;">
+                                                <th class="text-center"></th>
+                                                <th>اطلاعات</th>
+                                                <th class="text-center">سازنده</th>
+                                                <th class="text-center">آخرین تغییر</th>
+                                                <th></th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngFor="let chart of charts;index as i">
+                                                <td class="text-center">
+                                                  {{i+1}}
+                                                </td>
+                                                <td style="min-width: 160px;">
+                                                  <div>{{chart.title}}</div>
+                                                  <div class="small text-muted"><span>{{chart.study}}</span> | {{chart.university}}</div>
+                                                </td>
+                                                <td style="min-width: 130px;" class="text-center">
+                                                  <div>{{chart.owner}}</div>
+                                                </td>
+                                                <td class="text-center">
+                                                  <div>{{chart.date}}</div>
+                                                </td>
+                                                <td class="text-center" style="max-width: 225px;"> 
+                                                  <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
+                                                  <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
+          
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+
+                                    </div>
+                                   </div>
+                                </mat-tab>
+                                <mat-tab class="font-iran-sans-FA" label="جستجو دستی">
+                                  <div class="row" style="width: 100%; margin: 0;">
+                                    <div class="col-md-10">
+                                      <mat-form-field class="full-width input-focus-hover font-iran-sans-FA mt-2">
+                                        <mat-label>جستجو کنید</mat-label>
+                                        <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا علوم کامپیوتر امیرکبیر">
+                                      </mat-form-field>  
+                                    </div>
+                                    <div class="col-md-2 mt-3">
+                                      <button mat-raised-button class="font-iran-sans-FA mt-2 btn-success" style="max-width: 100%;">جستجو</button>
+                                    </div>
+                                    <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                                      <!-- table view for charts  -->
+                                      <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
+                                        <thead class="thead" style="border-top: none;">
+                                          <tr style="border-top: none;">
+                                            <th class="text-center"></th>
+                                            <th>اطلاعات</th>
+                                            <th class="text-center">سازنده</th>
+                                            <th class="text-center">آخرین تغییر</th>
+                                            <th></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let chart of charts;index as i">
+                                            <td class="text-center">
+                                              {{i+1}}
+                                            </td>
+                                            <td style="min-width: 160px;">
+                                              <div>{{chart.title}}</div>
+                                              <div class="small text-muted"><span>{{chart.study}}</span> | {{chart.university}}</div>
+                                            </td>
+                                            <td style="min-width: 130px;" class="text-center">
+                                              <div>{{chart.owner}}</div>
+                                            </td>
+                                            <td class="text-center">
+                                              <div>{{chart.date}}</div>
+                                            </td>
+                                            <td class="text-center" style="max-width: 225px;"> 
+                                              <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
+                                              <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
+      
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  
+                                </mat-tab>
+                              </mat-tab-group>
                             </div>
-                            <div class="col-md-12 p-2">
-                                <button mat-raised-button class="font-iran-sans-FA">جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
-                            </div>
-                      </div>
+                            
+                            
+                        </div>
                     </div>
-                  </mat-expansion-panel>
+                </mat-expansion-panel>
                 <!--<mat-expansion-panel (opened)="panelOpenState = true"
                                      (closed)="panelOpenState = false">
                   <mat-expansion-panel-header>
@@ -78,9 +174,8 @@
       <!-- /.row-->
     </div>
   </div>
-  <div class="container-fluid pt-3">
+  <!--<div class="container-fluid pt-3">
     <div class="fade-in">
-      <!-- /.row-->
       <div class="row">
         <div class="col-md-12">
           <div class="card">
@@ -92,9 +187,7 @@
             </div>
           </div>
         </div>
-        <!-- /.col-->
       </div>
-      <!-- /.row-->
     </div>
-  </div>
+  </div>-->
 

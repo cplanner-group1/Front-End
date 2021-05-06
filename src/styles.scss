@@ -4,12 +4,16 @@
 /* You can add global styles to this file, and also import other style files */
 $second-color : #AC3B61;
 
+th,tr,table{
+    font-family: iranSans;  
+}
+
 .c-sidebar{
     font-family: iranSans;  
-    background: #123C69 !important;
+    background: #24305E !important;
 }
 .c-sidebar .c-sidebar-nav-link:hover{
-    background-color: #AC3B61 !important;
+    background-color: #f76c6c !important;
 }
 .c-body{
     font-family: IRANSans;  
@@ -25,7 +29,7 @@ $second-color : #AC3B61;
     background-color: #AC3B61 !important;
 }
 .bg-dark-blue-color{
-    background-color: #123C69 !important;
+    background-color: #24305E !important;
 }
 .bg-gray-color{
     background-color: #BAB2B5 !important;
@@ -96,3 +100,18 @@ font-family: IRANSans !important;
 }
 
 
+
+
+
+
+
+// expansion clear padding:
+.search-expansion .mat-expansion-panel-body{
+    padding:0;
+}
+
+// mat tab font:
+.mat-tab-label .mat-tab-label-content{
+    font-family: iranSans;  
+    font-weight: bold;
+}
