@@ -12,6 +12,9 @@ th,tr,table{
     font-family: iranSans;  
     background: #24305E !important;
 }
+.c-sidebar ,.c-sidebar-dark ,.c-sidebar-fixed ,.c-sidebar-lg-show{
+    z-index:800 !important;
+}
 .c-sidebar .c-sidebar-nav-link:hover{
     background-color: #f76c6c !important;
 }

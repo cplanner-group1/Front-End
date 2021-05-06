@@ -174,20 +174,79 @@
       <!-- /.row-->
     </div>
   </div>
-  <!--<div class="container-fluid pt-3">
+  <div class="container-fluid pt-3">
     <div class="fade-in">
       <div class="row">
-        <div class="col-md-12">
-          <div class="card">
+        <div class="col-md-8">
+          <div class="card shadow-sm">
             <div class="card-header">نمایش درس ها</div>
             <div class="card-body">
               <div class="col-md-12">
-                  123
+                <div #shoes cdkDropList class="course-list" (cdkDropListDropped)="drop($event)">
+                  <div class="font-iran-sans-FA course-box" *ngFor="let item of userCourses" cdkDrag>
+                    <mat-checkbox class="mt-2 mr-2" [(ngModel)]="item.status"></mat-checkbox>
+                    <div style="float: right;">
+                      {{item.course.title}}
+                    </div>
+                    
+                    <button   mat-button (click)="taskDetails(task)"
+                              class="btn-more" matTooltip="مشاهده و ویرایش" [matTooltipPosition]="'above'">
+                        <span class="material-icons">
+                          edit
+                        </span>
+                    </button>
+                  </div>
+                </div>
+                
+                <!--<p>
+                  Options selected: {{shoes.selectedOptions.selected.length}}
+                </p>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-header">تغییر شیوه نمایش</div>
+            <div class="card-body pr-0 pl-0">
+              <div class="col-md-12">
+                <form *ngIf="userCourses.length>0" class="search-form">
+                  <mat-form-field class="w-100">
+                    <mat-label class="pb-2">همین الان جستجو کن!</mat-label>
+                    <input type="tel" matInput  style="padding-bottom:10px; margin-top: 10px;">
+                    <mat-icon matSuffix class="pb-3">search</mat-icon>
+                  </mat-form-field>
+                </form>
+              </div>
+              
+              <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
+              <div class="col-md-12 mt-3">
+                <mat-form-field appearance="none"
+                    class="shadow-md"
+                    style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                  <mat-label class="p-3" style="margin-top: 10px;">فیلتر نمایش</mat-label>
+                  <mat-select [(ngModel)]="statusSelectedValue" name="statusFilter"
+                              class="font-iran-sans-FA align-center text-center" 
+                              style="color: white !important; min-width: 100%;">
+                    <mat-option *ngFor="let status of showingStatus" [value]="status.value"
+                                class="font-iran-sans-FA">
+                      {{status.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12 mt-3">
+                <button mat-raised-button class="font-iran-sans-FA btn-success w-100" style="min-width: 80px;">مرتب سازی لیست</button>
+              </div>
+
+              <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
+              <div class="col-md-12 mt-3">
+                <button mat-raised-button class="font-iran-sans-FA btn-danger w-100" style="min-width: 80px;">حذف همه</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
 

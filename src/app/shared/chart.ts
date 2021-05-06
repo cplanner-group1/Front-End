@@ -22,9 +22,8 @@ export class CourseTrack{
     course: Course;
     prerequisites: number[]; // list of id of courses which prerequisite of this course
     status: number; 
-        // 0 --> feature
-        // 1 --> doing
-        // 2 --> done 
+        // 0 --> not done
+        // 1 --> done
     grade: number;
 }
 
