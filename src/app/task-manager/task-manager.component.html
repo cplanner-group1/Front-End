@@ -70,7 +70,7 @@
                       <th>وضعیت</th>
                       <th>ددلاین</th>
                       <th>اهمیت</th>
-                      <th>آخرین تغییر</th>
+                      <!--<th>آخرین تغییر</th>-->
                       <th></th>
 
                     </tr>
@@ -178,9 +178,9 @@
                             (ratingUpdated)="onRatingChanged($event,task)">
                         </mat-star-rating>
                       </td>
-                      <td  style="min-width: 100px;">
+                      <!--<td  style="min-width: 100px;">
                         <div class="small text-muted"></div><strong>{{ task.lastChangeDate }}</strong>
-                      </td>
+                      </td>-->
                       <td style="background-color: white;">
                         <button mat-button (click)="taskDetails(task)"
                                 class="btn-more" matTooltip="اطلاعات اضافی" [matTooltipPosition]="'above'"
