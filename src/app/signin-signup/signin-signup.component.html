@@ -35,18 +35,24 @@
             <div id="password-eye" class="off"></div>
           </div>
           <button>Sign In</button>
-          <a href="#" class='btn open-modal' data-modal="#modal1">Forgot your password?</a>
-          <div class='modal' id='modal1'>
-            <div class='content'>
-              <h1 class='title'>Don't panic</h1>
-              <p>
-                Enter your account's email address to recover your password.	
-              </p>
-              <input type="email" placeholder="Email" />
-              <button>restore</button>
-              <a class='btn close-modal' data-modal="#modal1" href="#">K Bye</a>
+
+          <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Don't Panic</h4>
+              <button type="button" id="forgot-password-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-          </div>
+            <div class="modal-body">
+              <p>Please enter the email you used to create an account so we can send you a code:</p>
+              <input type="email" placeholder="email">
+            </div>
+              <button id="forgot-password-ok" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Send Code</button>
+          </ng-template>
+          
+          <a id="forgot-password" class="btn btn-lg btn-outline-primary" (click)="open(content)">Forgot Your Password?</a>
+
+
         </form>
       </div>
       <div class="overlay-container">

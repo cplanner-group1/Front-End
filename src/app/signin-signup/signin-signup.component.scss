@@ -27,6 +27,12 @@ h2 {
   	font-family: 'Quicksand', sans-serif;
 }
 
+h4 {
+	color: #C66373;
+	font-family: 'Quicksand', sans-serif;
+	text-align: center ! important;
+}
+
 p {
 	font-size: 14px;
 	font-weight: 100;
@@ -325,61 +331,37 @@ div {
 
 
 /* FOR FORGOT PASSWORD*/
-.btn {
-	transition: 0.25s ease-in-out;
+#forgot-password-close {
+	border: none;
+	color: #24305e;
+	background-color: transparent;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-left: 10px;
 }
 
-.btn:hover {
-	color: black;
+#forgot-password-close:hover {
+	background-color: #b8364c;
 }
 
-.overlay1 {
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding: 40px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.75);
-	opacity: 0;
-	pointer-events: none;
-	transition: 0.35s ease-in-out;
-	max-height: 100vh;
-	overflow-y: auto;
+#forgot-password {
+	border: none;
 }
-.overlay1.open {
-	opacity: 1;
-	pointer-events: inherit;
+
+#forgot-password:hover{
+	background-color: transparent;
 }
-.overlay1 .modal {
-	background: white;
+
+#forgot-password-ok{
+	width: 250px;
+	color: white;
+	border: none;
+	align-self: center;
 	text-align: center;
-	padding: 40px 80px;
-	box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.35);
-	opacity: 0;
-	pointer-events: none;
-	transition: 0.35s ease-in-out;
-	max-height: 100vh;
-	overflow-y: auto;
-}
-.overlay1 .modal.open {
-	opacity: 1;
-	pointer-events: inherit;
-}
-.overlay1 .modal.open .content {
-	transform: translate(0, 0px);
-	opacity: 1;
-}
-.overlay1 .modal .content {
-	transform: translate(0, -10px);
-	opacity: 0;
-	transition: 0.35s ease-in-out;
-}
-.overlay1 .modal .title {
-	margin-top: 0;
 }
 
+#forgot-password-ok:hover{
+	background-color: #b8364c;
+	border: none;
+}

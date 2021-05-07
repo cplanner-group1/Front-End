@@ -71,6 +71,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SigninSignupComponent } from './signin-signup/signin-signup.component';
 import { PanelComponent } from './panel/panel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -125,7 +126,8 @@ import { PanelComponent } from './panel/panel.component';
     DragDropModule,
     MatDatepickerModule,
     TextFieldModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    NgbModule,
     /*ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

@@ -1,18 +1,42 @@
 import { ViewChild } from '@angular/core';
 import { Component, ElementRef, OnInit } from '@angular/core';
-import * as $ from 'jquery';;
+import * as $ from 'jquery';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
   selector: 'app-signin-signup',
   templateUrl: './signin-signup.component.html',
-  styleUrls: ['./signin-signup.component.scss']
+  styleUrls: ['./signin-signup.component.scss'],
 })
+
 export class SigninSignupComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
+  }
+
+  closeResult = '';
+
+  constructor(private modalService: NgbModal) {}
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   panelPositionAdd(){
@@ -41,57 +65,6 @@ export class SigninSignupComponent implements OnInit {
       passwordEye?.classList.add("off");
      }
   } 
-
-  /*FORGOT PASSWORD*/
-
-  /*
-  $(".modal").each( function(){
-    $(this).wrap('<div class="overlay1"></div>')
-  });
-  
-  /*$(".open-modal").on('click', function(e)*/
-  openForgotPassword (e) {
-    e.preventDefault();
-    e.stopImmediatePropagation;
-    
-    var $this = $(this),
-        modal = $($this).data("modal");
-    
-    $(modal).parents(".overlay1").addClass("open");
-    setTimeout( function(){
-      $(modal).addClass("open");
-    }, 350);
-    
-    $(document).on('click', function(e){
-      var target = $(e.target);
-      
-      if ($(target).hasClass("overlay1")){
-        $(target).find(".modal").each( function(){
-          $(this).removeClass("open");
-        });
-        setTimeout( function(){
-          $(target).removeClass("open");
-        }, 350);
-      }
-      
-    });
-    
-  };
-  
-  /*$(".close-modal").on('click', function(e)*/
-  closeForgotPassword(e){
-    e.preventDefault();
-    e.stopImmediatePropagation;
-    
-    var $this = $(this),
-        modal = $($this).data("modal");
-    
-    $(modal).removeClass("open");
-    setTimeout( function(){	
-      $(modal).parents(".overlay").removeClass("open");
-    }, 350);
-    
-  };
 
   title = 'padis';
 
