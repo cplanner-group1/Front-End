@@ -12,7 +12,10 @@
           <span>or use your email for registration</span>
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password"/>
+          <div class="material-textfield">
+            <input #passwordInput class="password" type="password" id="password" placeholder="Password" />
+            <div id="password-eye" class="off"></div>
+          </div>
           
           <button>Sign Up</button>
         </form>
@@ -28,14 +31,14 @@
           <span class="visibility">or use your account</span>
           <input type="email" placeholder="Email" />
           <div class="material-textfield">
-            <input class="password" type="password" id="password" placeholder="Password" />
+            <input #passwordInput class="password" type="password" id="password" placeholder="Password" />
             <div id="password-eye" class="off"></div>
           </div>
           <button>Sign In</button>
           <a href="#" class='btn open-modal' data-modal="#modal1">Forgot your password?</a>
           <div class='modal' id='modal1'>
             <div class='content'>
-              <h1 class='title'>panic</h1>
+              <h1 class='title'>Don't panic</h1>
               <p>
                 Enter your account's email address to recover your password.	
               </p>

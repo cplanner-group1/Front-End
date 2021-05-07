@@ -291,19 +291,26 @@ input:focus {
 .fa-facebook-f:before, .fa-facebook:before {
     content: none !important; 
 }
+
 /* FOR PASSWORD VISIBILITY*/
+div {
+	width: 100%;
+}
 .password {
-	width: 250px;
+	margin-right: 0;
+	margin-left: 0;
+
 }
 .material-textfield{
 	position: relative;
 }
 #password-eye{
 	position: absolute;
-	right: 10px;
-	bottom: 9px;
+	right: 5px;
+	bottom: 7px;
 	cursor: pointer;
 	opacity: 40%;
+	padding-left: 200px;
 }
 #password-eye.off:before{
 	content:"visibility_off";
