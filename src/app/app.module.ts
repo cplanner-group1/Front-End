@@ -55,7 +55,8 @@ import 'hammerjs';
 import { environment } from '../environments/environment';
 
 // routing 
-import { AppRoutingModule } from './app-routing/app-routing.module';
+//import { AppRoutingModule } from './app-routing/app-routing.module';
+import { routing } from './app-routing/routes';
 
 //date-picker
 import { DpDatePickerModule } from 'ng2-jalali-date-picker';
@@ -92,7 +93,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
-    AppRoutingModule,
+    ///AppRoutingModule,
     MatSnackBarModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -128,6 +129,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TextFieldModule,
     DpDatePickerModule,
     NgbModule,
+    routing
     /*ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
