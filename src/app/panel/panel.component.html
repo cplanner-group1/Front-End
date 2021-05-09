@@ -12,8 +12,8 @@
       </svg>-->
     </div>
     <ul class="c-sidebar-nav">
-      <li class="c-sidebar-nav-item" routerLinkActive="active" >
-        <a class="c-sidebar-nav-link" routerLink="/dashboard">
+      <li class="c-sidebar-nav-item"  >
+        <a class="c-sidebar-nav-link" [routerLink]="['/dashboard']">
           <span class="material-icons c-sidebar-nav-icon" style="font-size: 15pt; margin-top: -6px;">
             home
           </span>
@@ -21,6 +21,7 @@
           <!--<span class="badge badge-info">NEW</span>-->
         </a>
       </li>
+      
       <!--<li class="c-sidebar-nav-title">مدیریت کارها</li>-->
       <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
@@ -30,8 +31,8 @@
           دانشگاه
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
-          <li class="c-sidebar-nav-item" routerLinkActive="active">
-            <a class="c-sidebar-nav-link"  routerLink="/charts">
+          <li class="c-sidebar-nav-item" >
+            <a class="c-sidebar-nav-link"  [routerLink]="['/charts']">
               <span class="c-sidebar-nav-icon"></span>
             مدیریت واحد ها
             </a>
@@ -51,15 +52,15 @@
         </ul>
       </li>
       <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-        <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+        <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
           <span class="material-icons c-sidebar-nav-icon" style="font-size: 15pt; margin-top: -6px;">
             add_alert
           </span>
           یادآور
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
-          <li class="c-sidebar-nav-item" routerLinkActive="active">
-            <a class="c-sidebar-nav-link" routerLink="/task">
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" [routerLink]="['/task']">
               <span class="c-sidebar-nav-icon"></span>
                تسک منیجر
             </a>

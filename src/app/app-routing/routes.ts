@@ -7,34 +7,74 @@ import { TaskManagerComponent } from '../task-manager/task-manager.component';
 import { ChartsComponent } from '../charts/charts.component';
 import { SigninSignupComponent } from '../signin-signup/signin-signup.component';
 import { PanelComponent } from '../panel/panel.component';
+import { LandingComponent } from '../landing/landing.component';
 
 // routes list:
 export const routes: Routes = [
-
-  /*
-  // panel routes goes here:
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {
     path: '',
     component: PanelComponent,
-    children:[
-      { path: 'dashboard',  component: DashboardComponent },
-      { path: 'charts',  component: ChartsComponent },
-      { path: 'task',  component: TaskManagerComponent },
-      { path: '', redirectTo: '/dashboard', component: DashboardComponent, pathMatch: 'full'},
+    children: [
+      {
+        path: '',
+        redirectTo:'/dashboard',
+        pathMatch:'full'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: 'task',
+        component: TaskManagerComponent
+      },
+      {
+        path: 'charts',
+        component: ChartsComponent
+      }
     ]
   },
-
-  // no layout:
-  { path: 'admin', component: SigninSignupComponent},
-  { path: '', redirectTo: '/admin', pathMatch: 'full' }
-  */
-
+  {
+    path: 'landing',
+    component: LandingComponent
+  }, 
+  {
+    path: 'admin',
+    component: SigninSignupComponent
+  }
+  /*
   { path: 'dashboard',  component: DashboardComponent },
   { path: 'charts',  component: ChartsComponent },
   { path: 'task',  component: TaskManagerComponent },
   { path: 'admin', component: SigninSignupComponent},
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }*/
 ];
+
+/*
+
+{
+    path: '',
+    component: LandingComponent,
+    children: [
+      {
+        path: 'features',
+        component: FeaturesComponent
+      }
+    ]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'analytics',
+        component: AnalyticsComponent
+      }
+    ]
+}
+
+*/
 
 /*
 const appRoutes: Routes = [

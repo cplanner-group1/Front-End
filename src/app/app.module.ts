@@ -73,6 +73,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SigninSignupComponent } from './signin-signup/signin-signup.component';
 import { PanelComponent } from './panel/panel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LandingComponent } from './landing/landing.component';
 
 
 
@@ -86,7 +87,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TaskDetailsComponent,
     ChartsComponent,
     SigninSignupComponent,
-    PanelComponent
+    PanelComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

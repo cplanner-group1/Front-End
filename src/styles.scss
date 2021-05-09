@@ -13,8 +13,18 @@ th,tr,table{
     background: #24305E !important;
 }
 .c-sidebar ,.c-sidebar-dark ,.c-sidebar-fixed ,.c-sidebar-lg-show{
-    z-index:800 !important;
+    z-index:990 !important;
 }
+.c-header.c-header-fixed{
+    z-index:900 !important
+}
+@media (max-width: 991.98px){
+    .c-sidebar-backdrop {
+        z-index: 989 !important;
+    }
+}
+
+
 .c-sidebar .c-sidebar-nav-link:hover{
     background-color: #f76c6c !important;
 }
@@ -120,3 +130,5 @@ font-family: IRANSans !important;
 }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
