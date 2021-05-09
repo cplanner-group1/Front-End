@@ -40,9 +40,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TextFieldModule } from '@angular/cdk/text-field';
 
-
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+
+// api:
+import { HttpClientModule } from '@angular/common/http';
+import { MyApi } from './services/user.services'
 
 //import { MatFormFieldModule } from '@angular/material/form-field';
 //import { MatInputModule } from '@angular/material/input';
@@ -72,8 +75,10 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SigninSignupComponent } from './signin-signup/signin-signup.component';
 import { PanelComponent } from './panel/panel.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from './landing/landing.component';
+
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -131,6 +136,7 @@ import { LandingComponent } from './landing/landing.component';
     TextFieldModule,
     DpDatePickerModule,
     NgbModule,
+    HttpClientModule,
     routing
     /*ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -139,7 +145,7 @@ import { LandingComponent } from './landing/landing.component';
       registrationStrategy: 'registerWhenStable:30000'
     })*/
   ],
-  providers: [],
+  providers: [MyApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
