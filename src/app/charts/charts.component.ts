@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Charts,Chart,CourseTrack,Course } from '../shared/chart';
 import { CoursesTrack } from '../shared/courses';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import {SelectType} from '../shared/select';
+import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { SelectType} from '../shared/select';
+import { CourseDetailsComponent } from '../course-details/course-details.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-charts',
@@ -26,10 +28,28 @@ export class ChartsComponent implements OnInit {
     {value: '1', viewValue: 'پاس شده'},
     {value: '2', viewValue: 'پاش نشده'}
   ];
-  constructor() { }
+
+
+  constructor(public dialog: MatDialog) { 
+    
+  }
 
   ngOnInit(): void {
 
+  }
+
+  courseDetails(course:CourseTrack){
+    const dialogRef = this.dialog.open(CourseDetailsComponent, {
+      width: '1000px',
+      data: course
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        //console.log(result);
+        // oversell
+        
+      }
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {

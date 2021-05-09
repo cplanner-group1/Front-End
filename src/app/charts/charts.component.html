@@ -1,252 +1,265 @@
 <div class="container-fluid">
-    <div class="fade-in">
-      <!-- /.row-->
-      <div class="row">
-        <div class="col-md-12">
-            <mat-accordion class="chart-expansion-headers-align"> 
-                <mat-expansion-panel >
+  <div class="fade-in">
+    <!-- /.row-->
+    <div class="row">
+      <div class="col-md-12">
+          <mat-accordion class="chart-expansion-headers-align"> 
+              <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="font-iran-sans-FA">
+                    اطلاعات اولیه
+                  </mat-panel-title>
+                  <mat-panel-description class="font-iran-sans-FA">
+                    اطلاعات دانشگاه و رشته
+                    <mat-icon style="float:left;">account_circle</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--<p class="font-iran-sans-FA">توضیحات</p>-->
+                <div class="container-fluid" style="padding: 0; margin:0;">
+                  <div class="row" style="width: 100%; margin: 0;">
+                      <div class="col-md-6 p-2">
+                          <mat-form-field  style="width: 100%"
+                          class="full-width input-focus-hover font-iran-sans-FA">
+                              <mat-label>نام دانشگاه</mat-label>
+                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا تمرین سری 1">
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-6 p-2" style="float: left;">
+                          <mat-form-field class="full-width input-focus-hover font-iran-sans-FA">
+                              <mat-label>رشته</mat-label>
+                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا دانشگاه">
+                          </mat-form-field>
+                      </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel class="search-expansion">
                   <mat-expansion-panel-header>
                     <mat-panel-title class="font-iran-sans-FA">
-                      اطلاعات اولیه
+                      انتخاب چارت
                     </mat-panel-title>
                     <mat-panel-description class="font-iran-sans-FA">
-                      اطلاعات دانشگاه و رشته
-                      <mat-icon style="float:left;">account_circle</mat-icon>
+                      کار خودت رو راحت کن
+                      <mat-icon style="float:left;">search</mat-icon>
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                   <!--<p class="font-iran-sans-FA">توضیحات</p>-->
                   <div class="container-fluid" style="padding: 0; margin:0;">
-                    <div class="row" style="width: 100%; margin: 0;">
-                        <div class="col-md-6 p-2">
-                            <mat-form-field  style="width: 100%"
-                            class="full-width input-focus-hover font-iran-sans-FA">
-                                <mat-label>نام دانشگاه</mat-label>
-                                <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا تمرین سری 1">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-6 p-2" style="float: left;">
-                            <mat-form-field class="full-width input-focus-hover font-iran-sans-FA">
-                                <mat-label>رشته</mat-label>
-                                <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا دانشگاه">
-                            </mat-form-field>
-                        </div>
-                    </div>
-                  </div>
-                </mat-expansion-panel>
-                <mat-expansion-panel class="search-expansion">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title class="font-iran-sans-FA">
-                        انتخاب چارت
-                      </mat-panel-title>
-                      <mat-panel-description class="font-iran-sans-FA">
-                        کار خودت رو راحت کن
-                        <mat-icon style="float:left;">search</mat-icon>
-                      </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <!--<p class="font-iran-sans-FA">توضیحات</p>-->
-                    <div class="container-fluid" style="padding: 0; margin:0;">
-                        <div class="row" style="width: 100%; margin: 0;">
-                            <div class="col-md-12 p-0 m-0" style="padding: 0; margin:0;" >
-                              <mat-tab-group>
-                                <mat-tab class="font-iran-sans-FA" label="بر اساس رشته و دانشگاه">
-                                   <div class="container-fluid">
-                                     <div class="row">
-                                       
-                                        <div class="col-md-12 p-4" style="margin:0;">
-                                          <button mat-raised-button class="font-iran-sans-FA">جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
-                                        </div>
-                                        <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
-                                          <!-- table view for charts  -->
-                                          <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
-                                            <thead class="thead" style="border-top: none;">
-                                              <tr style="border-top: none;">
-                                                <th class="text-center"></th>
-                                                <th>اطلاعات</th>
-                                                <th class="text-center">سازنده</th>
-                                                <th class="text-center">آخرین تغییر</th>
-                                                <th></th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr *ngFor="let chart of charts;index as i">
-                                                <td class="text-center">
-                                                  {{i+1}}
-                                                </td>
-                                                <td style="min-width: 160px;">
-                                                  <div>{{chart.title}}</div>
-                                                  <div class="small text-muted"><span>{{chart.study}}</span> | {{chart.university}}</div>
-                                                </td>
-                                                <td style="min-width: 130px;" class="text-center">
-                                                  <div>{{chart.owner}}</div>
-                                                </td>
-                                                <td class="text-center">
-                                                  <div>{{chart.date}}</div>
-                                                </td>
-                                                <td class="text-center" style="max-width: 225px;"> 
-                                                  <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
-                                                  <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
-          
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
+                      <div class="row" style="width: 100%; margin: 0;">
+                          <div class="col-md-12 p-0 m-0" style="padding: 0; margin:0;" >
+                            <mat-tab-group>
+                              <mat-tab class="font-iran-sans-FA" label="بر اساس رشته و دانشگاه">
+                                 <div class="container-fluid">
+                                   <div class="row">
+                                     
+                                      <div class="col-md-12 p-4" style="margin:0;">
+                                        <button mat-raised-button class="font-iran-sans-FA">جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
+                                      </div>
+                                      <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                                        <!-- table view for charts  -->
+                                        <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
+                                          <thead class="thead" style="border-top: none;">
+                                            <tr style="border-top: none;">
+                                              <th class="text-center"></th>
+                                              <th>اطلاعات</th>
+                                              <th class="text-center">سازنده</th>
+                                              <th class="text-center">آخرین تغییر</th>
+                                              <th></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr *ngFor="let chart of charts;index as i">
+                                              <td class="text-center">
+                                                {{i+1}}
+                                              </td>
+                                              <td style="min-width: 160px;">
+                                                <div>{{chart.title}}</div>
+                                                <div class="small text-muted"><span>{{chart.study}}</span> | {{chart.university}}</div>
+                                              </td>
+                                              <td style="min-width: 130px;" class="text-center">
+                                                <div>{{chart.owner}}</div>
+                                              </td>
+                                              <td class="text-center">
+                                                <div>{{chart.date}}</div>
+                                              </td>
+                                              <td class="text-center" style="max-width: 225px;"> 
+                                                <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
+                                                <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
+        
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
 
-                                    </div>
-                                   </div>
-                                </mat-tab>
-                                <mat-tab class="font-iran-sans-FA" label="جستجو دستی">
-                                  <div class="row" style="width: 100%; margin: 0;">
-                                    <div class="col-md-10">
-                                      <mat-form-field class="full-width input-focus-hover font-iran-sans-FA mt-2">
-                                        <mat-label>جستجو کنید</mat-label>
-                                        <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا علوم کامپیوتر امیرکبیر">
-                                      </mat-form-field>  
-                                    </div>
-                                    <div class="col-md-2 mt-3">
-                                      <button mat-raised-button class="font-iran-sans-FA mt-2 btn-success" style="max-width: 100%;">جستجو</button>
-                                    </div>
-                                    <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
-                                      <!-- table view for charts  -->
-                                      <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
-                                        <thead class="thead" style="border-top: none;">
-                                          <tr style="border-top: none;">
-                                            <th class="text-center"></th>
-                                            <th>اطلاعات</th>
-                                            <th class="text-center">سازنده</th>
-                                            <th class="text-center">آخرین تغییر</th>
-                                            <th></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr *ngFor="let chart of charts;index as i">
-                                            <td class="text-center">
-                                              {{i+1}}
-                                            </td>
-                                            <td style="min-width: 160px;">
-                                              <div>{{chart.title}}</div>
-                                              <div class="small text-muted"><span>{{chart.study}}</span> | {{chart.university}}</div>
-                                            </td>
-                                            <td style="min-width: 130px;" class="text-center">
-                                              <div>{{chart.owner}}</div>
-                                            </td>
-                                            <td class="text-center">
-                                              <div>{{chart.date}}</div>
-                                            </td>
-                                            <td class="text-center" style="max-width: 225px;"> 
-                                              <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
-                                              <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
-      
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
                                   </div>
-                                  
-                                </mat-tab>
-                              </mat-tab-group>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-                <!--<mat-expansion-panel (opened)="panelOpenState = true"
-                                     (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Self aware panel
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <p>I'm visible because I am open</p>
-                </mat-expansion-panel>-->
-            </mat-accordion>
-            
-            
-            
-        </div>
-        <!-- /.col-->
-      </div>
-      <!-- /.row-->
-    </div>
-  </div>
-  <div class="container-fluid pt-3">
-    <div class="fade-in">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="card shadow-sm">
-            <div class="card-header">نمایش درس ها</div>
-            <div class="card-body">
-              <div class="col-md-12">
-                <div #shoes cdkDropList class="course-list" (cdkDropListDropped)="drop($event)">
-                  <div class="font-iran-sans-FA course-box" *ngFor="let item of userCourses" cdkDrag>
-                    <mat-checkbox class="mt-2 mr-2" [(ngModel)]="item.status"></mat-checkbox>
-                    <div style="float: right;">
-                      {{item.course.title}}
-                    </div>
-                    
-                    <button   mat-button (click)="taskDetails(task)"
-                              class="btn-more" matTooltip="مشاهده و ویرایش" [matTooltipPosition]="'above'">
-                        <span class="material-icons">
-                          edit
-                        </span>
-                    </button>
+                                 </div>
+                              </mat-tab>
+                              <mat-tab class="font-iran-sans-FA" label="جستجو دستی">
+                                <div class="row" style="width: 100%; margin: 0;">
+                                  <div class="col-md-10">
+                                    <mat-form-field class="full-width input-focus-hover font-iran-sans-FA mt-2">
+                                      <mat-label>جستجو کنید</mat-label>
+                                      <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا علوم کامپیوتر امیرکبیر">
+                                    </mat-form-field>  
+                                  </div>
+                                  <div class="col-md-2 mt-3">
+                                    <button mat-raised-button class="font-iran-sans-FA mt-2 btn-success" style="max-width: 100%;">جستجو</button>
+                                  </div>
+                                  <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                                    <!-- table view for charts  -->
+                                    <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
+                                      <thead class="thead" style="border-top: none;">
+                                        <tr style="border-top: none;">
+                                          <th class="text-center"></th>
+                                          <th>اطلاعات</th>
+                                          <th class="text-center">سازنده</th>
+                                          <th class="text-center">آخرین تغییر</th>
+                                          <th></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let chart of charts;index as i">
+                                          <td class="text-center">
+                                            {{i+1}}
+                                          </td>
+                                          <td style="min-width: 160px;">
+                                            <div>{{chart.title}}</div>
+                                            <div class="small text-muted"><span>{{chart.study}}</span> | {{chart.university}}</div>
+                                          </td>
+                                          <td style="min-width: 130px;" class="text-center">
+                                            <div>{{chart.owner}}</div>
+                                          </td>
+                                          <td class="text-center">
+                                            <div>{{chart.date}}</div>
+                                          </td>
+                                          <td class="text-center" style="max-width: 225px;"> 
+                                            <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
+                                            <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
+    
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                
+                              </mat-tab>
+                            </mat-tab-group>
+                          </div>
+                          
+                          
+                      </div>
                   </div>
+              </mat-expansion-panel>
+              <!--<mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Self aware panel
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+              </mat-expansion-panel>-->
+          </mat-accordion>
+          
+          
+          
+      </div>
+      <!-- /.col-->
+    </div>
+    <!-- /.row-->
+  </div>
+</div>
+<div class="container-fluid pt-3">
+  <div class="fade-in">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card shadow-sm">
+          <div class="card-header">نمایش درس ها</div>
+          <div class="card-body">
+            <div class="col-md-12">
+              <div #shoes cdkDropList class="course-list" (cdkDropListDropped)="drop($event)">
+                <div class="font-iran-sans-FA course-box" *ngFor="let item of userCourses" cdkDrag>
+                  <mat-checkbox class="mt-2 mr-2" [(ngModel)]="item.status"></mat-checkbox>
+                  <div style="float: right;">
+                    {{item.course.title}}
+                  </div>
+                  
+                  <button   mat-button (click)="courseDetails(item)"
+                            class="btn-more" matTooltip="مشاهده و ویرایش" [matTooltipPosition]="'above'">
+                      <span class="material-icons">
+                        edit
+                      </span>
+                  </button>
                 </div>
-                
-                <!--<p>
-                  Options selected: {{shoes.selectedOptions.selected.length}}
-                </p>-->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-header">تغییر شیوه نمایش</div>
-            <div class="card-body pr-0 pl-0">
-              <div class="col-md-12">
-                <form *ngIf="userCourses.length>0" class="search-form">
-                  <mat-form-field class="w-100">
-                    <mat-label class="pb-2">همین الان جستجو کن!</mat-label>
-                    <input type="tel" matInput  style="padding-bottom:10px; margin-top: 10px;">
-                    <mat-icon matSuffix class="pb-3">search</mat-icon>
-                  </mat-form-field>
-                </form>
               </div>
               
-              <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
-              <div class="col-md-12 mt-3">
-                <mat-form-field appearance="none"
-                    class="shadow-md"
-                    style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
-                  <mat-label class="p-3" style="margin-top: 10px;">فیلتر نمایش</mat-label>
-                  <mat-select [(ngModel)]="statusSelectedValue" name="statusFilter"
-                              class="font-iran-sans-FA align-center text-center" 
-                              style="color: white !important; min-width: 100%;">
-                    <mat-option *ngFor="let status of showingStatus" [value]="status.value"
-                                class="font-iran-sans-FA">
-                      {{status.viewValue}}
-                    </mat-option>
-                  </mat-select>
+              <!--<p>
+                Options selected: {{shoes.selectedOptions.selected.length}}
+              </p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header">تغییر شیوه نمایش</div>
+          <div class="card-body pr-0 pl-0">
+            <div class="col-md-12">
+              <form *ngIf="userCourses.length>0" class="search-form">
+                <mat-form-field class="w-100">
+                  <mat-label class="pb-2">همین الان جستجو کن!</mat-label>
+                  <input type="tel" matInput  style="padding-bottom:10px; margin-top: 10px;">
+                  <mat-icon matSuffix class="pb-3">search</mat-icon>
                 </mat-form-field>
-              </div>
-              <div class="col-md-12 mt-3">
-                <button mat-raised-button class="font-iran-sans-FA btn-success w-100" style="min-width: 80px;">مرتب سازی لیست</button>
-              </div>
+              </form>
+            </div>
+            
+            <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
+            <div class="col-md-12 mt-3">
+              <mat-form-field appearance="none"
+                  class="shadow-md"
+                  style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                <mat-label class="p-3" style="margin-top: 10px;">فیلتر نمایش</mat-label>
+                <mat-select [(ngModel)]="statusSelectedValue" name="statusFilter"
+                            class="font-iran-sans-FA align-center text-center" 
+                            style="color: white !important; min-width: 100%;">
+                  <mat-option *ngFor="let status of showingStatus" [value]="status.value"
+                              class="font-iran-sans-FA">
+                    {{status.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12 mt-3">
+              <button mat-raised-button class="font-iran-sans-FA btn-success w-100" style="min-width: 80px;">مرتب سازی لیست بر اساس الفبا</button>
+            </div>
 
-              <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
-              <div class="col-md-12 mt-3">
-                <button mat-raised-button class="font-iran-sans-FA btn-danger w-100" style="min-width: 80px;">حذف همه</button>
-              </div>
+            
+          </div>
+        </div>
+
+        <div class="card shadow-sm">
+          <div class="card-header">اضافه کردن و ثبت</div>
+          <div class="card-body pr-0 pl-0">
+            <div class="col-md-12 mt-3">
+              <button mat-raised-button class="font-iran-sans-FA btn-primary w-100" style="min-width: 80px;">اضافه کردن دستی درس</button>
+            </div>
+            <div class="col-md-12 mt-3">
+              <button mat-raised-button class="font-iran-sans-FA btn-success w-100" style="min-width: 80px;">ذخیره تنظیمات</button>
+            </div>
+
+            <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
+            <div class="col-md-12 mt-3">
+              <button mat-raised-button class="font-iran-sans-FA btn-danger w-100" style="min-width: 80px;">حذف همه</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+</div>

@@ -1,0 +1,111 @@
+<div mat-dialog-content style="width: 100%; margin:0; padding: 0; ">
+    <div class="row" style="width: 100%; margin: 0;">
+            <div class="col-md-9">
+                <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
+                    <mat-label>نام درس</mat-label>
+                    <input matInput [(ngModel)]="course.course.title" placeholder="مثلا تمرین سری 1" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+                </mat-form-field>
+            </div>
+            <div class="col-md-3" style="float: left;">
+                <mat-button-toggle-group [(ngModel)]="course.label" style="float: left;" name="label" aria-label="label unit">
+                    <mat-button-toggle value="0" class="font-iran-sans-FA">اجباری</mat-button-toggle>
+                    <mat-button-toggle value="1" class="font-iran-sans-FA">اختیاری</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div class="col-md-12">
+                <mat-divider></mat-divider>
+            </div>
+            
+            <!--col 1-->
+            <div class="col-lg-12">
+                <mat-form-field class="w-100 mt-3">
+                    <mat-chip-list #chipList class="pb-2 mb-2">
+                        <mat-chip   *ngFor="let prerequisite of course.prerequisites" 
+                                    [selectable]="selectable" 
+                                    [removable]="removable" 
+                                    (removed)="remove(prerequisite)"
+                                    class="mb-2">
+                            
+                                    {{prerequisite.title}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input  class="pb-2 pt-2"
+                                placeholder="پیشنیاز ها" 
+                                [matChipInputFor]="chipList" 
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" 
+                                (matChipInputTokenEnd)="add($event)" 
+                                name="prerequisite">
+                    </mat-chip-list>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-9">
+                <div class="text-center">
+                    <p  class="font-iran-sans-FA mt-3" 
+                        style=" font-weight: bolder;
+                                padding-bottom: 0; margin-bottom: 0;
+                                text-align: right;
+                                vertical-align:middle">
+                        <!--<span class="material-icons">
+                            description
+                        </span> -->
+                            توضیحات:
+                    </p>
+                    <div class="w-100 text-area-div-styles">
+                        <mat-form-field appearance="none"
+                                        class="mat-form-field-styles">
+                            <textarea   matInput
+                                        cdkTextareaAutosize
+                                        #autosize="cdkTextareaAutosize"
+                                        class="font-iran-sans-FA text-area-styles"
+                                        value="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد."
+                                        cdkAutosizeMinRows="5"
+                                        cdkAutosizeMaxRows="30">
+                            </textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <!-- col 2 -->
+            <div class="col-lg-3" style="float: left;" >
+                <div class="text-center">
+                    <p  class="font-iran-sans-FA mt-3" 
+                        style="font-weight: bolder; text-align: right; padding-bottom: 0; margin-bottom: 0;">
+                        وضعیت تسک را تغییر دهید:
+                    </p>
+                    <!--<div class="w-100" style="background-color: #e0e2e6; border-radius: 5px; margin-top: 10px;">
+                        <mat-form-field  appearance="none"
+                        class="select-focus-hover"
+                        style="width: 120px; padding: 0; margin:0; margin-top:7px;">
+                            <mat-select
+                            class="font-iran-sans-FA align-center text-center" 
+                            style="color: white !important; min-width: 100%;"
+                            [(value)]="task.status">
+                            <mat-option [value]="status.value" 
+                                class="font-iran-sans-FA" 
+                                *ngFor="let status of statusType">{{ status.viewValue }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>-->
+                </div>
+                <!--<div class="text-center">
+                    <p  class="font-iran-sans-FA mt-3" 
+                        style="font-weight: bolder; text-align: right; padding-bottom: 0; margin-bottom: 0;">
+                        اولویت را تعیین کنید:
+                    </p>
+                    <div class="w-100" style="background-color: #e0e2e6; border-radius: 5px; margin-top: 10px;">
+                        <mat-star-rating  
+                            [rating]="task.priority"  
+                            [starCount]="starCount" 
+                            (ratingUpdated)="onRatingChanged($event)">
+                        </mat-star-rating>
+                    </div>
+                </div>   -->
+            </div>
+
+          <!--<button (click)="onSubmit(priceData)"  cdkFocusInitial mat-button style="width: 145px; max-width: 100%; margin-left:15px;" class="btn btn-success title-font title-bold">{{ 'BUTTON.SUBMIT' | translate}}</button>
+          <button mat-button mat-dialog-close style="width:145px; max-width: 100%;"  class="btn btn-danger pull-right title-font title-bold">{{'BUTTON.DECLINE' | translate}}</button>
+          -->
+    </div>
+</div>

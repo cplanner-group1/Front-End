@@ -16,16 +16,23 @@ export class Chart{
 export class Course{
     id: number;
     title: string;
-    suggestedPrerequisites: number[]; // suggested list of id of courses which prerequisite of this course
+    suggestedPrerequisites: Prerequisite[]; // suggested list of id of courses which prerequisite of this course
 }
 export class CourseTrack{
     course: Course;
-    prerequisites: number[]; // list of id of courses which prerequisite of this course
+    prerequisites: Prerequisite[]; // list of id of courses which prerequisite of this course
     status: number; 
         // 0 --> not done
         // 1 --> done
     grade: number;
+    label: string;
+        // 0 --> primary unit
+        // 1 --> optional unit
 }
+export interface Prerequisite{
+    title: string;
+    id: number;
+  }
 
 // intorie ke chart shamele majmoe ei courseTrack hast va har courseTrack marbot b yek farde khase ama course global e 
 // dar course age title motefavet bood id jadid bde behesh 

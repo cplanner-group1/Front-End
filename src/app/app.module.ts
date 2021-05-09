@@ -79,6 +79,8 @@ import { LandingComponent } from './landing/landing.component';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CourseDetailsComponent } from './course-details/course-details.component';
+import { ChartDetailsComponent } from './chart-details/chart-details.component';
 
 
 
@@ -93,13 +95,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChartsComponent,
     SigninSignupComponent,
     PanelComponent,
-    LandingComponent
+    LandingComponent,
+    CourseDetailsComponent,
+    ChartDetailsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
+    MatFormFieldModule,
     ///AppRoutingModule,
     MatSnackBarModule,
     MatAutocompleteModule,
