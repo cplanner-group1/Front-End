@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit,ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SelectType } from '../shared/select';
+import { SelectType, SelectTypeNumberValue } from '../shared/select';
 import { CourseTrack,Course } from '../shared/chart';
 import { Courses } from '../shared/courses';
 import { ChartsComponent } from '../charts/charts.component';
@@ -33,13 +33,15 @@ export interface Pre{
 export class CourseDetailsComponent implements OnInit {
 
   course: CourseTrack;
-  //prerequisites: Pre[] = [];
-
+  statusType: SelectTypeNumberValue[] = [
+    {value:0,viewValue:'پاس نشده'},
+    {value:1,viewValue:'پاس شده'},
+  ];
   constructor(public dialogRef: MatDialogRef<ChartsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: CourseTrack,
               private _snackBar: MatSnackBar) { 
         this.course = data;
-        console.log(this.course);
+        //console.log(this.course);
 
   }
 

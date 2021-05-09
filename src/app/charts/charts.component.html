@@ -184,7 +184,7 @@
             <div class="col-md-12">
               <div #shoes cdkDropList class="course-list" (cdkDropListDropped)="drop($event)">
                 <div class="font-iran-sans-FA course-box" *ngFor="let item of userCourses" cdkDrag>
-                  <mat-checkbox class="mt-2 mr-2" [(ngModel)]="item.status"></mat-checkbox>
+                  <mat-checkbox class="mt-2 mr-2" (change)="itemStatusChange($event.checked,item)" [(ngModel)]="item.status"></mat-checkbox>
                   <div style="float: right;">
                     {{item.course.title}}
                   </div>

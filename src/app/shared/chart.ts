@@ -28,6 +28,7 @@ export class CourseTrack{
     label: string;
         // 0 --> primary unit
         // 1 --> optional unit
+    description: string;
 }
 export interface Prerequisite{
     title: string;

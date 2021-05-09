@@ -106,7 +106,8 @@ export const CoursesTrack: CourseTrack[] = [
         prerequisites: [],
         status: 1, 
         grade: 18.5,
-        label: '0'
+        label: '0',
+        description: '123'
     },
     {
         course: 
@@ -118,7 +119,8 @@ export const CoursesTrack: CourseTrack[] = [
         prerequisites: [],
         status: 1, 
         grade: 17.21,
-        label: '0'
+        label: '0',
+        description: '123'
 
     },
     {
@@ -141,7 +143,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 1, 
         grade: null,
-        label: '0'
+        label: '0',
+        description: '123'
 
     },
     {
@@ -172,7 +175,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 0, 
         grade: null,
-        label: '1'
+        label: '1',
+        description: '123'
     },
     {
         course: 
@@ -194,7 +198,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 0, 
         grade: null,
-        label: '0'
+        label: '0',
+        description: '123'
     },
     {
         course: 
@@ -216,7 +221,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 0, 
         grade: null,
-        label: '0'
+        label: '0',
+        description: '12345'
 
     },
     {
@@ -247,7 +253,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 0, 
         grade: null,
-        label: '1'
+        label: '1',
+        description: '123'
     },
     {
         course:
@@ -277,7 +284,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 0, 
         grade: null,
-        label: '1'
+        label: '1',
+        description: '123'
     },
     {
         course:
@@ -307,7 +315,8 @@ export const CoursesTrack: CourseTrack[] = [
         ],
         status: 0, 
         grade: null,
-        label: '0'
+        label: '0',
+        description: '123'
 
     }
     

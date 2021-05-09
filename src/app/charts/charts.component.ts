@@ -16,12 +16,7 @@ export class ChartsComponent implements OnInit {
   panelOpenState = false;
   charts: Chart[] = Charts;
 
-  displayedColumns = ['study', 'university', 'owner', 'used','date','more'];
-
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   userCourses: CourseTrack[] = CoursesTrack;
-  
-  
   statusSelectedValue: string = "0";
   showingStatus: SelectType[] = [
     {value: '0', viewValue: 'همه'},
@@ -54,6 +49,16 @@ export class ChartsComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.userCourses, event.previousIndex, event.currentIndex);
+  }
+
+  itemStatusChange(event,course){
+    console.log(event);
+    if(event===true){
+      course.status = 1;
+    }
+    if(event===false){
+      course.status = 2;
+    }
   }
 }
 
