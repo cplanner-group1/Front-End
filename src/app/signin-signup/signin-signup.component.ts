@@ -1,4 +1,3 @@
-import { ViewChild } from '@angular/core';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
@@ -15,8 +14,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class SigninSignupComponent implements OnInit {
 
   ngOnInit(): void {
-  }
+  }  
 
+  //FORGOT PASSWORD MODAL
   closeResult = '';
 
   constructor(private modalService: NgbModal) {}
@@ -39,6 +39,7 @@ export class SigninSignupComponent implements OnInit {
     }
   }
 
+  //sign-in sign-up toggle panel
   panelPositionAdd(){
     let container = document.getElementById('container');
     container?.classList.add("right-panel-active");
@@ -47,24 +48,6 @@ export class SigninSignupComponent implements OnInit {
     let container = document.getElementById('container');
     container?.classList.remove("right-panel-active");
   }
-  
-  @ViewChild('passwordInput') input: ElementRef;
-
-  passwordVisibilityToggle() {
-
-    var passwordEye = document.getElementById("password-eye");
-  
-    if ((this.input.nativeElement as HTMLInputElement).type === 'password')
-    {
-      (this.input.nativeElement as HTMLInputElement).type = "text";
-      passwordEye?.classList.remove("off");
-      passwordEye?.classList.add("on");
-     } else {
-      (this.input.nativeElement as HTMLInputElement).type = "password";
-       passwordEye?.classList.remove("on");
-      passwordEye?.classList.add("off");
-     }
-  } 
 
   title = 'padis';
 

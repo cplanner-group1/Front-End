@@ -12,14 +12,11 @@
         <span>or use your email for registration</span>
         <input type="text" placeholder="Name" />
         <input type="email" placeholder="Email" />
-        <div class="material-textfield">
-          <input #passwordInput class="password" type="password" id="password" placeholder="Password" />
-          <div id="password-eye" class="off"></div>
-        </div>
-        
+        <input class="password" type="password" id="password" placeholder="Password"/>
         <button>Sign Up</button>
       </form>
     </div>
+
     <div class="form-container sign-in-container col-sm-6">
       <form action="#">
         <h1 class="header">Sign in</h1>
@@ -30,12 +27,8 @@
         </div>
         <span>or use your account</span>
         <input type="email" placeholder="Email" />
-        <div class="material-textfield">
-          <input #passwordInput class="password" type="password" id="password" placeholder="Password" />
-          <div id="password-eye" class="off"></div>
-        </div>
+        <input class="password" type="password" id="password" placeholder="Password" />
         <button>Sign In</button>
-
         <ng-template #content let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Don't Panic</h4>
@@ -44,33 +37,22 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>Please enter the email you used to create an account so we can send you a code:</p>
+            <p>Please enter the email you used to create an account so we can send you a code: </p>
             <input type="email" placeholder="Email">
-            <p style="text-align: center;">Or click here if you already have a code.</p>
-            
           </div>
-            
-          <button type="button" class="btn btn-outline-dark forgot-password-button" (click)="modal.close('Save click')">Send Code</button>
-          <div class="modal-body">
-            <p>Please enter the code you were given: </p>
-            <input type="text" placeholder="Code">
-            <button type="button" class="btn btn-outline-dark forgot-password-button" (click)="modal.close('Save click')">Check Code</button>
-          </div>
-
-
+          <button id="bt" type="button" class="btn btn-outline-dark forgot-password-button">Send Email</button>
+          
+          <!--
+          IF THERE IS A CODE TO RESET PASSWORD
+            <div class="modal-body">
+              <p>Please enter the code you were given: </p>
+              <input type="text" placeholder="Code">
+              <button style="text-align: center; align-self: center;" type="button" class="btn btn-outline-dark forgot-password-button">Check Code</button>
+            </div>
+          -->
         </ng-template>
-        
         <a id="forgot-password" class="btn btn-lg btn-outline-primary" (click)="open(content)">Forgot Your Password?</a>
-
-
       </form>
-
-
-
-
-
-
-
 
     </div>
     <div class="overlay-container">

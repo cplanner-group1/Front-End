@@ -258,7 +258,7 @@ input:focus {
 
   padding: 70px;
   width: 100%;
-  height: 100%;
+  height: 100% !important;
   background-size: 100%;
   background-color: #374785;
   background-image: url("../../assets/img/sign-in/middle-blue-birds.png");
@@ -353,6 +353,7 @@ div {
 	align-self: center !important;
 	text-align: center;
 	padding: 12px 20px;
+	margin-bottom: 30px;
 	transition-duration: 1s;
 	-webkit-transition-duration: 1s;
 
@@ -363,9 +364,6 @@ div {
 	background-color: #cf455c;
 }
 
-.uni {
-	-webkit-transition-property: background-color;
-	-moz-transition-property: background-color;
-	-o-transition-property: background-color;
-	transition-property: background-color;
-  }
+#click-here-if-u-have-code {
+	cursor: pointer;
+}
