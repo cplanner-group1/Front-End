@@ -177,12 +177,53 @@
 <div class="container-fluid pt-3">
   <div class="fade-in">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12" *ngIf="userCourses.length==0">
         <div class="card shadow-sm">
           <div class="card-header">نمایش درس ها</div>
           <div class="card-body">
             <div class="col-md-12">
-              <div #shoes cdkDropList class="course-list" (cdkDropListDropped)="drop($event)">
+              <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
+                      style="float: right;" (click)="addCourse()">
+                      +
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8" *ngIf="userCourses.length>0">
+        <div class="card shadow-sm">
+          <div class="card-header">نمایش درس ها</div>
+          <div class="card-body">
+            <div class="col-md-12">
+              <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
+                      style="float: right;" (click)="addCourse()">
+                      +
+              </button>
+              <button *ngIf="!editView && userCourses.length>0" (click)="enableEdit()"
+                      mat-fab
+                      class="btn-fab" style="margin-right: 7px; float: right;"
+                      matTooltip="فعال کردن حالت ویرایش" [matTooltipPosition]="'above'">
+                <span class="material-icons">
+                  create
+                </span>
+              </button>
+              <button *ngIf="editView && userCourses.length>0" (click)="enableEdit()"
+                      mat-fab
+                      matTooltip="غیر فعال کردن حالت ویرایش" [matTooltipPosition]="'above'"
+                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1;">
+                <span class="material-icons">
+                  create
+                </span>
+              </button>
+              <button *ngIf="editView && userCourses.length>0" (click)="deleteSelectedRow()"
+                      mat-fab
+                      matTooltip="حذف انتخاب شده ها" [matTooltipPosition]="'above'"
+                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #123C69;">
+                <span class="material-icons">
+                  delete
+                </span>
+              </button>
+              <!--<div #shoes cdkDropList class="course-list" (cdkDropListDropped)="drop($event)">
                 <div class="font-iran-sans-FA course-box" *ngFor="let item of userCourses" cdkDrag>
                   <mat-checkbox class="mt-2 mr-2" (change)="itemStatusChange($event.checked,item)" [(ngModel)]="item.status"></mat-checkbox>
                   <div style="float: right;">
@@ -196,16 +237,139 @@
                       </span>
                   </button>
                 </div>
-              </div>
+              </div>-->
               
               <!--<p>
                 Options selected: {{shoes.selectedOptions.selected.length}}
               </p>-->
             </div>
+            <div *ngIf="userCourses.length>0" class="col-md-12 table-responsive">                         
+              <table class="table table-responsive-sm table-hover table-outline mb-0 font-iran-sans-FA" style="border: 1px white solid !important;" >
+                <thead class="thead" style="background-color: white !important; border: 1px white solid !important;">
+                  <tr style="background-color: white !important; border: none !important;">
+                    <th *ngIf="editView">
+                      <mat-checkbox (change)="masterToggle($event.checked)" 
+                                    [(ngModel)]="masterToggleValue" 
+                                    [(indeterminate)]="masterToggleIndeterminate">
+                      </mat-checkbox>
+                    </th>
+                    <th>نام درس</th>
+                    <th>واحد</th>
+                    <th>وضعیت</th>
+                    <th></th>
+
+                  </tr>
+                </thead>
+                <tbody  class="drag-list" 
+                        cdkDropList (cdkDropListDropped)="drop($event)" 
+                        style="background-color: rgb(245,246,248);">
+                  <tr  cdkDrag *ngFor="let item of userCourses;index as i" class="first drag-box"  >
+                    <td *ngIf="editView" 
+                        style="background-color: white;">
+                        <mat-checkbox (change)="checkboxLabel($event,i)"
+                                      [(ngModel)]="item.checkList">
+                        </mat-checkbox>
+                    </td>
+                    <td class="first">
+                      <div>
+                        <div class="form-group font-iran-sans-FA" style="margin:0px !important; padding-bottom: 0;">
+                          <mat-form-field style="margin:0px !important;" appearance="none">
+                            <input matInput 
+                            type="text" 
+                            class="form-control" 
+                            [(ngModel)]="item.course.title" name="title" 
+                            aria-describedby="title" 
+                            placeholder="نام درس!" 
+                            style="padding: 0 !important; margin: 0 !important;"
+                            maxlength="255" style="min-width:180px; max-width: 100%; padding: 0;">
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <!--<div class="small text-muted"><span>جدید</span> | اضافه شده در: 17 فروردین 99</div>-->
+                    </td>
+                    <td class="text-center" style="width: 80px;">
+                      <div class="form-group font-iran-sans-FA" style="margin:0px !important; padding-bottom: 0;">
+                        <mat-form-field appearance="none" style="margin:0px !important; min-width:80px; width: 80px;">
+                          <input matInput 
+                          type="text" 
+                          class="form-control" 
+                          [(ngModel)]="item.unit"name="unit" 
+                          aria-describedby="unit" 
+                          placeholder="3" 
+                          maxlength="2" style="min-width:50px; max-width: 100%; padding: 0 !important; margin: 0 !important;">
+                        </mat-form-field>
+                      </div>
+                    </td>
+                    
+                    <!--task status 0 1 2-->
+                    <td *ngIf="item.status===0" 
+                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #e2445c;">
+                      <mat-form-field appearance="none"
+                        style="width: 120px; padding-top: 5px;">
+                        <mat-select
+                          class="mat-status-select font-iran-sans-FA align-center text-center" 
+                          style="color: white !important; min-width: 100%; padding: 4px 0 4px 0;" 
+                          [(value)]="item.status">
+                          <mat-option [value]="status.value" 
+                            class="font-iran-sans-FA" 
+                            *ngFor="let status of statusType">{{ status.viewValue }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td *ngIf="item.status===1" 
+                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #fdab3d;">
+                      <mat-form-field appearance="none"
+                        style="width: 120px; padding-top: 5px;">
+                        <mat-select
+                          class="mat-status-select font-iran-sans-FA align-center text-center" 
+                          style="color: white !important; min-width: 100%; padding: 4px 0 4px 0;" 
+                          [(value)]="item.status">
+                          <mat-option [value]="status.value" 
+                            class="font-iran-sans-FA" 
+                            *ngFor="let status of statusType">{{ status.viewValue }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <!--<td *ngIf="task.status==='2'" 
+                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #00c875;">
+                      <mat-form-field appearance="none"
+                        style="width: 120px; padding-top: 5px;">
+                        <mat-select
+                          class="mat-status-select font-iran-sans-FA align-center text-center" 
+                          style="color: white !important; min-width: 100%; padding: 4px 0 4px 0;" 
+                          [(value)]="task.status">
+                          <mat-option [value]="status.value" 
+                            class="font-iran-sans-FA" 
+                            *ngFor="let status of statusType">{{ status.viewValue }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>-->
+                    <td style="background-color: white;">
+                      <button mat-button (click)="courseDetails(item)"
+                              class="btn-more" matTooltip="اطلاعات اضافی" [matTooltipPosition]="'above'"
+                              style="margin-right: 7px; float: right;">
+                          <span class="material-icons">
+                            subject
+                          </span>
+                      </button>
+                      <button mat-button (click)="deleteRow(i)"
+                              class="btn-delete" matTooltip="حذف درس" [matTooltipPosition]="'above'"
+                              style="margin-right: 7px; float: right; padding: 0;">
+                          <span class="material-icons" style="font-size: 20px; padding-top: 0; margin-top: 0;">
+                            delete
+                          </span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="custom-drag-placeholder" *cdkDragPlaceholder>
+                  </tr> 
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" *ngIf="userCourses.length>0">
         <div class="card shadow-sm">
           <div class="card-header">تغییر شیوه نمایش</div>
           <div class="card-body pr-0 pl-0">
@@ -244,11 +408,8 @@
         </div>
 
         <div class="card shadow-sm">
-          <div class="card-header">اضافه کردن و ثبت</div>
+          <div class="card-header">ثبت تغییرات</div>
           <div class="card-body pr-0 pl-0">
-            <div class="col-md-12 mt-3">
-              <button mat-raised-button class="font-iran-sans-FA btn-primary w-100" style="min-width: 80px;">اضافه کردن دستی درس</button>
-            </div>
             <div class="col-md-12 mt-3">
               <button mat-raised-button class="font-iran-sans-FA btn-success w-100" style="min-width: 80px;">ذخیره تنظیمات</button>
             </div>

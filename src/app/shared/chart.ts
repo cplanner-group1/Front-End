@@ -29,11 +29,14 @@ export class CourseTrack{
         // 0 --> primary unit
         // 1 --> optional unit
     description: string;
+
+    checkList: boolean; // always false
+    unit: number; // unit of course
 }
 export interface Prerequisite{
     title: string;
     id: number;
-  }
+}
 
 // intorie ke chart shamele majmoe ei courseTrack hast va har courseTrack marbot b yek farde khase ama course global e 
 // dar course age title motefavet bood id jadid bde behesh 

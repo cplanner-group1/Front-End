@@ -107,7 +107,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 1, 
         grade: 18.5,
         label: '0',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
     },
     {
         course: 
@@ -120,7 +122,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 1, 
         grade: 17.21,
         label: '0',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
 
     },
     {
@@ -144,7 +148,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 1, 
         grade: null,
         label: '0',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
 
     },
     {
@@ -176,7 +182,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 0, 
         grade: null,
         label: '1',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
     },
     {
         course: 
@@ -199,7 +207,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 0, 
         grade: null,
         label: '0',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
     },
     {
         course: 
@@ -222,7 +232,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 0, 
         grade: null,
         label: '0',
-        description: '12345'
+        description: '12345',
+        unit: 3,
+        checkList:false
 
     },
     {
@@ -254,7 +266,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 0, 
         grade: null,
         label: '1',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
     },
     {
         course:
@@ -285,7 +299,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 0, 
         grade: null,
         label: '1',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
     },
     {
         course:
@@ -316,7 +332,9 @@ export const CoursesTrack: CourseTrack[] = [
         status: 0, 
         grade: null,
         label: '0',
-        description: '123'
+        description: '123',
+        unit: 3,
+        checkList:false
 
     }
     
