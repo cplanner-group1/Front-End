@@ -41,6 +41,7 @@ p {
 	margin-top: 25px;
 	margin-bottom: 5px;
   	font-family: 'Quicksand', sans-serif;
+	text-align: left;
 }
 
 span {
@@ -104,10 +105,11 @@ input {
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
-  font-family: 'Quicksand', sans-serif;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  outline: none;
+	font-family: 'Quicksand', sans-serif;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	outline: none;
+	text-align: left;
 }
 
 input:focus {
@@ -263,16 +265,6 @@ input:focus {
 
 }
 
-.visibility {
-
-  visibility: visible;
-  /* if u change visibility, don't forget to change:
-     .social-container margin: 20px 0 
-     .social-container a : height: 40px
-  */
-
-}
-
 .header {
 
   color: #C66373;
@@ -294,6 +286,7 @@ input:focus {
 	height: 30px;
 	opacity: 95%;
 }
+
 .fa-facebook-f:before, .fa-facebook:before {
     content: none !important; 
 }
@@ -353,21 +346,26 @@ div {
 	background-color: transparent;
 }
 
-#forgot-password-ok{
-	width: 250px;
+.forgot-password-button{
+	width: 150px;
 	color: white;
 	border: none;
-	align-self: center;
+	align-self: center !important;
 	text-align: center;
+	padding: 12px 20px;
+	transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+
 }
 
-#forgot-password-ok:hover{
-	background-color: #b8364c;
+.forgot-password-button:hover{
 	border: none;
+	background-color: #cf455c;
 }
 
-
-
-.overlay-container{
-	padding: 0;
-}
+.uni {
+	-webkit-transition-property: background-color;
+	-moz-transition-property: background-color;
+	-o-transition-property: background-color;
+	transition-property: background-color;
+  }
