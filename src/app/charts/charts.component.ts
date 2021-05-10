@@ -6,6 +6,7 @@ import { SelectType, SelectTypeNumberValue} from '../shared/select';
 import { CourseDetailsComponent } from '../course-details/course-details.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
+import { ChartDetailsComponent } from '../chart-details/chart-details.component';
 
 @Component({
   selector: 'app-charts',
@@ -38,6 +39,20 @@ export class ChartsComponent implements OnInit {
 
   }
 
+
+  chartsDetails(chart:Chart){
+    const dialogRef = this.dialog.open(ChartDetailsComponent, {
+      width: '600px',
+      data: chart
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        //console.log(result);        
+      }
+    });
+  }
+
+  // view more about course:
   courseDetails(course:CourseTrack){
     const dialogRef = this.dialog.open(CourseDetailsComponent, {
       width: '1000px',
@@ -45,26 +60,26 @@ export class ChartsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        //console.log(result);
-        // oversell
-        
+        //console.log(result);        
       }
     });
   }
 
+  // drag and drop method:
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.userCourses, event.previousIndex, event.currentIndex);
   }
 
-  itemStatusChange(event,course){
-    console.log(event);
+
+  /*itemStatusChange(event,course){
+    //console.log(event);
     if(event===true){
       course.status = 1;
     }
     if(event===false){
       course.status = 2;
     }
-  }
+  }*/
 
   
   addCourse(){ // add row

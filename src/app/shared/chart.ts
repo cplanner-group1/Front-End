@@ -1,3 +1,5 @@
+import { CoursesTrack } from "./courses";
+
 export class Chart{
     id: number; 
 
@@ -56,7 +58,7 @@ export const Charts: Chart[] = [
         university:"دانشگاه امیرکبیر",
 
         date: "2020/05/12",
-        courses: null
+        courses: CoursesTrack
     },
     {
         id: 2 ,
@@ -69,6 +71,6 @@ export const Charts: Chart[] = [
         university:"دانشگاه تهران",
 
         date: "2021/10/12",
-        courses:null
+        courses:[]
     }
 ]

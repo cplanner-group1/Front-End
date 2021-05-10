@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChartsComponent } from '../charts/charts.component';
+import { Chart } from '../shared/chart';
 
 @Component({
   selector: 'app-chart-details',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<ChartsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Chart) {
+                console.log(data);
+               }
 
   ngOnInit(): void {
   }

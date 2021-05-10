@@ -1,1 +1,44 @@
-<p>chart-details works!</p>
+<div mat-dialog-content style="width: 100%; margin:0; padding: 0;  ">
+    <div class="row" style="width: 100%; margin: 0; padding:0">
+        <div    class="col-md-12 text-center p-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; border-radius: 10px; "  >
+            {{data.title}}
+        </div>
+        <div    class="col-md-6 text-center p-3 mt-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; "  >
+            {{data.university}}
+        </div>
+        <div    class="col-md-6 text-center p-3 mt-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; "  >
+            {{data.study}}
+        </div>
+        
+        
+        <div   *ngIf="data.courses.length>0" class="col-md-12 text-center p-3 mt-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; " >
+            <p>لیست دروس این چارت</p>
+            <mat-chip-list >
+                <mat-chip *ngFor="let item of data.courses">{{item.course.title}}</mat-chip>
+            </mat-chip-list>
+        </div>
+        
+        <div    class="col-md-4 text-center p-3 mt-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; "  >
+                <p>دفعات استفاده</p>
+            {{data.used}}
+        </div>
+        <div    class="col-md-4 text-center p-3 mt-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; "  >
+                <p>آخرین تغییر</p>
+
+            {{data.date}}
+        </div>
+        <div    class="col-md-4 text-center p-3 mt-3 font-iran-sans-FA shadow-md" 
+                style="border:1px solid #24305e44; "  >
+                <p>سازنده</p>
+
+            {{data.owner}}
+        </div>
+        
+    </div>
+</div>
