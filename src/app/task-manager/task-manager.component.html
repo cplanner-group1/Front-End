@@ -11,15 +11,7 @@
                       style="float: right;" (click)="addTask()">
                       +
               </button>
-              <!--<div>
-                <dp-date-picker 
-                  dir="rtl"
-                  [(ngModel)]="dateObject"
-                  mode="day"
-                  placeholder="تاریخ"
-                  theme="dp-material">
-                </dp-date-picker>
-              </div>-->
+              
               <button *ngIf="!editView && tasks.length>0" (click)="enableEdit()"
                       mat-fab
                       class="btn-fab" style="margin-right: 7px; float: right;"
@@ -164,8 +156,8 @@
 
                     <td style="min-width: 200px;">
                       <div class="clearfix" style="padding-bottom: 5px; padding-top: 12px;">
-                        <div class="float-left"><strong>{{ task.deadlineDaysRemaining }}</strong> مانده</div>
-                        <div class="float-right"><small class="text-muted">{{ task.deadlineDateTime }}</small></div>
+                        <div class="float-left"><strong>{{ task.deadlineDaysRemaining }}</strong></div>
+                        <!--<div class="float-right"><small class="text-muted">{{ task.deadlineDateTime }}</small></div>-->
                       </div>
                       <div class="progress progress-xs" style="min-width: 180px;">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>

@@ -1,12 +1,12 @@
 <div mat-dialog-content style="width: 100%; margin:0; padding: 0; ">
     <div class="row" style="width: 100%; margin: 0;">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
                     <mat-label>عنوان</mat-label>
                     <input matInput placeholder="مثلا تمرین سری 1" style="font-size: 16px; height: 30px; padding-bottom: 5px;" [(ngModel)]="task.title">
                 </mat-form-field>
             </div>
-            <div class="col-md-3" style="float: left;">
+            <div class="col-md-4" style="float: left;">
                 <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
                     <mat-label>مربوط به</mat-label>
                     <input matInput placeholder="مثلا دانشگاه" style="font-size: 16px; height: 30px; padding-bottom: 5px;" [(ngModel)]="task.owner">
@@ -18,7 +18,7 @@
             </div>
             
             <!--col 1-->
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <div class="text-center">
                     <p  class="font-iran-sans-FA mt-3" 
                         style=" font-weight: bolder;
@@ -47,11 +47,29 @@
             </div>
 
             <!-- col 2 -->
-            <div class="col-lg-3" style="float: left;" >
+            <div class="col-lg-4" style="float: left;" >
                 <div class="text-center">
                     <p  class="font-iran-sans-FA mt-3" 
                         style="font-weight: bolder; text-align: right; padding-bottom: 0; margin-bottom: 0;">
-                        وضعیت تسک را تغییر دهید:
+                        ددلاین:
+                    </p>
+                    <div class="w-100" style="background-color: #e0e2e6; border-radius: 5px; margin-top: 10px;">
+                        <input 
+                            class="w-100 font-iran-sans-FA p-3" style="background-color: transparent; border:none" 
+                            [dpDayPicker]="datePickerConfig"
+                            [(ngModel)]="dateObject"
+                            (onChange)="changeDate()"
+                            
+                            mode="daytime" 
+                            dir="rtl" 
+                            theme="dp-material" 
+                            placeholder="تاریخ مورد نظرت رو انتخاب کن"/>
+                    </div>
+                </div>  
+                <div class="text-center">
+                    <p  class="font-iran-sans-FA mt-3" 
+                        style="font-weight: bolder; text-align: right; padding-bottom: 0; margin-bottom: 0;">
+                        وضعیت تسک:
                     </p>
                     <div class="w-100" style="background-color: #e0e2e6; border-radius: 5px; margin-top: 10px;">
                         <mat-form-field  appearance="none"
@@ -71,16 +89,17 @@
                 <div class="text-center">
                     <p  class="font-iran-sans-FA mt-3" 
                         style="font-weight: bolder; text-align: right; padding-bottom: 0; margin-bottom: 0;">
-                        اولویت را تعیین کنید:
+                        اولویت:
                     </p>
-                    <div class="w-100" style="background-color: #e0e2e6; border-radius: 5px; margin-top: 10px;">
+                    <div class="w-100 p-2" style="background-color: #e0e2e6; border-radius: 5px; margin-top: 10px;">
                         <mat-star-rating  
                             [rating]="task.priority"  
                             [starCount]="starCount" 
                             (ratingUpdated)="onRatingChanged($event)">
                         </mat-star-rating>
                     </div>
-                </div>   
+                </div> 
+                 
             </div>
 
           <!--<button (click)="onSubmit(priceData)"  cdkFocusInitial mat-button style="width: 145px; max-width: 100%; margin-left:15px;" class="btn btn-success title-font title-bold">{{ 'BUTTON.SUBMIT' | translate}}</button>

@@ -132,3 +132,21 @@ font-family: IRANSans !important;
 @import '~bootstrap/scss/bootstrap';
 
 
+
+
+
+//date picker:
+dp-time-select .dp-time-select-controls{
+    direction: ltr;
+    font-family: iranSansDn;  
+}
+dp-day-calendar.dp-material .dp-calendar-wrapper{
+    font-family: iransansdn;
+}
+dp-calendar-nav.dp-material .dp-nav-header-btn{
+    font-family: iransansdn;
+}
+.cdk-overlay-container .cdk-global-overlay-wrapper .cdk-overlay-pane{
+    height: 80% !important;
+}
+

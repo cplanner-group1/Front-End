@@ -23,7 +23,7 @@ export const tasks:Task[] = [
         title:'تمرین پایگاه داده سری اول',
         owner: 'دانشگاه',
 
-        deadlineDateTime:'6 اردیبهشت 99 ساعت 5:10',
+        deadlineDateTime:'2021/05/10 23:25:39',
         deadlinePercentage: '20',
         deadlineDaysRemaining: '7 روز',
 
@@ -41,7 +41,7 @@ export const tasks:Task[] = [
         title:'تمرین سیستم عامل سری اول',
         owner: 'دانشگاه',
 
-        deadlineDateTime:'6 اردیبهشت 99 ساعت 5:17',
+        deadlineDateTime:'2020/05/11 23:25:39',
         deadlinePercentage: '80',
         deadlineDaysRemaining: '7 روز',
 
@@ -60,7 +60,7 @@ export const tasks:Task[] = [
         title:'تسک منیجر',
         owner: 'شرکت',
 
-        deadlineDateTime:'16 اردیبهشت 99 ساعت 19:17',
+        deadlineDateTime:'2021/05/11 3:25:39',
         deadlinePercentage: '83',
         deadlineDaysRemaining: '5 ساعت',
 
