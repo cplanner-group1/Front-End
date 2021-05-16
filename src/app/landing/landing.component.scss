@@ -16,13 +16,14 @@ body {
     //dir: 'rtl';
 }
 
+//HEADER
 .background-main-image {
 	width: 100%;
 	height: 100vh;
 	position: relative;
-	background: url('../../assets/img/landing/main-laptop-autumn-vibes.jpg') no-repeat center center/cover;
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
+	background: url('../../assets/img/landing/main-laptop-coffee-and-pens.jpg') no-repeat center center/cover;
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
     z-index: 1;
   
 }
@@ -47,6 +48,11 @@ a {
 .bg-text h1 {
     margin: 10px;
     text-align: center;
+    font-size: 50px;
+}
+
+.bg-text h3 {
+    font-weight: lighter;
 }
 
 .bg-text a {
@@ -63,30 +69,38 @@ a {
 .bg-text a:hover {
     font-weight: 500;
 }
+//HEADER
 
-footer {
-    background-color: #374785;
-    margin-bottom: 0;
+//FOOTER
+.l {
+    background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);
+    //#ee7752, #e73c7e, #23a6d5, #23d5ab
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    bottom: 5px;
+    padding: 60px;
+    text-align: center;
 }
 
-.social-container {
-	margin: 15px 0 5px 0;
+.icons {
+    width: 40px;
+    height: 40px;
+    box-shadow: black;
+    padding: 0px;
+    margin: 10px;
 }
 
-.social-container a {
-	/* border: 1px solid #DDDDDD;
-	border-radius: 50%; */
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 3px;
-	height: 40px;
-	width: 40px;
-}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
 
+    50% {
+        background-position: 100% 50%;
+    }
 
-.icon {
-	width: 30px;
-	height: 30px;
-	opacity: 95%;
+    100% {
+        background-position: 0% 50%;
+    }
 }
+//FOOTER
