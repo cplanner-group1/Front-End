@@ -11,19 +11,39 @@ body {
     width: auto;
     background-color: #a8d0e6;
 	font-family: 'Montserrat', sans-serif;
-    color: black;
+    color: #374785;
     padding: 0;
     //dir: 'rtl';
 }
 
 //HEADER
+.header-tint {
+    position: relative;
+}
+
+.header-tint::after {
+    position: absolute;
+  	height: 100%;
+  	width: 100%;
+    //background-color: #374785;  
+    //background-color: rgba(0,0,0,.5);
+    background: linear-gradient(0deg, #374785, black, #f76c6c);  
+    opacity: 0.5; 
+    top: 0;
+  	left: 0;
+  	display: block;
+  	content: "";
+    z-index: 2;
+}
+
 .background-main-image {
 	width: 100%;
 	height: 100vh;
 	position: relative;
-	background: url('../../assets/img/landing/main-laptop-coffee-and-pens.jpg') no-repeat center center/cover;
-    filter: blur(6px);
-    -webkit-filter: blur(6px);
+    background-color: #a8d0e6;
+	background: url('../../assets/img/landing/main-laptop-autumn-vibes.jpg') no-repeat center center/cover;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
     z-index: 1;
   
 }
@@ -48,11 +68,12 @@ a {
 .bg-text h1 {
     margin: 10px;
     text-align: center;
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .bg-text h3 {
     font-weight: lighter;
+    padding: 0 100px;
 }
 
 .bg-text a {
@@ -69,25 +90,170 @@ a {
 .bg-text a:hover {
     font-weight: 500;
 }
-//HEADER
 
-//FOOTER
-.l {
-    background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);
-    //#ee7752, #e73c7e, #23a6d5, #23d5ab
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    bottom: 5px;
-    padding: 60px;
-    text-align: center;
+//BODY CARDS
+.main-container{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);  
+    padding: 25px;
 }
 
+.l {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(247%2c 108%2c 108%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c75 C 96%2c88.8 288%2c138.4 480%2c144 C 672%2c149.6 768%2c90.2 960%2c103 C 1152%2c115.8 1344%2c187 1440%2c208L1440 560L0 560z' fill='rgba(55%2c 71%2c 133%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c518 C 72%2c497.4 216%2c406.8 360%2c415 C 504%2c423.2 576%2c560.4 720%2c559 C 864%2c557.6 936%2c421.8 1080%2c408 C 1224%2c394.2 1368%2c473.6 1440%2c490L1440 560L0 560z' fill='rgba(168%2c 208%2c 230%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    //background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);
+    padding: 50px;
+    text-align: center;
+}
+  
+.sub-container{
+    justify-content: space-evenly;
+    align-items:center;
+    padding: 15px;
+    flex-direction:column;
+    height: auto;
+}
+  
+.glass-morphism-container1{
+    position:relative;
+    background-color: rgba(255, 255, 255,0.2);
+    padding: 60px;
+    color:white;
+    border-radius: 25px;
+    border: solid 2px transparent;
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px  rgba(46, 54, 68, 0.1);
+    backdrop-filter: blur(20px);
+}
+/*
+.glass-morphism-container1 h2 {
+    color: #374785;
+}
+
+.glass-morphism-container1 p{
+    color: #374785;
+}
+*/
+.text-styling {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.entekhab-vahed-image {
+    background-image: url('../../assets/img/landing/entekhab-vahed-svg.svg');
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.task-manager-image {
+    background-image: url('../../assets/img/landing/task-manager-light-blue.svg');
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.apply-image {
+    background-image: url('../../assets/img/landing/apply-light-blue.svg');
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+
+//BODY
+.explanations{
+    margin: auto
+}
+.explanations p {
+    margin: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.explanations h2 {
+    margin: 50px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.questions {
+    padding: 50px 50px 20px 50px;
+}
+
+.questions1-image {
+    background-image: url('../../assets/img/landing/stressed1-pink.svg');
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.questions2-image {
+    background-image: url('../../assets/img/landing/Completed-pink.svg');
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.questions3-image {
+    background-image: url('../../assets/img/landing/Stressed2-pink.svg');
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.shape-after-body {
+    background-color: #f76c6c;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1186%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(168%2c 208%2c 230%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c374 C 96%2c335.2 288%2c189.8 480%2c180 C 672%2c170.2 768%2c315.2 960%2c325 C 1152%2c334.8 1344%2c248.2 1440%2c229L1440 560L0 560z' fill='rgba(247%2c 108%2c 108%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1186'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    height: 50vh;
+    margin: 0;
+}
+
+//TEKRAR SIGN UP
+.signup-today {
+    background-color: #f76c6c;
+    text-align: center;
+    font-weight: bold;
+    padding: 0px 50px 150px 50px;
+    color: white;   
+}
+
+.signup-today h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.signup-today h3 {
+    font-weight: lighter;
+}
+
+.signup-today a {
+    color: white;
+    padding: 12px 45px;
+    margin-top: 40px;
+    border: 1px solid white;   
+    border-radius: 20px;
+    top: 10%;
+    right: 0;
+    font-size: 25px;
+}
+
+.signup-today a:hover {
+    font-weight: 500;
+}
+
+//FOOTER
+footer {
+    margin-top: 0;
+    background-color: #24305e;
+    bottom: 5px;
+    padding: 50px;
+    text-align: center;
+}
 .icons {
     width: 40px;
     height: 40px;
     box-shadow: black;
     padding: 0px;
-    margin: 10px;
+    margin: 0 10px;
 }
 
 @keyframes gradient {
@@ -103,4 +269,15 @@ a {
         background-position: 0% 50%;
     }
 }
-//FOOTER
+
+
+
+/* gradient transition 
+    background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);
+    #ee7752, #e73c7e, #23a6d5, #23d5ab
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    bottom: 5px;
+    padding: 50px;
+*/
+
