@@ -8,6 +8,7 @@ import { ChartsComponent } from '../charts/charts.component';
 import { SigninSignupComponent } from '../signin-signup/signin-signup.component';
 import { PanelComponent } from '../panel/panel.component';
 import { LandingComponent } from '../landing/landing.component';
+import { CourseSelectionComponent } from '../course-selection/course-selection.component';
 
 // routes list:
 export const routes: Routes = [
@@ -32,6 +33,10 @@ export const routes: Routes = [
       {
         path: 'charts',
         component: ChartsComponent
+      },
+      {
+        path: 'course',
+        component: CourseSelectionComponent
       }
     ]
   },

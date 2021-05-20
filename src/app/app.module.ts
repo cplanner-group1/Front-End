@@ -24,12 +24,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -81,6 +79,7 @@ import { LandingComponent } from './landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { ChartDetailsComponent } from './chart-details/chart-details.component';
+import { CourseSelectionComponent } from './course-selection/course-selection.component';
 
 
 
@@ -97,7 +96,8 @@ import { ChartDetailsComponent } from './chart-details/chart-details.component';
     PanelComponent,
     LandingComponent,
     CourseDetailsComponent,
-    ChartDetailsComponent
+    ChartDetailsComponent,
+    CourseSelectionComponent
   ],
   imports: [
     BrowserModule,

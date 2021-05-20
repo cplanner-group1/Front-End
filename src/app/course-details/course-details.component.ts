@@ -42,7 +42,6 @@ export class CourseDetailsComponent implements OnInit {
               private _snackBar: MatSnackBar) { 
         this.course = data;
         //console.log(this.course);
-
   }
 
   ngOnInit(): void {
