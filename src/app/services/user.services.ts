@@ -9,12 +9,26 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class MyApi {
     //baseUrl = "https://zoi.ir/api/shop/product/";
-    BaseUrl = 'https://cplanner-group1.herokuapp.com/';
+    baseUrl = 'https://cplanner-group1.herokuapp.com/';
     constructor(private httpClient:HttpClient){
         //this.BaseUrl = window['apiUrl'];
     }
 
-
+    // sign in:
+    login(item): Observable<any> {
+        const headers = { 'content-type': 'application/json'}  
+        //const body=JSON.stringify(person);
+        console.log(item);
+        return this.httpClient.post(this.baseUrl + 'account/login', item,{'headers':headers})
+    }
+    /*
+    this._testApi.putBank(bank_api).subscribe
+      (result => {
+          console.log(result);
+        
+      }
+    );
+    */
     /////////// GET API ///////////
     
     

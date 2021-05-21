@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
+import { MyApi } from '../services/user.services';
 
 @Component({
   selector: 'app-signin-signup',
@@ -19,7 +20,9 @@ export class SigninSignupComponent implements OnInit {
   //FORGOT PASSWORD MODAL
   closeResult = '';
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,
+              private _Api: MyApi) {}
+
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -51,6 +54,20 @@ export class SigninSignupComponent implements OnInit {
 
   title = 'padis';
 
+  signin(){
+    console.log(1);
+    let item = 
+    {
+      email: "ali.lod78@gmail.com",
+      password: "itismtpassali78"
+    }
+    this._Api.login(item).subscribe
+      (result => {
+          console.log(result);
+        
+      }
+    );
+  }
 }
 
 
