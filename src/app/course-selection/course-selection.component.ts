@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { TermCourse,Semester } from '../shared/courseSelecton';
+
 
 @Component({
   selector: 'app-course-selection',
@@ -10,6 +11,8 @@ export class CourseSelectionComponent implements OnInit {
 
   isLinear = false;
  
+  mySemester = Semester;
+
   constructor() {}
 
   ngOnInit() {
