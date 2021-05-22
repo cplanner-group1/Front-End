@@ -82,7 +82,18 @@ import { ChartDetailsComponent } from './chart-details/chart-details.component';
 import { CourseSelectionComponent } from './course-selection/course-selection.component';
 
 
+// charts:
+import { FusionChartsModule } from "angular-fusioncharts";
 
+// Import FusionCharts library and chart modules
+import * as FusionCharts from "fusioncharts";
+import * as charts from "fusioncharts/fusioncharts.charts";
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+
+import { NgApexchartsModule } from "ng-apexcharts";
+
+
+FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,6 +153,8 @@ import { CourseSelectionComponent } from './course-selection/course-selection.co
     DpDatePickerModule,
     NgbModule,
     HttpClientModule,
+    FusionChartsModule,
+    NgApexchartsModule,
     routing
     /*ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

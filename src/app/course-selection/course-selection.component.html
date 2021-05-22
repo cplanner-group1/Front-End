@@ -104,6 +104,17 @@
                         <mat-step>
                           <ng-template matStepLabel>تمام</ng-template>
                           <p>You are now done.</p>
+                         
+                          <div id="chart">
+                            <apx-chart
+                              class="font-iran-sans-FA"
+                              [series]="chartOptions.series"
+                              [chart]="chartOptions.chart"
+                              [plotOptions]="chartOptions.plotOptions"
+                              [xaxis]="chartOptions.xaxis"
+                            ></apx-chart>
+                          </div>
+
                           <div>
                             <button mat-button matStepperPrevious class="font-iran-sans-FA">مرحله قبل</button>
                             <button mat-button (click)="stepper.reset()" class="font-iran-sans-FA">حذف تمام تغییرات</button>
