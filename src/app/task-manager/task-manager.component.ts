@@ -80,6 +80,7 @@ export class TaskManagerComponent implements OnInit {
   taskDetails(task:Task){
     const dialogRef = this.dialog.open(TaskDetailsComponent, {
       width: '1000px',
+      height: '600px',
       data: task
     });
     dialogRef.afterClosed().subscribe(result => {
