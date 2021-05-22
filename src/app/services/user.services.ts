@@ -1,6 +1,4 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { HttpEvent, HttpErrorResponse, HttpEventType } from  '@angular/common/http';
-
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,16 +8,29 @@ import { map } from 'rxjs/operators';
 export class MyApi {
     //baseUrl = "https://zoi.ir/api/shop/product/";
     baseUrl = 'https://cplanner-group1.herokuapp.com/';
+    authUrl = this.baseUrl + 'account/';
+    
     constructor(private httpClient:HttpClient){
         //this.BaseUrl = window['apiUrl'];
     }
 
+
+    
+
     // sign in:
-    login(item): Observable<any> {
-        const headers = { 'content-type': 'application/json'}  
+    login(user:any): Observable<any> {
+        //const headers = { 'content-type': 'application/json'}  
         //const body=JSON.stringify(person);
-        console.log(item);
-        return this.httpClient.post(this.baseUrl + 'account/login', item,{'headers':headers})
+        console.log(user);
+        return this.httpClient.post(this.authUrl + 'login', user/*,{'headers':headers}*/).pipe(
+            map((response:any)=>{
+                console.log(response);
+                /*(const user = response;
+                if(user.result.succeeded){
+                    localStorage.setItem('token',user.token);
+                }*/
+            })
+        )
     }
     /*
     this._testApi.putBank(bank_api).subscribe

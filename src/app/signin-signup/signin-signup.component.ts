@@ -59,7 +59,7 @@ export class SigninSignupComponent implements OnInit {
     let item = 
     {
       email: "ali.lod78@gmail.com",
-      password: "itismtpassali78"
+      password: "itismypassali78"
     }
     this._Api.login(item).subscribe
       (result => {
