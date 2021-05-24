@@ -21,17 +21,31 @@ export class MyApi {
     login(user:any): Observable<any> {
         //const headers = { 'content-type': 'application/json'}  
         //const body=JSON.stringify(person);
+        //return this.httpClient.post(this.authUrl + 'login/', user/*,{'headers':headers}*/);
         console.log(user);
-        return this.httpClient.post(this.authUrl + 'login/', user/*,{'headers':headers}*/);
-        /*return this.httpClient.post(this.authUrl + 'login/', user).pipe(
+        return this.httpClient.post(this.authUrl + 'login/', user).pipe(
             map((response:any)=>{
                 //console.log(response);
                 const user = response;
-                if(user.result.succeeded){
+                if(user){
                     localStorage.setItem('token',user.token);
                 }
             })
-        )*/
+        )
+    }
+
+    //http://cplanner-group1.herokuapp.com/account/register/
+    register(user:any){
+        //console.log(user);
+        return this.httpClient.post(this.authUrl + 'register/', user).pipe(
+            map((response:any)=>{
+                console.log(response);
+                /*const user = response;
+                if(user){
+                    localStorage.setItem('token',user.token);
+                }*/
+            })
+        )
     }
 
 

@@ -57,6 +57,7 @@ export class SigninSignupComponent implements OnInit {
 
   email: string;
   password: string;
+  username: string;
   // email: "ali.lod78@gmail.com"
   // password: "itismypassali78"
   signin(){
@@ -67,25 +68,43 @@ export class SigninSignupComponent implements OnInit {
         email: this.email,
         password: this.password
       }
-      this._Api.login(item).subscribe
-        (result => {
-          if(result){
-            console.log(result);
-          }else{
-            console.log("there is a problem");
-          }
-  /*
-            this._Api.getTask().subscribe
-            (result => {
-                console.log(result);
-                
-            }
-          );*/
-        }
-      ); 
+
+      const myObserver = {
+        next: (x) => {
+          console.log('user logged in');
+          //console.log(x);
+        },
+        error: (err: Error) => console.error(err)
+      };
+
+      this._Api.login(item).subscribe(myObserver);
+ 
     }
   }
+
+  signup(){
+    if(this.email && this.password && this.username){
+      let item = 
+      {
+        email: this.email,
+        password: this.password,
+        username: this.username
+      }
+
+      const myObserver = {
+        next: (x) => {
+          console.log('user registered in');
+          //console.log(x);
+        },
+        error: (err: Error) => console.error(err)
+      };
+
+      this._Api.register(item).subscribe(myObserver);
+ 
+    } 
+  }
 }
+
 
 
 /* 
