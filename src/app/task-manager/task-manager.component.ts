@@ -11,6 +11,7 @@ import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
 import * as moment from 'jalali-moment';
+import { MyApi } from '../services/user.services';
 
 
 
@@ -23,7 +24,8 @@ export class TaskManagerComponent implements OnInit {
 
   rating:number = 2;
   starCount:number = 3;
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+              private _Api: MyApi) { }
 
   statusType: SelectType[] = [
       {value:'0',viewValue:'شروع نشده'},
@@ -40,10 +42,16 @@ export class TaskManagerComponent implements OnInit {
 
   ngOnInit() {
     this.tasks = tasks;
-    /*for(let task of this.tasks){
-      this.checkList.push(false);
-    }
-    console.log(this.checkList);*/
+    this.getTasks();
+  }
+
+  getTasks(){
+    this._Api.getTask().subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+    });
   }
 
   editView:boolean =  false;

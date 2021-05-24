@@ -14,7 +14,9 @@ export class MyApi {
         //this.BaseUrl = window['apiUrl'];
     }
 
-
+    getToken(){
+        return localStorage.getItem('token');
+    }
     
 
     // sign in:
@@ -37,6 +39,9 @@ export class MyApi {
     //http://cplanner-group1.herokuapp.com/account/register/
     register(user:any){
         //console.log(user);
+
+        //let headers = new HttpHeaders({});
+
         return this.httpClient.post(this.authUrl + 'register/', user).pipe(
             map((response:any)=>{
                 console.log(response);
@@ -53,6 +58,7 @@ export class MyApi {
         //const headers = { 'content-type': 'application/json'}  
         //const body=JSON.stringify(person);
         //console.log(user);
+        
         return this.httpClient.get(this.authUrl + 'login/');
         
     }
