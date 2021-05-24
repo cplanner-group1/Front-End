@@ -54,19 +54,36 @@ export class SigninSignupComponent implements OnInit {
 
   title = 'padis';
 
+
+  email: string;
+  password: string;
+  // email: "ali.lod78@gmail.com"
+  // password: "itismypassali78"
   signin(){
-    console.log(1);
-    let item = 
-    {
-      email: "ali.lod78@gmail.com",
-      password: "itismypassali78"
-    }
-    this._Api.login(item).subscribe
-      (result => {
-          console.log(result);
-        
+    //console.log(1);
+    if(this.email && this.password){
+      let item = 
+      {
+        email: this.email,
+        password: this.password
       }
-    );
+      this._Api.login(item).subscribe
+        (result => {
+          if(result){
+            console.log(result);
+          }else{
+            console.log("there is a problem");
+          }
+  /*
+            this._Api.getTask().subscribe
+            (result => {
+                console.log(result);
+                
+            }
+          );*/
+        }
+      ); 
+    }
   }
 }
 

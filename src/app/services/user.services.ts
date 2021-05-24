@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class MyApi {
     //baseUrl = "https://zoi.ir/api/shop/product/";
-    baseUrl = 'https://cplanner-group1.herokuapp.com/';
+    baseUrl = 'http://cplanner-group1.herokuapp.com/';
     authUrl = this.baseUrl + 'account/';
     
     constructor(private httpClient:HttpClient){
@@ -22,15 +22,25 @@ export class MyApi {
         //const headers = { 'content-type': 'application/json'}  
         //const body=JSON.stringify(person);
         console.log(user);
-        return this.httpClient.post(this.authUrl + 'login', user/*,{'headers':headers}*/).pipe(
+        return this.httpClient.post(this.authUrl + 'login/', user/*,{'headers':headers}*/);
+        /*return this.httpClient.post(this.authUrl + 'login/', user).pipe(
             map((response:any)=>{
-                console.log(response);
-                /*(const user = response;
+                //console.log(response);
+                const user = response;
                 if(user.result.succeeded){
                     localStorage.setItem('token',user.token);
-                }*/
+                }
             })
-        )
+        )*/
+    }
+
+
+    getTask(): Observable<any> {
+        //const headers = { 'content-type': 'application/json'}  
+        //const body=JSON.stringify(person);
+        //console.log(user);
+        return this.httpClient.get(this.authUrl + 'login/');
+        
     }
     /*
     this._testApi.putBank(bank_api).subscribe

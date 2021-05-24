@@ -49,8 +49,8 @@ export class CourseSelectionComponent implements OnInit {
             {
               x: "شنبه",
               y: [
-                8,
-                10
+                18,
+                24
               ]
             },
             {
@@ -62,8 +62,8 @@ export class CourseSelectionComponent implements OnInit {
             {
               x: "دو شنبه",
               y: [
-                8,
-                10
+                18,
+                24
               ]
             },
             {
@@ -75,8 +75,8 @@ export class CourseSelectionComponent implements OnInit {
             {
               x: "چهار شنبه",
               y: [
-                8,
-                10
+                18,
+                24
               ]
             }
           ]
@@ -149,7 +149,7 @@ export class CourseSelectionComponent implements OnInit {
             {
               x: "شنبه",
               y: [
-                15,
+                15.5,
                 17
               ]
             },
@@ -161,7 +161,7 @@ export class CourseSelectionComponent implements OnInit {
             {
               x: "دو شنبه",
               y: [
-                15,
+                15.5,
                 17
               ]
             },
