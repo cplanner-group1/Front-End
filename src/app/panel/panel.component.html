@@ -73,29 +73,20 @@
           </li>-->
         </ul>
       </li>
-      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-        <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle">
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" [routerLink]="['/settings']">
           <span class="material-icons c-sidebar-nav-icon" style="font-size: 15pt; margin-top: -6px;">
             settings
           </span>
           تنظیمات
         </a>
-        <ul class="c-sidebar-nav-dropdown-items">
-          <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link"  [routerLink]="['/settings']">
-              <span class="c-sidebar-nav-icon"></span>
-              تغییر اطلاعات
-            </a>
-          </li>
-          <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
-              <span class="c-sidebar-nav-icon"></span>
-               خروج
-            </a>
-          </li>
-        </ul>
       </li>
-
+      <li class="c-sidebar-nav-item"  >
+        <a class="c-sidebar-nav-link" href="#">
+          <span class="c-sidebar-nav-icon"></span>            
+            خروج
+        </a>
+      </li>
       <li class="c-sidebar-nav-divider"></li>
 
     </ul>
@@ -119,7 +110,8 @@
         <span class="material-icons">
           menu
           </span>
-      </button><!--
+      </button>
+      <!--
       <ul class="c-header-nav d-md-down-none">
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">داشبورد</a></li>
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Users</a></li>

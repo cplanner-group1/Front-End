@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingComponent implements OnInit {
 
-  name: string = "ششششش";
-  username: string = "";
-  phonenumber: number = 0;
-  killSomebody: boolean= true;
+  //INFO
+  username: string = '';
+  email: string = '';
+  password: string = '';
+
+  overallAverage: string = '';
+  termAverage: string = '';
+  universityName: string = '';
+  universitySubject: string = ''
 
   constructor() { }
 
@@ -18,8 +23,5 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(){
-    
-  }
 
 }

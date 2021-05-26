@@ -7,7 +7,7 @@
           <div class="card-header">نمایش کارها</div>
           <div class="card-body">
             <div class="col-md-12">
-              <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن سطر جدید" [matTooltipPosition]="'above'"
+              <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن درس جدید" [matTooltipPosition]="'above'"
                       style="float: right;" (click)="addTask()">
                       +
               </button>
@@ -15,14 +15,14 @@
               <button *ngIf="!editView && tasks.length>0" (click)="enableEdit()"
                       mat-fab
                       class="btn-fab" style="margin-right: 7px; float: right;"
-                      matTooltip="فعال کردن حالت ویرایش" [matTooltipPosition]="'above'">
+                      matTooltip="ویرایش" [matTooltipPosition]="'above'">
                 <span class="material-icons">
                   create
                 </span>
               </button>
               <button *ngIf="editView && tasks.length>0" (click)="enableEdit()"
                       mat-fab
-                      matTooltip="غیر فعال کردن حالت ویرایش" [matTooltipPosition]="'above'"
+                      matTooltip="غیر فعال کردن ویرایش" [matTooltipPosition]="'above'"
                       class="btn-fab" style="margin-right: 7px; float: right; opacity: 1;">
                 <span class="material-icons">
                   create
@@ -30,7 +30,7 @@
               </button>
               <button *ngIf="editView && tasks.length>0" (click)="deleteSelectedRow()"
                       mat-fab
-                      matTooltip="حذف انتخاب شده ها" [matTooltipPosition]="'above'"
+                      matTooltip="حذف" [matTooltipPosition]="'above'"
                       class="btn-fab" style="margin-right: 7px; float: right; background-color: #123C69;">
                 <span class="material-icons">
                   delete
@@ -38,8 +38,8 @@
               </button>
               <form *ngIf="tasks.length>0" class="search-form" style="float: left; margin-left:5px;">
                 <mat-form-field class="search-full-width">
-                  <mat-label>همین الان جستجو کن!</mat-label>
-                  <input type="tel" matInput  style="padding-bottom:8px;" placeholder="مثلا تمرین سری اول پایگاه داده">
+                  <mat-label>جستوجو</mat-label>
+                  <input type="tel" matInput  style="padding-bottom:8px;" placeholder="">
                   <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
               </form>
