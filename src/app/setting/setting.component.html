@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="fade-in">
+    <!--copy from here-->
+      <div class="row">
+        <!--or copy from here-->
+        <div class="col-md-12">
+          <div class="card shadow-sm">
+            <div class="card-header">نمایش درس ها</div>
+            <div class="card-body">
+              <div class="col-md-12">
+                <mat-form-field class="example-form-field">
+                    <mat-label>اسم کاربر</mat-label>
+                    <input matInput type="text" name="name" [(ngModel)]="name">
+                    <button mat-button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

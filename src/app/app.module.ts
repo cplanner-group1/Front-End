@@ -83,6 +83,7 @@ import { CourseSelectionComponent } from './course-selection/course-selection.co
 
 
 import { NgApexchartsModule } from "ng-apexcharts";
+import { SettingComponent } from './setting/setting.component';
 
 
 @NgModule({
@@ -99,7 +100,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     LandingComponent,
     CourseDetailsComponent,
     ChartDetailsComponent,
-    CourseSelectionComponent
+    CourseSelectionComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
