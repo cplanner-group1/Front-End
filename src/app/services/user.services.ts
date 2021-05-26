@@ -56,9 +56,6 @@ export class MyApi {
 
     getTask(): Observable<any> {
         //const headers = { 'content-type': 'application/json'}  
-        //const body=JSON.stringify(person);
-        //console.log(user);
-        
         return this.httpClient.get(this.authUrl + 'login/');
         
     }
