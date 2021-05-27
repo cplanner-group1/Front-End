@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -30,7 +30,7 @@ export class MyApi {
                 //console.log(response);
                 const user = response;
                 if(user){
-                    localStorage.setItem('token',user.token);
+                    localStorage.setItem('token',user.tokens.access);
                 }
             })
         )
@@ -54,11 +54,20 @@ export class MyApi {
     }
 
 
-    getTask(): Observable<any> {
-        //const headers = { 'content-type': 'application/json'}  
-        return this.httpClient.get(this.baseUrl + 'task/');
-        
+    getTask(): Observable<any> {    
+        //console.log(this.getToken());
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.baseUrl + 'task/', { headers: headers });
     }
+    /*getTask = (route: string) => {
+        return from(
+          this._authService.getAccessToken()
+          .then(token => {
+            const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+            return this.http.get(this.createCompleteRoute(route, this.envUrl.urlAddress), { headers: headers }).toPromise();
+          })
+        );
+    }*/
     /*
     this._testApi.putBank(bank_api).subscribe
       (result => {

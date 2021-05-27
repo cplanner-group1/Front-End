@@ -94,6 +94,7 @@ export class SigninSignupComponent implements OnInit {
       const myObserver = {
         next: (x) => {
           console.log('user registered in');
+
           //console.log(x);
         },
         error: (err: Error) => console.error(err)
