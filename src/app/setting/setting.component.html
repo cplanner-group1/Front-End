@@ -1,44 +1,41 @@
-<div class="container-fluid">
+<body>
+  <div class="container-fluid font-iran-sans-FA">
     <div class="fade-in">
-    <!--copy from here-->
       <div class="row">
-        <!--or copy from here-->
         <div class="col-md-12">
           <div class="card shadow-sm">
-            <div class="card-header">اطلاعات شخصی </div>
+            <div class="card-header">اطلاعات شخصی</div>
             <div class="card-body">
               <div class="col-md-12">
                 <mat-form-field class="example-form-field-long">
-                    <mat-label>Username</mat-label>
-                    <input matInput type="text" name="username" [(ngModel)]="username">
-                    <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
-                      <mat-icon>close</mat-icon>
-                    </button>
+                  <mat-label>Username</mat-label>
+                  <input matInput type="text" name="username" [(ngModel)]="username">
+                  <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
                 </mat-form-field>
               </div>
             </div>
             <div class="card-body">
               <div class="col-md-12">
                 <mat-form-field class="example-form-field-long">
-                    <mat-label>Email</mat-label>
-                    <input matInput type="email" name="email" [(ngModel)]="email">
-                    <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
-                      <mat-icon>close</mat-icon>
-                    </button>
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" name="email" [(ngModel)]="email">
+                  <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
                 </mat-form-field>
-                
               </div>
             </div>
             <div class="card-body">
               <div class="col-md-12">
                 <mat-form-field class="example-form-field-long">
-                    <mat-label>Password</mat-label>
-                    <input matInput type="password" name="password" [(ngModel)]="password">
-                    <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
-                      <mat-icon>close</mat-icon>
-                    </button>
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" name="password" [(ngModel)]="password">
+                  <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
                 </mat-form-field>
-                
               </div>
             </div>
           </div>
@@ -47,15 +44,15 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card shadow-sm">
-            <div class="card-header">اطلاعات دانشگاهی </div>
+            <div class="card-header">اطلاعات دانشگاهی</div>
             <div class="card-body">
               <div class="col-md-12">
                 <mat-form-field class="example-form-field-long" style="margin-left: 50px;">
-                    <mat-label>نام دانشگاه</mat-label>
-                    <input matInput type="text" name="universityName" [(ngModel)]="universityName">
-                    <button mat-button *ngIf="universityName" matSuffix mat-icon-button aria-label="Clear" (click)="universityName=''">
-                      <mat-icon>close</mat-icon>
-                    </button>
+                  <mat-label>نام دانشگاه</mat-label>
+                  <input matInput type="text" name="universityName" [(ngModel)]="universityName">
+                  <button mat-button *ngIf="universityName" matSuffix mat-icon-button aria-label="Clear" (click)="universityName=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
                 </mat-form-field>
                 <mat-form-field class="example-form-field-long">
                   <mat-label>رشته</mat-label>
@@ -63,7 +60,7 @@
                   <button mat-button *ngIf="universitySubject" matSuffix mat-icon-button aria-label="Clear" (click)="universitySubject=''">
                     <mat-icon>close</mat-icon>
                   </button>
-              </mat-form-field>
+                </mat-form-field>
               </div>
             </div>
             <div class="card-body">
@@ -81,7 +78,7 @@
                   <button mat-button *ngIf="termAverage" matSuffix mat-icon-button aria-label="Clear" (click)="termAverage=''">
                     <mat-icon>close</mat-icon>
                   </button>
-              </mat-form-field>
+                </mat-form-field>
               </div>
             </div>
           </div>
@@ -95,3 +92,4 @@
       </div>
     </div>
   </div>
+</body>

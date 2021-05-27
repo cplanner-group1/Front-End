@@ -189,8 +189,8 @@ input:focus {
 
 .overlay {
 	background: #374785;
-	background: -webkit-linear-gradient(to bottom left, #24305e, #F76C6C);
-	background: linear-gradient(to bottom left, #24305e, #F76C6C);
+	background: -webkit-linear-gradient(to bottom left, #374785, #F76C6C);
+	background: linear-gradient(to bottom left, #374785, #F76C6C);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -261,7 +261,7 @@ input:focus {
   height: 100% !important;
   background-size: 100%;
   background-color: #374785;
-  background-image: url("../../assets/img/sign-in/middle-blue-birds.png");
+  background-image: url("../../assets/img/sign-in/dark-blue-birds.png");
 
 }
 
@@ -324,6 +324,11 @@ div {
 
 
 /* FOR FORGOT PASSWORD*/
+#modal-basic-title {
+	text-align: center;
+	font-weight: bold;
+}
+
 #forgot-password-close {
 	border: none;
 	color: #24305e;

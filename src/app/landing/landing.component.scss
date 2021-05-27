@@ -9,7 +9,7 @@
 
 body {
     width: auto;
-    background-color: #a8d0e6;
+    background-color: #A8D0E6;
 	font-family: 'Montserrat', sans-serif;
     color: #374785;
     padding: 0;
@@ -25,9 +25,9 @@ body {
     position: absolute;
   	height: 100%;
   	width: 100%;
-    //background-color: #374785;  
-    //background-color: rgba(0,0,0,.5);
-    background: linear-gradient(0deg, #374785, black, #f76c6c);  
+    background-color: #374785;  
+    background-color: rgba(0,0,0,.5);
+    background: linear-gradient(0deg, #f76c6c, black, #374785);  
     opacity: 0.5; 
     top: 0;
   	left: 0;
@@ -98,14 +98,14 @@ a {
     align-items:center;
     min-width: 100vw;
     min-height: 100vh;
-    background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);  
+    //background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);  
     padding: 25px;
 }
 
 .l {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(247%2c 108%2c 108%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c75 C 96%2c88.8 288%2c138.4 480%2c144 C 672%2c149.6 768%2c90.2 960%2c103 C 1152%2c115.8 1344%2c187 1440%2c208L1440 560L0 560z' fill='rgba(55%2c 71%2c 133%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c518 C 72%2c497.4 216%2c406.8 360%2c415 C 504%2c423.2 576%2c560.4 720%2c559 C 864%2c557.6 936%2c421.8 1080%2c408 C 1224%2c394.2 1368%2c473.6 1440%2c490L1440 560L0 560z' fill='rgba(168%2c 208%2c 230%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
     //background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);
-    padding: 50px;
+    padding: 20px;
     text-align: center;
 }
   
@@ -120,7 +120,7 @@ a {
 .glass-morphism-container1{
     position:relative;
     background-color: rgba(255, 255, 255,0.2);
-    padding: 60px;
+    padding: 50px;
     color:white;
     border-radius: 25px;
     border: solid 2px transparent;

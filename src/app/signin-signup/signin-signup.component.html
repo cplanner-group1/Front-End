@@ -1,5 +1,5 @@
 
-<div class="container-fluid" id="background-image" dir="ltr">
+<div class="container-fluid fade-in" id="background-image" dir="ltr">
   <div class="container row" id="container">
     <div class="form-container sign-up-container col-sm-6">
       <form action="#">
@@ -29,18 +29,19 @@
         <input type="email" name="email" [(ngModel)]="email" placeholder="Email" />
         <input class="password" name="password" [(ngModel)]="password" type="password" id="password" placeholder="Password" />
         <button  (click)="signin()">Sign In</button>
+        <!--FORGOT PASSWORD MODAL-->
         <ng-template #content let-modal>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Don't Panic</h4>
+          <div class="modal-header font-iran-sans-FA">
+            <h4 class="modal-title" id="modal-basic-title">نگران نباشید!</h4>
             <button type="button" id="forgot-password-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <p>Please enter the email you used to create an account so we can send you a code: </p>
-            <input type="email" placeholder="Email">
+          <div class="modal-body font-iran-sans-FA">
+            <p class="font-iran-sans-FA"> لطفا ایمیلی که برای ثبت نام استفاده کردید را وارد کنید:</p>
+            <input type="email" placeholder="ایمیل">
           </div>
-          <button id="bt" type="button" class="btn btn-outline-dark forgot-password-button">Send Email</button>
+          <button id="bt" type="button" class="btn btn-outline-dark forgot-password-button font-iran-sans-FA">ارسال ایمیل</button>
           
           <!--
           IF THERE IS A CODE TO RESET PASSWORD

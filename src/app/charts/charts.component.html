@@ -57,7 +57,11 @@
                                    <div class="row">
                                      
                                       <div class="col-md-12 p-4" style="margin:0;">
-                                        <button mat-raised-button class="font-iran-sans-FA">جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
+                                        <div class="center">
+                                          <button mat-raised-button class="font-iran-sans-FA styled-button main-button">
+                                            <mat-icon matSuffix class="pb-3">search</mat-icon>
+                                            جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
+                                        </div>
                                       </div>
                                       <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                         <!-- table view for charts  -->
@@ -88,11 +92,11 @@
                                               </td>
                                               <td class="text-center" style="max-width: 225px;"> 
                                                 <button mat-raised-button (click)="chartsDetails(chart)" 
-                                                        class="font-iran-sans-FA btn-primary ml-3 mb-2" 
+                                                        class="font-iran-sans-FA ml-3 mb-2 styled-button secondary-button" 
                                                         style="min-width: 80px;">
                                                         مشاهده
                                                 </button>
-                                                <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"
+                                                <button mat-raised-button class="font-iran-sans-FA ml-3 styled-button main-button"
                                                         style="min-width: 80px;">
                                                         انتخاب
                                                 </button>
@@ -115,7 +119,7 @@
                                     </mat-form-field>  
                                   </div>
                                   <div class="col-md-2 mt-3">
-                                    <button mat-raised-button class="font-iran-sans-FA mt-2 btn-success" style="max-width: 100%;">جستجو</button>
+                                    <button mat-raised-button class="font-iran-sans-FA mt-2 styled-button secondary-button" style="max-width: 100%;">جستجو</button>
                                   </div>
                                   <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                     <!-- table view for charts  -->
@@ -145,8 +149,8 @@
                                             <div>{{chart.date}}</div>
                                           </td>
                                           <td class="text-center" style="max-width: 225px;"> 
-                                            <button mat-raised-button class="font-iran-sans-FA btn-primary ml-3 mb-2" style="min-width: 80px;">مشاهده</button>
-                                            <button mat-raised-button class="font-iran-sans-FA btn-success ml-3"           style="min-width: 80px;">انتخاب</button>
+                                            <button mat-raised-button class="font-iran-sans-FA ml-3 mb-2 styled-button secondary-button" style="min-width: 80px;">مشاهده</button>
+                                            <button mat-raised-button class="font-iran-sans-FA ml-3 styled-button main-button"           style="min-width: 80px;">انتخاب</button>
     
                                           </td>
                                         </tr>
@@ -207,29 +211,29 @@
           <div class="card-body">
             <div class="col-md-12">
               <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
-                      style="float: right;" (click)="addCourse()">
+                      style="float: right; background-color: #84CAE9;" (click)="addCourse()">
                       +
               </button>
               <button *ngIf="!editView && userCourses.length>0" (click)="enableEdit()"
                       mat-fab
-                      class="btn-fab" style="margin-right: 7px; float: right;"
-                      matTooltip="فعال کردن حالت ویرایش" [matTooltipPosition]="'above'">
+                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #84CAE9;"
+                      matTooltip="ویرایش" [matTooltipPosition]="'above'">
                 <span class="material-icons">
                   create
                 </span>
               </button>
               <button *ngIf="editView && userCourses.length>0" (click)="enableEdit()"
                       mat-fab
-                      matTooltip="غیر فعال کردن حالت ویرایش" [matTooltipPosition]="'above'"
-                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1;">
+                      matTooltip="غیر فعال کردن ویرایش" [matTooltipPosition]="'above'"
+                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1; background-color: #84CAE9;">
                 <span class="material-icons">
                   create
                 </span>
               </button>
               <button *ngIf="editView && userCourses.length>0" (click)="deleteSelectedRow()"
                       mat-fab
-                      matTooltip="حذف انتخاب شده ها" [matTooltipPosition]="'above'"
-                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #123C69;">
+                      matTooltip="حذف" [matTooltipPosition]="'above'"
+                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #24305E;">
                 <span class="material-icons">
                   delete
                 </span>
@@ -314,7 +318,7 @@
                     
                     <!--task status 0 1 2-->
                     <td *ngIf="item.status===0" 
-                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #e2445c;">
+                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #E14055;">
                       <mat-form-field appearance="none"
                         style="width: 120px; padding-top: 5px;">
                         <mat-select
@@ -328,7 +332,7 @@
                       </mat-form-field>
                     </td>
                     <td *ngIf="item.status===1" 
-                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #00c875;">
+                        style="margin-top:0px; padding-top: 0px;width: 120px; background-color: #0CC078;">
                       <mat-form-field appearance="none"
                         style="width: 120px; padding-top: 5px;">
                         <mat-select
@@ -378,6 +382,17 @@
               </table>
             </div>
           </div>
+          <!--NEW NEW NEW NEW NEW NEW-->
+          <div class="row">
+            <div class="col-md-6">
+              <button mat-raised-button class="font-iran-sans-FA styled-button main-button" style="min-width: 80px; padding: 5px 60px; margin: 20px 100px 20px 0;">ذخیره</button>
+            </div>
+
+            <div class="col-md-6">
+              <button mat-raised-button class="font-iran-sans-FA styled-button secondary-button" style="min-width: 80px; padding: 5px 50px; margin: 20px 0;">حذف همه</button>
+            </div>
+          </div>
+          <!--NEW NEW NEW NEW NEW NEW-->
         </div>
       </div>
       <div class="col-md-4" *ngIf="userCourses.length>0">
@@ -387,7 +402,7 @@
             <div class="col-md-12">
               <form *ngIf="userCourses.length>0" class="search-form">
                 <mat-form-field class="w-100">
-                  <mat-label class="pb-2">همین الان جستجو کن!</mat-label>
+                  <mat-label class="pb-2">جستجو</mat-label>
                   <input type="tel" matInput  style="padding-bottom:10px; margin-top: 10px;">
                   <mat-icon matSuffix class="pb-3">search</mat-icon>
                 </mat-form-field>
@@ -411,13 +426,13 @@
               </mat-form-field>
             </div>
             <div class="col-md-12 mt-3">
-              <button mat-raised-button class="font-iran-sans-FA btn-success w-100" style="min-width: 80px;">مرتب سازی لیست بر اساس الفبا</button>
+              <button mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی لیست بر اساس الفبا</button>
             </div>
 
             
           </div>
         </div>
-
+        <!--
         <div class="card shadow-sm">
           <div class="card-header">ثبت تغییرات</div>
           <div class="card-body pr-0 pl-0">
@@ -431,6 +446,7 @@
             </div>
           </div>
         </div>
+      -->
       </div>
     </div>
   </div>
