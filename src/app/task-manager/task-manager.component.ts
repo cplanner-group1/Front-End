@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { SelectType } from '../shared/select';
 import { tasks , Task } from '../shared/Task';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatTableDataSource} from '@angular/material/table';
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
+import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
@@ -41,7 +38,7 @@ export class TaskManagerComponent implements OnInit {
   dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
 
   ngOnInit() {
-    this.tasks = tasks;
+    //this.tasks = tasks;
     this.getTasks();
   }
 
@@ -49,7 +46,23 @@ export class TaskManagerComponent implements OnInit {
     this._Api.getTask().subscribe(
       response=>{
         if(response){
-          console.log(response);
+          console.log(response.tasks_list);
+          for(let item of response.tasks_list){
+            let task: Task={
+              checkList:false,
+              deadlineDateTime:item.deadline,
+              deadlineDaysRemaining:item.remained_time,
+              deadlinePercentage:"",
+              lastChangeDate:"",
+              description:item.description,
+              priority:item.priority,
+              id:item.id,
+              owner:item.group,
+              status:item.status+'',
+              title:item.title
+            };
+            this.tasks.push(task);
+          }
         }
     });
   }
