@@ -22,7 +22,7 @@ export class MyApi {
 
     // sign in:
     login(user:any): Observable<any> {
-        console.log(user);
+        //console.log(user);
         return this.httpClient.post(this.authUrl + 'login/', user).pipe(
             map((response:any)=>{
                 //console.log(response);
@@ -30,7 +30,6 @@ export class MyApi {
                 if(user){
                     localStorage.setItem('token',user.tokens.access);
                     localStorage.setItem('refresh',user.tokens.refresh);
-
                 }
             })
         )
@@ -71,7 +70,7 @@ export class MyApi {
     }
     addTask(): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.taskUrl + 'delete/', {},{ headers: headers })   
+        return this.httpClient.post(this.taskUrl, {},{ headers: headers })   
     }
     editTask(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
