@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { NgxStarRatingModule } from 'ngx-star-rating';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { SelectType } from '../shared/select';
-import { tasks , Task } from '../shared/Task';
+import { Task } from '../shared/Task';
 import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,7 +38,6 @@ export class TaskManagerComponent implements OnInit {
   dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
 
   ngOnInit() {
-    //this.tasks = tasks;
     this.getTasks();
   }
 
@@ -76,10 +75,11 @@ export class TaskManagerComponent implements OnInit {
     }
   }
 
+  // add task
   addTask(){ // add row
     let new_task: Task = {
         checkList: false,
-        id:'111',
+        id:-1,
         title:'',
         owner: '',
 
@@ -93,11 +93,20 @@ export class TaskManagerComponent implements OnInit {
         lastChangeDate:'همین الان',
         description: "توضیحات مربوط به ویژگی را اینجا وارد کنید"
     }
-    this.tasks.push(new_task);
-
-    //this.checkList.push(false);
+    this._Api.addTask().subscribe(
+      response=>{
+        if(response){
+          new_task.id = response.id;
+          this.tasks.push(new_task);
+        }
+      }
+    )
   } 
-
+  editTask(){
+    // TO DO
+    
+  }
+  // open task modal
   taskDetails(task:Task){
     const dialogRef = this.dialog.open(TaskDetailsComponent, {
       width: '1000px',
@@ -116,16 +125,35 @@ export class TaskManagerComponent implements OnInit {
 
   // change priority:
   onRatingChanged(newRating,task){
-    console.log(newRating);
+    //console.log(newRating);
     task.priority = newRating;
   }
+
   // change items place while drag and drop:
   drop(event: CdkDragDrop<string[]>) {
+    //console.log("now: "+ event.currentIndex);
+    //console.log("old "+ event.previousIndex);
+    let data = 
+    {
+      id:   this.tasks[event.previousIndex].id,
+      old:  event.previousIndex,
+      new:  event.currentIndex
+    }
+    this._Api.dragTask(data).subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+      }
+    );
     moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+
   }
 
 
   //check list column:
+  masterToggleValue: boolean = false;
+  masterToggleIndeterminate: boolean = false;
   isAllSelected(): boolean {
     for(let item of this.tasks){
       if(item.checkList===false){
@@ -142,8 +170,6 @@ export class TaskManagerComponent implements OnInit {
     }
     return true;
   }
-  masterToggleValue: boolean = false;
-  masterToggleIndeterminate: boolean = false;
   masterToggle(e) {
     //console.log(e);
     if(e===true){
@@ -191,12 +217,15 @@ export class TaskManagerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         if(i!==-1){
+          let deleteItems: number[] = []
+          if(this.tasks[i].id!=-1){
+            deleteItems.push(this.tasks[i].id);
+          }
           this.tasks.splice(i,1);
+          this.deleteTask(deleteItems);
         }
       }
     });
-    
-    
   }
   deleteSelectedRow(){
     const dialogRef = this.dialog.open(DeleteAlertComponent, {
@@ -210,16 +239,31 @@ export class TaskManagerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         let n = this.tasks.length;
+        let deleteItems: number[] = []
         for(let i = n-1 ; i >= 0 ; i--){
           if(this.tasks[i].checkList===true){
+            if(this.tasks[i].id!=-1){
+              deleteItems.push(this.tasks[i].id);
+            }
             this.tasks.splice(i,1);
-
+          
           }
         }
         this.masterToggleValue = false;
         this.masterToggleIndeterminate = false;
+        this.deleteTask(deleteItems);
       }
     });
     
+  }
+  deleteTask(deleteItems:number[]){
+    let deletObject = { "deleted":deleteItems };
+    this._Api.deleteTask(deletObject).subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+      }
+    );
   }
 }

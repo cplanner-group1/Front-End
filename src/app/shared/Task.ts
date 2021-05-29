@@ -1,6 +1,6 @@
 export class Task{
     checkList: boolean; // always false
-    id: string; 
+    id: number; 
 
     title: string; 
     owner: string;
@@ -15,11 +15,11 @@ export class Task{
     lastChangeDate: any;
     description: string;
 }
-
+/*
 export const tasks:Task[] = [
     {
         checkList: false,
-        id:'11',
+        id:11,
         title:'تمرین پایگاه داده سری اول',
         owner: 'دانشگاه',
 
@@ -37,7 +37,7 @@ export const tasks:Task[] = [
     {
         checkList: false,
 
-        id:'12',
+        id:12,
         title:'تمرین سیستم عامل سری اول',
         owner: 'دانشگاه',
 
@@ -72,4 +72,4 @@ export const tasks:Task[] = [
 
 
     }
-]
+]*/

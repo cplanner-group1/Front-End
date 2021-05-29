@@ -9,6 +9,7 @@ export class MyApi {
     //baseUrl = "https://zoi.ir/api/shop/product/";
     baseUrl = 'http://cplanner-group1.herokuapp.com/';
     authUrl = this.baseUrl + 'account/';
+    taskUrl = this.baseUrl + 'task/';
     
     constructor(private httpClient:HttpClient){
         //this.BaseUrl = window['apiUrl'];
@@ -28,7 +29,21 @@ export class MyApi {
                 const user = response;
                 if(user){
                     localStorage.setItem('token',user.tokens.access);
+                    localStorage.setItem('refresh',user.tokens.refresh);
+
                 }
+            })
+        )
+    }
+    logout(): Observable<any> {
+        //console.log(user);
+        let refresh = localStorage.getItem('refresh');
+        console.log(refresh);
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.authUrl + 'logout/',{refresh: refresh }, { headers: headers }).pipe(
+            map((response:any)=>{
+                //console.log(response);
+                localStorage.removeItem('token');
             })
         )
     }
@@ -44,14 +59,27 @@ export class MyApi {
     }
 
 
+
+    // TASK MANAGER:
     getTask(): Observable<any> {    
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.get(this.baseUrl + 'task/', { headers: headers });
+        return this.httpClient.get(this.taskUrl, { headers: headers });
     }
-    /////////// GET API ///////////
-    
-    
-
-    /////////// PUT API ///////////
+    deleteTask(items): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.taskUrl + 'delete/', items,{ headers: headers })   
+    }
+    addTask(): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.taskUrl + 'delete/', {},{ headers: headers })   
+    }
+    editTask(items): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.taskUrl + 'delete/', items,{ headers: headers })   
+    }
+    dragTask(item): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.taskUrl + 'delete/', item,{ headers: headers })   
+    }
 
 }
