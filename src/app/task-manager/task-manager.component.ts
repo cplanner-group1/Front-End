@@ -26,7 +26,7 @@ export class TaskManagerComponent implements OnInit {
 
   statusType: SelectType[] = [
       {value:'0',viewValue:'شروع نشده'},
-      {value:'1',viewValue:'درحال انجام'},
+      {value:'1',viewValue:'در حال انجام'},
       {value:'2',viewValue:'انجام شده'}
   ];
 
