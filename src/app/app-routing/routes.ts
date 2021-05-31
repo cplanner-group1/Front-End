@@ -10,6 +10,7 @@ import { PanelComponent } from '../panel/panel.component';
 import { LandingComponent } from '../landing/landing.component';
 import { CourseSelectionComponent } from '../course-selection/course-selection.component';
 import { SettingComponent } from '../setting/setting.component';
+import { AuthGuard } from '../auth.guard';
 
 // routes list:
 export const routes: Routes = [
@@ -25,23 +26,28 @@ export const routes: Routes = [
       },
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'task',
-        component: TaskManagerComponent
+        component: TaskManagerComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'charts',
-        component: ChartsComponent
+        component: ChartsComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'course',
-        component: CourseSelectionComponent
+        component: CourseSelectionComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'settings',
-        component: SettingComponent
+        component: SettingComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },

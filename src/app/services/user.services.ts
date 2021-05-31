@@ -18,6 +18,9 @@ export class MyApi {
     getToken(){
         return localStorage.getItem('token');
     }
+    loggedIn(): boolean{
+        return !!localStorage.getItem('token');
+    }
     
 
     // sign in:
@@ -43,6 +46,7 @@ export class MyApi {
             map((response:any)=>{
                 //console.log(response);
                 localStorage.removeItem('token');
+                localStorage.removeItem('refresh');
             })
         )
     }

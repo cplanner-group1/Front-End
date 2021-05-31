@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { MyApi } from '../services/user.services';
 
@@ -11,7 +12,9 @@ import { MyApi } from '../services/user.services';
 export class PanelComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
-              private _Api: MyApi) { }
+              private _Api: MyApi,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +33,10 @@ export class PanelComponent implements OnInit {
         this._Api.logout().subscribe(
           response=>{
             if(response){
-              console.log("user fucin log out");
             }
+            console.log(response);
+            this.router.navigate(['/landing']);
+
           }
         );
       }

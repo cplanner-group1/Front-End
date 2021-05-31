@@ -5,6 +5,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { MyApi } from '../services/user.services';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin-signup',
@@ -21,7 +22,9 @@ export class SigninSignupComponent implements OnInit {
   closeResult = '';
 
   constructor(private modalService: NgbModal,
-              private _Api: MyApi) {}
+              private _Api: MyApi,
+              private route: ActivatedRoute,
+              private router: Router) {}
 
 
   open(content) {
@@ -72,7 +75,7 @@ export class SigninSignupComponent implements OnInit {
       const myObserver = {
         next: (x) => {
           console.log('user logged in');
-          //console.log(x);
+          this.router.navigate(['/dashboard']);
         },
         error: (err: Error) => console.error(err)
       };
@@ -94,8 +97,7 @@ export class SigninSignupComponent implements OnInit {
       const myObserver = {
         next: (x) => {
           console.log('user registered in');
-
-          //console.log(x);
+          //this.router.navigate(['/dashboard']);
         },
         error: (err: Error) => console.error(err)
       };
