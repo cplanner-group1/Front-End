@@ -8,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class SettingComponent implements OnInit {
 
   //INFO
+  /*
   username: string = '';
   email: string = '';
   password: string = '';
+  */
+
+  name: string = '';
+  surname: string = '';
 
   overallAverage: string = '';
   termAverage: string = '';
