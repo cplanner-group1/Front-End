@@ -10,6 +10,7 @@ export class MyApi {
     baseUrl = 'http://cplanner-group1.herokuapp.com/';
     authUrl = this.baseUrl + 'account/';
     taskUrl = this.baseUrl + 'task/';
+    settingUrl = this.baseUrl + 'account/student-info/';
     
     constructor(private httpClient:HttpClient){
         //this.BaseUrl = window['apiUrl'];
@@ -83,6 +84,18 @@ export class MyApi {
     dragTask(item): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.taskUrl + 'delete/', item,{ headers: headers })   
+    }
+
+    //SETTINGS:
+
+    getSettings(): Observable<any> {    
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.settingUrl, { headers: headers });
+    }
+
+    addSettings(item): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.settingUrl, item, { headers: headers })   
     }
 
 }

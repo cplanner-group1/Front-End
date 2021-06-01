@@ -11,6 +11,7 @@ import { LandingComponent } from '../landing/landing.component';
 import { CourseSelectionComponent } from '../course-selection/course-selection.component';
 import { SettingComponent } from '../setting/setting.component';
 import { AuthGuard } from '../auth.guard';
+import { SigninSignupDiversionPageComponent } from '../signin-signup-diversion-page/signin-signup-diversion-page.component';
 
 // routes list:
 export const routes: Routes = [
@@ -58,6 +59,11 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: SigninSignupComponent
+  },
+  //DELETE LATER
+  {
+    path: 'html',
+    component: SigninSignupDiversionPageComponent
   }
   /*
   { path: 'dashboard',  component: DashboardComponent },

@@ -384,21 +384,15 @@
             </div>
           </div>
           <!--NEW NEW NEW NEW NEW NEW-->
-          <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-6">
-              <button mat-raised-button class="font-iran-sans-FA styled-button main-button" style="min-width: 80px; padding: 5px 60px; margin-right: 110px;">ذخیره</button>
+            <div class="center">
+              <button mat-raised-button class="font-iran-sans-FA save-button" (click)="postCharts()">ذخیره</button>
             </div>
-
-            <div class="col-md-6">
-              <button mat-raised-button class="font-iran-sans-FA styled-button secondary-button" style="min-width: 80px; padding: 5px 50px; margin-right: -40px;">حذف همه</button>
-            </div>
-          </div>
           <!--NEW NEW NEW NEW NEW NEW-->
         </div>
       </div>
       <div class="col-md-4" *ngIf="userCourses.length>0">
         <div class="card shadow-sm">
-          <div class="card-header">تغییر شیوه نمایش</div>
+          <div class="card-header">جستجو کنید</div>
           <div class="card-body pr-0 pl-0">
             <div class="col-md-12">
               <form *ngIf="userCourses.length>0" class="search-form">
@@ -409,8 +403,12 @@
                 </mat-form-field>
               </form>
             </div>
-            
-            <mat-divider class="col-md-12 mt-3 p-0" style="padding: 0;"></mat-divider>
+          </div>
+        </div>
+
+        <div class="card shadow-sm">
+          <div class="card-header">تغییر شیوه نمایش</div>
+          <div class="card-body pr-0 pl-0">
             <div class="col-md-12 mt-3">
               <mat-form-field appearance="none"
                   class="shadow-md"
@@ -428,9 +426,7 @@
             </div>
             <div class="col-md-12 mt-3">
               <button mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی لیست بر اساس الفبا</button>
-            </div>
-
-            
+            </div>  
           </div>
         </div>
         <!--
@@ -447,7 +443,7 @@
             </div>
           </div>
         </div>
-      -->
+        -->
       </div>
     </div>
   </div>

@@ -7,6 +7,8 @@ import { CourseDetailsComponent } from '../course-details/course-details.compone
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { ChartDetailsComponent } from '../chart-details/chart-details.component';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-charts',
@@ -31,7 +33,9 @@ export class ChartsComponent implements OnInit {
     {value:1,viewValue:'پاس شده'},
   ];
 
-  constructor(public dialog: MatDialog) { 
+  constructor(
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar,) { 
     
   }
 
@@ -209,6 +213,37 @@ export class ChartsComponent implements OnInit {
     });
     
   }
+
+  //SNACKBAR FOR 'SAVE' BUTTON
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  message: string = '✔️  ذخیره شد.';
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data:{message:this.message},
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      panelClass: ['alert-snackbar-success']
+    });
+  }
+
+  //POST CHARTS
+  //ASHKAN API RO NNVSHTM, FQT BARA SNACKBAR GFTM YE JA BASHE VQTI CLICK MKNE
+  //BQYE CODETO OONJA K ZDM API BNVIS
+
+  postCharts() {
+    
+    //SNACKBAR
+    this.openSnackBar(); 
+
+    //API
+
+  }
+
+
 }
 
 

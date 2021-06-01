@@ -1,18 +1,18 @@
-<div class="custom-dialog" dir="rtl">
-	<h2 mat-dialog-title style="text-align: right;" class="font-iran-sans-FA">{{modalTitle}}</h2>
+<div class="custom-dialog font-iran-sans-FA" dir="rtl">
+	<h2 class="font-iran-sans-FA" mat-dialog-title style="text-align: right; color: #24305e;">{{modalTitle}}</h2>
 	<mat-dialog-content style="text-align: right;">
-		<p style="text-align: right;" class="font-iran-sans-FA">
+		<p style="text-align: right; color: #24305e;">
             {{modalMessage}}
 		</p>
 	</mat-dialog-content>
     <mat-dialog-actions style="text-align: right;">
         
-        <button mat-button mat-raised-button [mat-dialog-close]="false" 
-                class="btn btn-danger font-iran-sans-FA"
-                style="max-width: 100%; margin-left:10px;">خیر</button>
         <button mat-raised-button [mat-dialog-close]="true" 
-                class="btn btn-success font-iran-sans-FA"
+                class="btn font-iran-sans-FA main-button"
                 style="max-width: 100%;">بله</button>
+        <button mat-button mat-raised-button [mat-dialog-close]="false" 
+                class="btn font-iran-sans-FA secondary-button"
+                style="max-width: 100%; margin-left:10px;">خیر</button>
 
 	</mat-dialog-actions>
 </div>

@@ -28,20 +28,21 @@
         <span>or use your account</span>
         <input type="email" name="email" [(ngModel)]="email" placeholder="Email" />
         <input class="password" name="password" [(ngModel)]="password" type="password" id="password" placeholder="Password" />
-        <button  (click)="signin()">Sign In</button>
+        <button (click)="signin()">Sign In</button>
+
         <!--FORGOT PASSWORD MODAL-->
         <ng-template #content let-modal>
-          <div class="modal-header font-iran-sans-FA">
-            <h4 class="modal-title" id="modal-basic-title">نگران نباشید!</h4>
+          <div class="modal-header" style="direction: rtl; text-align: right;">
+            <h4 class="modal-title font-iran-sans-FA" id="modal-basic-title" style="direction: rtl; text-align: right; color: #24305e;">نگران نباشید!</h4>
             <button type="button" id="forgot-password-close" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body font-iran-sans-FA">
-            <p class="font-iran-sans-FA"> لطفا ایمیلی که برای ثبت نام استفاده کردید را وارد کنید:</p>
-            <input type="email" placeholder="ایمیل">
+          <div class="modal-body" style="direction: rtl; text-align: right;">
+            <p class="font-iran-sans-FA" style="direction: rtl; text-align: right; color: #24305e;"> لطفا ایمیلی که برای ثبت نام استفاده کردید را وارد کنید:</p>
+            <input type="email" placeholder="ایمیل" style="direction: rtl; text-align: right;">
           </div>
-          <button id="bt" type="button" class="btn btn-outline-dark forgot-password-button font-iran-sans-FA">ارسال ایمیل</button>
+          <button id="bt" type="button" class="btn btn-outline-dark forgot-password-button font-iran-sans-FA" style="letter-spacing: normal !important;">ارسال ایمیل</button>
           
           <!--
           IF THERE IS A CODE TO RESET PASSWORD

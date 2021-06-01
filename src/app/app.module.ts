@@ -84,6 +84,9 @@ import { CourseSelectionComponent } from './course-selection/course-selection.co
 
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SettingComponent } from './setting/setting.component';
+import { InfoAlertComponent } from './info-alert/info-alert.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { SigninSignupDiversionPageComponent } from './signin-signup-diversion-page/signin-signup-diversion-page.component';
 
 
 @NgModule({
@@ -101,7 +104,10 @@ import { SettingComponent } from './setting/setting.component';
     CourseDetailsComponent,
     ChartDetailsComponent,
     CourseSelectionComponent,
-    SettingComponent
+    SettingComponent,
+    InfoAlertComponent,
+    SnackBarComponent,
+    SigninSignupDiversionPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,9 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import * as $ from 'jquery';
-
+import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
-
 import { MyApi } from '../services/user.services';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfoAlertComponent } from '../info-alert/info-alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-signin-signup',
@@ -24,7 +22,8 @@ export class SigninSignupComponent implements OnInit {
   constructor(private modalService: NgbModal,
               private _Api: MyApi,
               private route: ActivatedRoute,
-              private router: Router) {}
+              private router: Router,
+              public dialog: MatDialog) {}
 
 
   open(content) {
@@ -63,6 +62,7 @@ export class SigninSignupComponent implements OnInit {
   username: string;
   // email: "ali.lod78@gmail.com"
   // password: "itismypassali78"
+
   signin(){
     //console.log(1);
     if(this.email && this.password){
@@ -85,7 +85,22 @@ export class SigninSignupComponent implements OnInit {
     }
   }
 
+  checkEmailAlert(){
+    const dialogRef = this.dialog.open(InfoAlertComponent, {
+      minWidth: '400',
+      maxWidth: '90%',
+      data: { 
+        title: "توجه",
+        message: "لطفا ایمیل ارسال شده را تایید کنید سپس برای ورود به صفحه‌ی لاگین بروید."
+      }
+    });
+  }
+
   signup(){
+    //ALERT
+    this.checkEmailAlert();
+    
+    //API
     if(this.email && this.password && this.username){
       let item = 
       {
@@ -107,54 +122,3 @@ export class SigninSignupComponent implements OnInit {
     } 
   }
 }
-
-
-
-/* 
-PASSWORD POPUP CODE
-    $(".modal").each( function(){
-      $(this).wrap('<div class="overlay1"></div>')
-    });
-    
-    $(".open-modal").on('click', function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation;
-      
-      var $this = $(this),
-          modal = $($this).data("modal");
-      
-      $(modal).parents(".overlay1").addClass("open");
-      setTimeout( function(){
-        $(modal).addClass("open");
-      }, 350);
-      
-      $(document).on('click', function(e){
-        var target = $(e.target);
-        
-        if ($(target).hasClass("overlay1")){
-          $(target).find(".modal").each( function(){
-            $(this).removeClass("open");
-          });
-          setTimeout( function(){
-            $(target).removeClass("open");
-          }, 350);
-        }
-        
-      });
-      
-    });
-    
-    $(".close-modal").on('click', function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation;
-      
-      var $this = $(this),
-          modal = $($this).data("modal");
-      
-      $(modal).removeClass("open");
-      setTimeout( function(){	
-        $(modal).parents(".overlay").removeClass("open");
-      }, 350);
-      
-    });	
-*/
