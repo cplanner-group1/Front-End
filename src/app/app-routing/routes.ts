@@ -15,16 +15,11 @@ import { SigninSignupDiversionPageComponent } from '../signin-signup-diversion-p
 
 // routes list:
 export const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: '', redirectTo: '/landing', pathMatch: 'full'},
   {
     path: '',
     component: PanelComponent,
     children: [
-      {
-        path: '',
-        redirectTo:'/dashboard',
-        pathMatch:'full'
-      },
       {
         path: 'dashboard',
         component: DashboardComponent,
