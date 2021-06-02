@@ -87,6 +87,8 @@ import { SettingComponent } from './setting/setting.component';
 import { InfoAlertComponent } from './info-alert/info-alert.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { SigninSignupDiversionPageComponent } from './signin-signup-diversion-page/signin-signup-diversion-page.component';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { AddOtherComponent } from './add-other/add-other.component';
 
 
 @NgModule({
@@ -107,7 +109,9 @@ import { SigninSignupDiversionPageComponent } from './signin-signup-diversion-pa
     SettingComponent,
     InfoAlertComponent,
     SnackBarComponent,
-    SigninSignupDiversionPageComponent
+    SigninSignupDiversionPageComponent,
+    AddCourseComponent,
+    AddOtherComponent
   ],
   imports: [
     BrowserModule,

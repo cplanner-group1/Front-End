@@ -1,0 +1,47 @@
+<div mat-dialog-content style="width: 100%; margin:0; padding: 0; ">
+    <div class="row" style="width: 100%; margin: 0;">
+        <div class="col-md-12">
+            <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
+                <mat-label>نام درس ارائه شده</mat-label>
+                <input matInput placeholder="نام درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+            </mat-form-field>
+        </div>
+        <div class="col-md-12">
+            <mat-divider></mat-divider>
+        </div>
+        <div class="col-md-12">
+            <button mat-fab color="accent" class="btn-fab mt-2" matTooltip="اضافه کردن گروه درس" [matTooltipPosition]="'above'"
+                      style="float: right; background-color: #84CAE9;">
+                      +
+            </button>
+        </div>
+
+        <div class="col-md-12">
+            <mat-accordion class="chart-expansion-headers-align"> 
+                <mat-expansion-panel >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="font-iran-sans-FA">
+                            ریاضی 2- رستمی
+                        </mat-panel-title>           
+                        <mat-panel-description>
+                            3 روز در هفته
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <!--data-->
+                </mat-expansion-panel>
+                <mat-expansion-panel class="search-expansion">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title class="font-iran-sans-FA">
+                        نیاز به ویرایش
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <!--data-->
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+
+
+    </div>
+</div>

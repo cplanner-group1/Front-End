@@ -13,6 +13,10 @@ import {
   ApexFill,
   ApexLegend
 } from "ng-apexcharts";
+import { MatDialog } from '@angular/material/dialog';
+import { MyApi } from '../services/user.services';
+import { AddCourseComponent } from '../add-course/add-course.component';
+import { AddOtherComponent } from '../add-other/add-other.component';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -39,8 +43,8 @@ export class CourseSelectionComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-
-  constructor() {
+    constructor(public dialog: MatDialog,
+                private _Api: MyApi) {
     this.chartOptions = {
       series: [
         {
@@ -214,14 +218,31 @@ export class CourseSelectionComponent implements OnInit {
   ngOnInit() {
     
   }
-
   addCourse(){
-    
+    const dialogRef = this.dialog.open(AddCourseComponent, {
+      width: '1000px',
+      height: '600px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        
+        
+      }
+    });
   }
 
   
   addOther(){
-    
+    const dialogRef = this.dialog.open(AddOtherComponent, {
+      width: '1000px',
+      height: '600px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        
+        
+      }
+    });
   }
 
   todo = [
