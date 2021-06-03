@@ -54,6 +54,13 @@ export class SigninSignupComponent implements OnInit {
     container?.classList.remove("right-panel-active");
   }
 
+  //signup for mobile view 
+  signUpMobile() {
+    let body = document.getElementById('body');
+    body.classList.remove("heading");
+    console.log(body);
+  }
+
   title = 'padis';
 
 
