@@ -74,7 +74,6 @@ a {
     align-items:center;
     min-width: 100vw;
     min-height: 100vh;
-    //background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);  
     padding: 25px;
 }
 
@@ -101,6 +100,10 @@ a {
     background-clip: padding-box;
     box-shadow: 10px 10px 10px  rgba(46, 54, 68, 0.1);
     backdrop-filter: blur(20px);
+}
+
+.glass-morphism-container1 p{
+    text-align: right;
 }
 
 .text-styling {
@@ -146,8 +149,8 @@ a {
 
 .questions {
     padding-top: 50px;
-    width: 85%;
     margin: auto;
+    width: 85%;
 }
 
 .questions1-image {
@@ -238,7 +241,11 @@ footer {
     }
 }
 
-
+@media (max-width: 550px) {
+    body {
+        background-color: black;
+    }
+}
 
 /* gradient transition 
     background: linear-gradient(-45deg, #374785, #a8d0e6, #f76c6c);
