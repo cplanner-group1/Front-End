@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,10 +15,13 @@ export class PanelComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private _Api: MyApi,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              ) { }
 
   ngOnInit(): void {
   }
+
+  userName: string = "خوش‌آمدید"
 
   logout(){
     const dialogRef = this.dialog.open(DeleteAlertComponent, {
@@ -44,3 +48,12 @@ export class PanelComponent implements OnInit {
     
   }
 }
+/*
+export class name {
+  constructor(parameters) {
+    
+  }
+  //private userName: string = "";
+  userName = getUserName.userName();
+}
+*/

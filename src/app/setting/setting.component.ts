@@ -103,6 +103,28 @@ export class SettingComponent implements OnInit {
       }
     )
   }
-
-
 }
+
+//FOR USERNAME IN PANEL 
+/*
+export class getUserName {
+  static userName: any;
+  constructor(private _Api: MyApi) {
+    
+  }
+  name: string = "";
+  surname: string = "";
+
+  userName(){
+    this._Api.getSettings().subscribe(
+      response=>{
+        if(response){
+          this.name = response.first_name;
+          this.surname = response.last_name;
+        }
+    });
+    return this.name + ' ' + this.surname;
+  }
+}
+*/
+
