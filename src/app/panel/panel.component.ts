@@ -19,9 +19,10 @@ export class PanelComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
+    this.getUserName();
   }
 
-  userName: string = "خوش‌آمدید"
+  userName: string = "خوش‌آمدید";
 
   logout(){
     const dialogRef = this.dialog.open(DeleteAlertComponent, {
@@ -50,6 +51,23 @@ export class PanelComponent implements OnInit {
     });
     
   }
+
+  getUserName(){
+    let name: string = "";
+    let surname: string = "";
+    this._Api.getSettings().subscribe(
+      response=>{
+        if(response){
+          name = response.first_name;
+          surname = response.last_name;
+          this.userName = name + ' ' + surname;
+
+        }
+    });
+
+    
+  }
+
 }
 /*
 export class name {
