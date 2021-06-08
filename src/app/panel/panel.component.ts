@@ -43,6 +43,9 @@ export class PanelComponent implements OnInit {
 
           }
         );
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh');
+
       }
     });
     

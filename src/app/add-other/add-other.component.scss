@@ -1,0 +1,123 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    min-width: 150px;
+    width: 100%;
+}
+
+.text-area-styles{
+    text-align: justify;
+  text-justify: inter-word;
+    direction: rtl;
+    line-height: normal;
+}
+.mat-form-field-styles{
+    width: 90%; padding: 0; margin: 0;        
+}
+
+
+.text-area-div-styles{
+    transition: all 0.3s ease-in-out 0s;
+    border:2px solid #e0e2e6; border-radius: 5px; margin-top: 10px;
+}
+.text-area-div-styles:focus-within{
+    border: 2px solid #123C69 !important;
+    -webkit-box-shadow: 0 0 5px #123c6957;
+       -moz-box-shadow: 0 0 5px #123c6957;
+            box-shadow: 0 0 5px #123c6957;
+}
+
+.input-focus-hover{
+    border:2px solid white; 
+    border-radius: 5px; 
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out 0s;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+
+}
+
+.input-focus-hover:focus-within{
+    border: 2px solid #123C69 !important;
+    -webkit-box-shadow: 0 0 5px #123c6957;
+       -moz-box-shadow: 0 0 5px #123c6957;
+            box-shadow: 0 0 5px #123c6957;
+}
+.mat-form-field-wrapper{
+    padding:0 !important;
+}
+.mat-dialog-content{
+    max-height: 100% !important;
+    height: 100%;
+}
+.cdk-overlay-pane{
+    height: 80% !important;
+}
+
+
+.btn-fab{
+    margin-bottom: 10px;
+    background-color: #84CAE9;
+    color: white;
+    font-size: 20pt;
+    font-weight: bolder;
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out 0s;
+}
+.btn-fab:hover{
+    margin-bottom: 10px;
+    background-color: #84CAE9;
+    color: white;
+    font-size: 20pt;
+    font-weight: bolder;
+    transition: all 0.3s ease-in-out 0s;
+    opacity: 1;
+}
+
+
+
+//BUTTONS
+.styled-button {
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 30px;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  
+  .save-button {
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 30px;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin-bottom: 20px;
+    min-width: 80px;
+    padding: 5px 80px;
+    background-color: #84CAE9;
+    color: white;
+  }
+  
+  .styled-button:active {
+    transform: scale(0.95);
+  }
+  
+  .styled-button:focus {
+    outline: none;
+  }
+  
+  .center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+

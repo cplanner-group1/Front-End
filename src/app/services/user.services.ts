@@ -41,7 +41,7 @@ export class MyApi {
     logout(): Observable<any> {
         //console.log(user);
         let refresh = localStorage.getItem('refresh');
-        console.log(refresh);
+        //console.log(refresh);
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.authUrl + 'logout/',{refresh: refresh }, { headers: headers }).pipe(
             map((response:any)=>{

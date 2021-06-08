@@ -1,1 +1,172 @@
-<p>add-other works!</p>
+<div mat-dialog-content style="width: 100%; margin:0; padding: 0; " class="add-course">
+    <div class="row" style="width: 100%; margin: 0;">
+        <div class="col-md-7">
+            <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
+                <mat-label>نام کلاس خارج دانشگاه</mat-label>
+                <input matInput placeholder="نام درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+            </mat-form-field>
+        </div>
+        <div class="col-md-5">
+            <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
+                <mat-label>نام موسسه</mat-label>
+                <input matInput placeholder="استاد ارائه دهنده درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+            </mat-form-field>
+        </div>
+        <div class="col-md-12">
+            <mat-divider></mat-divider>
+        </div>
+        <!--EXAM TIME-->
+        <div class="col-md-12 mt-3">
+            <div class="center">
+                <button mat-raised-button class="font-iran-sans-FA styled-button main-button">
+                    <mat-icon matSuffix class="pb-3">add</mat-icon>
+                    اضافه کردن زمان امتحان
+                </button>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 font-iran-sans-FA">
+                    <p>
+                        زمان امتحان 1:
+                    </p>
+                </div>
+                
+                <div class="col-md-4">
+                    <mat-form-field appearance="none"
+                            class="shadow-md"
+                            style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                            <mat-label>زمان آغاز</mat-label> 
+                            <input 
+                            matInput
+                            class="font-iran-sans-FA p-3 text-center shadow-md" 
+                            style="background-color: transparent; border:none; width: 100% !important;" 
+                            [dpDayPicker]="datePickerConfig"
+                            [(ngModel)]="startTime"
+                            
+                            mode="time" 
+                            dir="rtl" 
+                            theme="dp-material" 
+                            placeholder="تاریخ مورد نظرت رو انتخاب کن"/>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="none"
+                            class="shadow-md"
+                            style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                            <mat-label>زمان پایان</mat-label> 
+                            <input 
+                            matInput
+                            class="font-iran-sans-FA p-3 text-center shadow-md" 
+                            style="background-color: transparent; border:none; width: 100% !important;" 
+                            [dpDayPicker]="datePickerConfig"
+                            [(ngModel)]="endTime"
+                            
+                            mode="time" 
+                            dir="rtl" 
+                            theme="dp-material" 
+                            placeholder="تاریخ مورد نظرت رو انتخاب کن"/>
+                    </mat-form-field>
+                    
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="none"
+                            class="shadow-md"
+                            style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                            <mat-label style="padding-bottom:10px">تاریخ امتحان</mat-label> 
+                            <input 
+                            matInput
+                            class="font-iran-sans-FA p-3 text-center shadow-md" 
+                            style="background-color: transparent; border:none; width: 100% !important;" 
+                            [dpDayPicker]="datePickerConfig"
+                            [(ngModel)]="examTime"
+                            
+                            mode="day" 
+                            dir="rtl" 
+                            theme="dp-material" 
+                            placeholder="تاریخ مورد نظرت رو انتخاب کن"/>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-3">
+            <mat-divider></mat-divider>
+        </div>
+
+        <!--CLASSES TIME-->
+        <div class="col-md-12 mt-3">
+            <div class="center">
+                <button mat-raised-button class="font-iran-sans-FA styled-button main-button">
+                    <mat-icon matSuffix class="pb-3">add</mat-icon>
+                    اضافه کردن زمان کلاس
+                </button>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 font-iran-sans-FA">
+                    <p>
+                        زمان 1:
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="none"
+                            class="shadow-md"
+                            style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                            <mat-label>زمان آغاز</mat-label> 
+                            <input 
+                            matInput
+                            class="font-iran-sans-FA p-3 text-center shadow-md" 
+                            style="background-color: transparent; border:none; width: 100% !important;" 
+                            [dpDayPicker]="datePickerConfig"
+                            [(ngModel)]="startTime"
+                            
+                            mode="time" 
+                            dir="rtl" 
+                            theme="dp-material" 
+                            placeholder="تاریخ مورد نظرت رو انتخاب کن"/>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="none"
+                            class="shadow-md"
+                            style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                            <mat-label>زمان پایان</mat-label> 
+                            <input 
+                            matInput
+                            class="font-iran-sans-FA p-3 text-center shadow-md" 
+                            style="background-color: transparent; border:none; width: 100% !important;" 
+                            [dpDayPicker]="datePickerConfig"
+                            [(ngModel)]="endTime"
+                            
+                            mode="time" 
+                            dir="rtl" 
+                            theme="dp-material" 
+                            placeholder="تاریخ مورد نظرت رو انتخاب کن"/>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field appearance="none"
+                            class="shadow-md"
+                            style="padding:8px 0px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+                        <mat-label>روز هفته</mat-label> 
+                        <mat-select
+                          class="font-iran-sans-FA align-center text-center" 
+                          style="color: white !important; min-width: 100%; padding: 8px 0 0 0;" 
+                          [(value)]="day"
+                          name="day">
+                          <mat-option [value]="status.value" 
+                            class="font-iran-sans-FA" 
+                            *ngFor="let status of dayWeekType">{{ status.viewValue }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+    </div>
+</div>
