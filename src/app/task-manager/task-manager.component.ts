@@ -32,7 +32,7 @@ export class TaskManagerComponent implements OnInit {
 
   //checkList:boolean[]=[];
   tasks:Task[]=[];
-
+  firstTasks: Task[] = [];
 
   
   dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
@@ -45,7 +45,7 @@ export class TaskManagerComponent implements OnInit {
     this._Api.getTask().subscribe(
       response=>{
         if(response){
-          console.log(response.tasks_list);
+          //console.log(response.tasks_list);
           for(let item of response.tasks_list){
             let task: Task={
               checkList:false,
@@ -60,7 +60,21 @@ export class TaskManagerComponent implements OnInit {
               status:item.status+'',
               title:item.title
             };
+            let task2: Task={
+              checkList:false,
+              deadlineDateTime:item.deadline,
+              deadlineDaysRemaining:item.remained_time,
+              deadlinePercentage:"",
+              lastChangeDate:"",
+              description:item.description,
+              priority:item.priority,
+              id:item.id,
+              owner:item.group,
+              status:item.status+'',
+              title:item.title
+            };
             this.tasks.push(task);
+            this.firstTasks.push(task2);
           }
         }
     });
@@ -104,8 +118,50 @@ export class TaskManagerComponent implements OnInit {
   } 
   editTask(){
     // TO DO
-    
+    let item = {data:this.tasks}
+    this._Api.editTask(item).subscribe(
+      result=>{
+        console.log(result);
+    });
+    /*console.log(this.firstTasks);
+    console.log(this.tasks);
+    for(let task of this.tasks){
+      let id = task.id;
+      for(let item of this.firstTasks){
+        if(task.id===item.id){
+          if(task.title!==item.title){
+            editedTasks.push(task);
+            break;
+          }
+          if(task.status!==item.status){
+            editedTasks.push(task);
+            break;
+          }
+          if(task.owner!==item.owner){
+            editedTasks.push(task);
+            break;
+          }
+          if(task.priority!==item.priority){
+            editedTasks.push(task);
+            break;
+          }
+          if(task.description!==item.description){
+            editedTasks.push(task);
+            break;
+          }
+          if(task.deadlineDateTime!==item.deadlineDateTime){
+            editedTasks.push(task);
+            break;
+          }
+          if(task.deadlineDateTime!==item.deadlineDateTime){
+            editedTasks.push(task);
+            break;
+          }
+        }
+      }
+    }*/
   }
+  
   // open task modal
   taskDetails(task:Task){
     const dialogRef = this.dialog.open(TaskDetailsComponent, {

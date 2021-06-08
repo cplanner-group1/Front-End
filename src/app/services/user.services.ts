@@ -79,7 +79,7 @@ export class MyApi {
     }
     editTask(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.taskUrl + 'delete/', items,{ headers: headers })   
+        return this.httpClient.post(this.taskUrl + 'edit/', items,{ headers: headers })   
     }
     dragTask(item): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
@@ -87,7 +87,6 @@ export class MyApi {
     }
 
     //SETTINGS:
-
     getSettings(): Observable<any> {    
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.get(this.settingUrl, { headers: headers });
