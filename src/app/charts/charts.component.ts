@@ -9,6 +9,8 @@ import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { ChartDetailsComponent } from '../chart-details/chart-details.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MyApi } from '../services/user.services';
+
 
 @Component({
   selector: 'app-charts',
@@ -35,12 +37,13 @@ export class ChartsComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar,) { 
+    private _snackBar: MatSnackBar,
+    private _Api: MyApi,) { 
     
   }
 
   ngOnInit(): void {
-
+    this.getUniversityInfo();
   }
 
 
@@ -243,6 +246,40 @@ export class ChartsComponent implements OnInit {
 
   }
 
+
+  //FOR UNIVERSITY NAME AND SUBJECT 
+  universityName: string = '';
+  universitySubject: string = '';
+
+  getUniversityInfo(){
+
+    this._Api.getSettings().subscribe(
+      response=>{
+        if(response){
+          this.universityName = response.university;
+          this.universitySubject = response.field;
+        }
+    });
+  }
+
+  postUniversityInfo() {
+    
+    //SNACKBAR 
+    this.openSnackBar();
+  
+    //API
+      let item: any = {
+        university: this.universityName,
+        field: this.universitySubject,
+      };
+      this._Api.addSettings(item).subscribe(
+        response=>{
+          if(response){
+            console.log(response);
+          }
+        }
+      )
+    }
 
 }
 

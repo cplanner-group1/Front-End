@@ -24,14 +24,17 @@
                           <mat-form-field  style="width: 100%"
                           class="full-width input-focus-hover font-iran-sans-FA">
                               <mat-label>نام دانشگاه</mat-label>
-                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="">
+                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" value="{{universityName}}">
                           </mat-form-field>
                       </div>
                       <div class="col-md-6 p-2" style="float: left;">
                           <mat-form-field class="full-width input-focus-hover font-iran-sans-FA">
                               <mat-label>رشته</mat-label>
-                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="">
+                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" value="{{universitySubject}}">
                           </mat-form-field>
+                      </div>
+                      <div class="center">
+                        <button mat-raised-button class="btn-fab font-iran-sans-FA save-button" (click)="postUniversityInfo()">ذخیره</button>
                       </div>
                   </div>
                 </div>
@@ -59,9 +62,9 @@
                                      
                                       <div class="col-md-12 p-4" style="margin:0;">
                                         <div class="center">
-                                          <button mat-raised-button class="font-iran-sans-FA styled-button main-button">
+                                          <button mat-raised-button class="font-iran-sans-FA styled-button main-button long-button">
                                             <mat-icon matSuffix class="pb-3">search</mat-icon>
-                                            جستجو هوشمند بر اساس نام رشته و دانشگاه</button>
+                                            جستجو بر اساس نام رشته و دانشگاه</button>
                                         </div>
                                       </div>
                                       <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
@@ -371,11 +374,11 @@
               </table>
             </div>
           </div>
-          <!--NEW NEW NEW NEW NEW NEW-->
+          <!--SAVE BUTTON-->
             <div class="center">
               <button mat-raised-button class="btn-fab font-iran-sans-FA save-button" (click)="postCharts()">ذخیره</button>
             </div>
-          <!--NEW NEW NEW NEW NEW NEW-->
+          <!--SAVE BUTTON-->
         </div>
       </div>
       <div class="col-md-4" *ngIf="userCourses.length>0">
@@ -412,8 +415,8 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <div class="col-md-12 mt-3">
-              <button mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی لیست بر اساس الفبا</button>
+            <div class="col-md-12 mt-3 center">
+              <button mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی بر اساس الفبا</button>
             </div>  
           </div>
         </div>

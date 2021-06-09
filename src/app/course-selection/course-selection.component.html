@@ -9,9 +9,11 @@
                     <mat-horizontal-stepper [linear]="isLinear" class="font-iran-sans-FA" #stepper>
                         <mat-step>
                             <ng-template matStepLabel>تعیین دروس ارائه شده</ng-template>
-                            <div class="col-md-12 p-4" style="margin:0;">
-                                <button mat-raised-button class="font-iran-sans-FA m-3" (click)="addCourse()">اضافه کردن درس دانشگاه</button>
-                                <button mat-raised-button class="font-iran-sans-FA m-3" (click)="addOther()">اضافه کردن تایم خارج دانشگاه </button>
+                            <div class="col-md-12 p-4 center" style="margin:0;">
+                              <div class="row">
+                                <div class="col-sm-6"><button mat-raised-button class="font-iran-sans-FA m-3 save-button btn-fab" (click)="addCourse()">اضافه کردن کلاس دانشگاهی</button></div>
+                                <div class="col-sm-6"><button mat-raised-button class="font-iran-sans-FA m-3 save-button btn-fab" (click)="addOther()">اضافه کردن کلاس خارج از دانشگاه </button></div>
+                              </div>
                             </div>  
                              
                             <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
@@ -44,34 +46,35 @@
                                         <td class="text-center">
                                             <div>دانشگاه</div>
                                         </td>
-                                        <td class="text-center" style="max-width: 225px;"> 
-                                            <button mat-raised-button 
-                                                    class="font-iran-sans-FA btn-success ml-3 mb-2" 
-                                                    style="min-width: 80px;">
-                                                    ویرایش
-                                            </button>
-                                            <button mat-raised-button class="font-iran-sans-FA btn-danger ml-3"
-                                                    style="min-width: 80px;">
-                                                    حذف
-                                            </button>
+                                        <td style="background-color: white;">
+                                          <button mat-button class="btn-fab" matTooltip="ویرایش" [matTooltipPosition]="'above'" style="color: #0CC078;">
+                                            <span class="material-icons">create</span>
+                                          </button>
 
+                                          <button mat-button (click)="deleteRow(i)" class="btn-delete" matTooltip="حذف درس" [matTooltipPosition]="'above'" style="color: #E14055;">
+                                            <span class="material-icons">delete</span>
+                                          </button>
                                         </td>
                                     </tr>
                                 </tbody>
                                 </table>
                             </div>
                             <div>
-                              <button mat-button matStepperNext class="font-iran-sans-FA">مرحله بعد</button>
+                              <button mat-button matStepperNext class="font-iran-sans-FA" style="float: left; margin-top: 20px;">
+                                مرحله بعد
+                                <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
+                              </button>
                             </div>
                         </mat-step>
-                        <mat-step label="انتخاب درس"> 
+                        <mat-step label="انتخاب دروس"> 
                             
                             <div class="col-md-12 pt-2">
+                              <p style="margin: 20px 0 50px 0;">می‌توانید کلاس‌ها را بین دو بخش‌‌‌ «ارائه شده» و «انتخاب برای این ترم» با کشیدن ردیف‌ها، جابه‌جا کنید.</p>
+
                               <div class="row" cdkDropListGroup>
                                 <div class="col-md-6">
                                   <div class="example-container col-md-6">
-                                    <h2>ارائه شده</h2>
-                                
+                                    <h2>ارائه شده</h2>                                
                                     <div
                                       cdkDropList
                                       [cdkDropListData]="todo"
@@ -97,13 +100,18 @@
                               </div>
                             </div>                       
                             <div class="col-md-12">
-                              <button mat-button matStepperPrevious class="font-iran-sans-FA">مرحله قبل</button>
-                              <button mat-button matStepperNext class="font-iran-sans-FA">مرحله بعد</button>
+                              <button mat-button matStepperPrevious class="font-iran-sans-FA" style="float: right; margin-top: 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="15px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12"/></g></svg>
+                                مرحله قبل
+                              </button>
+                              <button mat-button matStepperNext class="font-iran-sans-FA" style="float: left; margin-top: 20px;">
+                                مرحله بعد
+                                <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
+                              </button>
                             </div>
                         </mat-step>
                         <mat-step>
-                          <ng-template matStepLabel>تمام</ng-template>
-                          <p>You are now done.</p>
+                          <ng-template matStepLabel>نمایش چارت</ng-template>
                          
                           <div id="chart">
                             <apx-chart
@@ -116,8 +124,14 @@
                           </div>
 
                           <div>
-                            <button mat-button matStepperPrevious class="font-iran-sans-FA">مرحله قبل</button>
-                            <button mat-button (click)="stepper.reset()" class="font-iran-sans-FA">حذف تمام تغییرات</button>
+                            <button mat-button matStepperPrevious class="font-iran-sans-FA" style="float: right; margin-top: 20px;">
+                              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="15px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12"/></g></svg>
+                              مرحله قبل
+                            </button>
+                            <button mat-button (click)="stepper.reset()" class="font-iran-sans-FA btn-delete" style="margin-top: 20px; float: left;">
+                              <span class="material-icons">delete</span>
+                              حذف تمام تغییرات
+                            </button>
                           </div>
                         </mat-step>
                     </mat-horizontal-stepper>

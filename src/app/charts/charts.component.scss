@@ -142,7 +142,7 @@ table td{
 
 
 
-// button
+// BUTTONS
 .btn-fab{
   margin-bottom: 10px;
   background-color: #84CAE9;
@@ -159,8 +159,6 @@ table td{
   opacity: 1;
 }
 
-
-//BUTTONS
 .styled-button {
   border-radius: 20px;
   font-size: 14px;
@@ -203,6 +201,11 @@ table td{
 .main-button{
   background-color: #374785;
   color: white;
+}
+
+.long-button {
+  font-size: 12px;
+  margin: 0;
 }
 
 //drag

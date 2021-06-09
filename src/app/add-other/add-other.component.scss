@@ -59,7 +59,7 @@
     height: 80% !important;
 }
 
-
+//BUTTONS
 .btn-fab{
     margin-bottom: 10px;
     background-color: #84CAE9;
@@ -68,20 +68,15 @@
     font-weight: bolder;
     opacity: 0.8;
     transition: all 0.3s ease-in-out 0s;
-}
-.btn-fab:hover{
-    margin-bottom: 10px;
+  }
+  .btn-fab:hover{
     background-color: #84CAE9;
     color: white;
-    font-size: 20pt;
-    font-weight: bolder;
     transition: all 0.3s ease-in-out 0s;
     opacity: 1;
-}
+  }
+  
 
-
-
-//BUTTONS
 .styled-button {
     border-radius: 20px;
     font-size: 14px;
@@ -99,7 +94,7 @@
     padding: 1px 30px;
     transition: transform 80ms ease-in;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-top: 40px;
     min-width: 80px;
     padding: 5px 80px;
     background-color: #84CAE9;

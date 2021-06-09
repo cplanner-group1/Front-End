@@ -11,6 +11,7 @@ export class MyApi {
     authUrl = this.baseUrl + 'account/';
     taskUrl = this.baseUrl + 'task/';
     settingUrl = this.baseUrl + 'account/student-info/';
+    chartsUrl = this.baseUrl + '/';
     
     constructor(private httpClient:HttpClient){
         //this.BaseUrl = window['apiUrl'];
@@ -95,6 +96,11 @@ export class MyApi {
     addSettings(item): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.settingUrl, item, { headers: headers })   
+    }
+
+    addUniversityInfo(item): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl, item, { headers: headers })   
     }
 
 }

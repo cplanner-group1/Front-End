@@ -22,8 +22,6 @@ export class PanelComponent implements OnInit {
     this.getUserName();
   }
 
-  userName: string = "خوش‌آمدید";
-
   logout(){
     const dialogRef = this.dialog.open(DeleteAlertComponent, {
       minWidth: '400',
@@ -52,6 +50,8 @@ export class PanelComponent implements OnInit {
     
   }
 
+  userName: string = "خوش‌آمدید";
+
   getUserName(){
     let name: string = "";
     let surname: string = "";
@@ -69,12 +69,3 @@ export class PanelComponent implements OnInit {
   }
 
 }
-/*
-export class name {
-  constructor(parameters) {
-    
-  }
-  //private userName: string = "";
-  userName = getUserName.userName();
-}
-*/

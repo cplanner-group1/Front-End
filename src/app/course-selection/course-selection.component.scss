@@ -9,25 +9,62 @@
     min-width: 150px;
     width: 100%;
 }
-// button
+
+//BUTTONS
 .btn-fab{
-    margin-bottom: 10px;
-    background-color: #AC3B61;
-    color: white;
-    font-size: 20pt;
     font-weight: bolder;
-    opacity: 0.8;
+    opacity: 0.9;
     transition: all 0.3s ease-in-out 0s;
-}
-.btn-fab:hover{
-    margin-bottom: 10px;
-    background-color: #AC3B61;
-    color: white;
-    font-size: 20pt;
-    font-weight: bolder;
+  }
+  .btn-fab:hover{
     transition: all 0.3s ease-in-out 0s;
     opacity: 1;
+  }
+
+.styled-button {
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 30px;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin: 0 10px;
 }
+
+.save-button {
+    border-radius: 20px;
+    font-weight: bold;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin-bottom: 20px;
+    min-width: 80px;
+    padding: 3px 30px;
+    background-color: #84CAE9;
+    color: white;
+    font-size: 13px;
+    width: 240px;
+}
+
+.styled-button:active {
+    transform: scale(0.95);
+}
+
+.styled-button:focus {
+    outline: none;
+}
+
+.main-button{
+    background-color: #374785;
+    color: white;
+}
+
+//CENTER
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
 
 // table
 table,table th,table td {
@@ -102,4 +139,3 @@ table td{
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-  
