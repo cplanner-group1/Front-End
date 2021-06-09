@@ -62,7 +62,7 @@ a {
 
 .bg-text a {
     color: white;
-    padding: 12px 45px;
+    padding: 12px 80px;
     margin-top: 30px;
     border: 1px solid white;   
     border-radius: 20px;
@@ -112,6 +112,8 @@ a {
 
 .glass-morphism-container1 p{
     text-align: right;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .text-styling {
@@ -120,24 +122,10 @@ a {
 }
 
 
-.entekhab-vahed-image {
-    background-image: url('../../assets/img/landing/entekhab-vahed-svg.svg');
+.body-images {
     background-repeat: no-repeat;
-    height: 300px;
+    margin-bottom: 10px;
 }
-
-.task-manager-image {
-    background-image: url('../../assets/img/landing/task-manager-light-blue.svg');
-    background-repeat: no-repeat;
-    height: 300px;
-}
-
-.apply-image {
-    background-image: url('../../assets/img/landing/apply-light-blue.svg');
-    background-repeat: no-repeat;
-    height: 300px;
-}
-
 
 //BODY
 .explanations{
@@ -147,6 +135,8 @@ a {
 .explanations p {
     margin: 50px;
     text-align: right;
+    text-align: justify;
+    text-justify: inter-word;
     font-size: 20px;
 }
 
@@ -161,29 +151,15 @@ a {
     width: 85%;
 }
 
-.questions1-image {
-    background-image: url('../../assets/img/landing/stressed1-pink.svg');
-    background-repeat: no-repeat;
-    height: 500px;
-}
-
-.questions2-image {
-    background-image: url('../../assets/img/landing/Completed-pink.svg');
-    background-repeat: no-repeat;
-    height: 500px;
-}
-
-.questions3-image {
-    background-image: url('../../assets/img/landing/Stressed2-pink.svg');
-    background-repeat: no-repeat;
-    height: 500px;
-}
-
 .shape-after-body {
     background-color: #f76c6c;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1186%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(168%2c 208%2c 230%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c374 C 96%2c335.2 288%2c189.8 480%2c180 C 672%2c170.2 768%2c315.2 960%2c325 C 1152%2c334.8 1344%2c248.2 1440%2c229L1440 560L0 560z' fill='rgba(247%2c 108%2c 108%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1186'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
     height: 50vh;
     margin: 0;
+}
+
+.center-verticaly {
+    margin: auto;
 }
 
 //TEKRAR SIGN UP
@@ -206,7 +182,7 @@ a {
 
 .signup-today a {
     color: white;
-    padding: 12px 45px;
+    padding: 12px 80px;
     margin-top: 40px;
     border: 1px solid white;   
     border-radius: 20px;
@@ -227,6 +203,15 @@ footer {
     padding: 50px;
     text-align: center;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
 .icons {
     width: 40px;
     height: 40px;
@@ -235,19 +220,6 @@ footer {
     margin: 0 10px;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
 
 @media (max-width: 550px) {
     .logo {
