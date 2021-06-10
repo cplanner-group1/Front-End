@@ -44,8 +44,17 @@ export class ChartsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUniversityInfo();
+    this.getChart();
   }
 
+  getChart(){
+    this._Api.getChart().subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+    });
+  }
 
   chartsDetails(chart:Chart){
     const dialogRef = this.dialog.open(ChartDetailsComponent, {

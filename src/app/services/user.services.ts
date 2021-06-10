@@ -11,7 +11,7 @@ export class MyApi {
     authUrl = this.baseUrl + 'account/';
     taskUrl = this.baseUrl + 'task/';
     settingUrl = this.baseUrl + 'account/student-info/';
-    chartsUrl = this.baseUrl + '/';
+    chartsUrl = this.baseUrl + 'chart/';
     
     constructor(private httpClient:HttpClient){
         //this.BaseUrl = window['apiUrl'];
@@ -76,7 +76,7 @@ export class MyApi {
     }
     addTask(): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.taskUrl, {},{ headers: headers })   
+        return this.httpClient.get(this.taskUrl + 'add/',{ headers: headers })   
     }
     editTask(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
@@ -84,7 +84,7 @@ export class MyApi {
     }
     dragTask(item): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.taskUrl + 'delete/', item,{ headers: headers })   
+        return this.httpClient.post(this.taskUrl + 'dragdrop/', item,{ headers: headers })   
     }
 
     //SETTINGS:
@@ -103,4 +103,9 @@ export class MyApi {
         return this.httpClient.post(this.chartsUrl, item, { headers: headers })   
     }
 
+    // Chart
+    getChart(): Observable<any> {    
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl, { headers: headers });
+    }
 }

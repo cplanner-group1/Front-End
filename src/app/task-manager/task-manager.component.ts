@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
 import * as moment from 'jalali-moment';
 import { MyApi } from '../services/user.services';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 
 
@@ -22,7 +24,8 @@ export class TaskManagerComponent implements OnInit {
   rating:number = 2;
   starCount:number = 3;
   constructor(public dialog: MatDialog,
-              private _Api: MyApi) { }
+              private _Api: MyApi,
+              private _snackBar: MatSnackBar) { }
 
   statusType: SelectType[] = [
       {value:'0',viewValue:'شروع نشده'},
@@ -39,6 +42,21 @@ export class TaskManagerComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
+  }
+  //SNACKBAR FOR 'SAVE' BUTTON
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  message: string = '✔️  ذخیره شد.';
+
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data:{message:message},
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      panelClass: ['alert-snackbar-success']
+    });
   }
 
   getTasks(){
@@ -91,27 +109,29 @@ export class TaskManagerComponent implements OnInit {
 
   // add task
   addTask(){ // add row
-    let new_task: Task = {
-        checkList: false,
-        id:-1,
-        title:'',
-        owner: '',
-
-        deadlineDateTime:'',
-        deadlinePercentage: '',
-        deadlineDaysRemaining: '',
-
-        status: '0',
-        priority: '1',
-
-        lastChangeDate:'همین الان',
-        description: "توضیحات مربوط به ویژگی را اینجا وارد کنید"
-    }
     this._Api.addTask().subscribe(
       response=>{
         if(response){
-          new_task.id = response.id;
+          console.log(response);
+          let new_task: Task = {
+            checkList: false,
+            id:response.id,
+            title:'',
+            owner: '',
+    
+            deadlineDateTime:response.date,
+            deadlinePercentage: '',
+            deadlineDaysRemaining: 'تعیین نشده',
+    
+            status: '0',
+            priority: '1',
+    
+            lastChangeDate:'همین الان',
+            description: "توضیحات مربوط به ویژگی را اینجا وارد کنید"
+          }
+          //new_task.id = response.id;
           this.tasks.push(new_task);
+          this.openSnackBar("تسک جدید اضافه شد."); 
         }
       }
     )
@@ -120,8 +140,8 @@ export class TaskManagerComponent implements OnInit {
     // TO DO
     let item = {data:this.tasks}
     this._Api.editTask(item).subscribe(
-      result=>{
-        console.log(result);
+      response=>{
+        this.openSnackBar(response); 
     });
     /*console.log(this.firstTasks);
     console.log(this.tasks);
@@ -195,15 +215,18 @@ export class TaskManagerComponent implements OnInit {
       old:  event.previousIndex,
       new:  event.currentIndex
     }
-    this._Api.dragTask(data).subscribe(
-      response=>{
-        if(response){
-          console.log(response);
+    if(data.old!==data.new){
+      this._Api.dragTask(data).subscribe(
+        response=>{
+          if(response){
+            console.log(response);
+            //this.openSnackBar(response); 
+          }
         }
-      }
-    );
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
-
+      );
+      moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+  
+    }
   }
 
 
@@ -317,7 +340,8 @@ export class TaskManagerComponent implements OnInit {
     this._Api.deleteTask(deletObject).subscribe(
       response=>{
         if(response){
-          console.log(response);
+          //console.log(response);
+          this.openSnackBar(response); 
         }
       }
     );
