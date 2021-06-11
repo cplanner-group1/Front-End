@@ -22,7 +22,7 @@ export class ChartsComponent implements OnInit {
   panelOpenState = false;
   charts: Chart[] = Charts;
 
-  userCourses: CourseTrack[] = CoursesTrack;
+  userCourses: CourseTrack[] = [];
   statusSelectedValue: string = "0";
   showingStatus: SelectType[] = [
     {value: '0', viewValue: 'همه'},
@@ -44,14 +44,35 @@ export class ChartsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUniversityInfo();
-    this.getChart();
+    this.getCourses();
   }
 
-  getChart(){
+
+  
+  getCourses(){
     this._Api.getChart().subscribe(
       response=>{
         if(response){
           console.log(response);
+          for(let item of response.data){
+            let course: CourseTrack={
+              course:
+              {
+                  id: item.id,
+                  title: item.title,
+                  suggestedPrerequisites: [] 
+              },
+              prerequisites: [],
+              status: item.status, 
+              grade: item.grade,
+              label: item.label+'',
+              description: item.description,
+              unit: item.unit,
+              checkList:false
+            };
+            this.userCourses.push(course);
+            //this.firstTasks.push(task2);
+          }
         }
     });
   }
@@ -83,7 +104,25 @@ export class ChartsComponent implements OnInit {
 
   // drag and drop method:
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.userCourses, event.previousIndex, event.currentIndex);
+    let data = 
+    {
+      id:   this.userCourses[event.previousIndex].course.id,
+      old:  event.previousIndex,
+      new:  event.currentIndex
+    }
+    if(data.old!==data.new){
+      this._Api.dragChart(data).subscribe(
+        response=>{
+          if(response){
+            console.log(response);
+            //this.openSnackBar(response); 
+          }
+        }
+      );
+      moveItemInArray(this.userCourses, event.previousIndex, event.currentIndex);
+  
+    }
+    //moveItemInArray(this.userCourses, event.previousIndex, event.currentIndex);
   }
 
 
@@ -99,25 +138,46 @@ export class ChartsComponent implements OnInit {
 
   
   addCourse(){ // add row
-    let new_item: CourseTrack = {
-      course:
-      {
-          id: -1,
-          title: '',
-          suggestedPrerequisites: [] 
-      },
-      prerequisites: [],
-      status: 0, 
-      grade: null,
-      label: '0',
-      description: '',
-      unit: 3,
-      checkList:false
-    }
-    this.userCourses.unshift(new_item);
-
-    //this.checkList.push(false);
+    this._Api.addChart().subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+          let new_course: CourseTrack = {
+            course:
+            {
+                id: response.id,
+                title: '',
+                suggestedPrerequisites: [] 
+            },
+            prerequisites: [],
+            status: 0, 
+            grade: 0,
+            label: '0',
+            description: '',
+            unit: 3,
+            checkList:false
+          }
+          //new_task.id = response.id;
+          this.userCourses.push(new_course);
+          this.openSnackBar("درس جدید اضافه شد."); 
+        }
+      }
+    )
   } 
+
+  editCharts(){
+    //SNACKBAR
+    //this.openSnackBar(); 
+
+    //API
+    let item = {data:this.userCourses}
+      this._Api.editChart(item).subscribe(
+        response=>{
+          //console.log(response);
+          this.openSnackBar(response); 
+    });
+    
+  }
 
 
   editView:boolean =  false;
@@ -194,7 +254,13 @@ export class ChartsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         if(i!==-1){
+          let deleteItems: number[] = []
+          if(this.userCourses[i].course.id!=-1){
+            deleteItems.push(this.userCourses[i].course.id);
+          }
           this.userCourses.splice(i,1);
+          this.deleteCourse(deleteItems);
+
         }
       }
     });
@@ -213,17 +279,33 @@ export class ChartsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         let n = this.userCourses.length;
+        let deleteItems: number[] = [];
         for(let i = n-1 ; i >= 0 ; i--){
           if(this.userCourses[i].checkList===true){
+            if(this.userCourses[i].course.id!=-1){
+              deleteItems.push(this.userCourses[i].course.id);
+            }
             this.userCourses.splice(i,1);
 
           }
         }
         this.masterToggleValue = false;
         this.masterToggleIndeterminate = false;
+        this.deleteCourse(deleteItems);
       }
     });
     
+  }
+  deleteCourse(deleteItems:number[]){
+    let deletObject = { "deleted":deleteItems };
+    this._Api.deleteChart(deletObject).subscribe(
+      response=>{
+        if(response){
+          //console.log(response);
+          this.openSnackBar(response); 
+        }
+      }
+    );
   }
 
   //SNACKBAR FOR 'SAVE' BUTTON
@@ -232,10 +314,10 @@ export class ChartsComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   message: string = '✔️  ذخیره شد.';
 
-  openSnackBar() {
+  openSnackBar(message: string) {
     this._snackBar.openFromComponent(SnackBarComponent, {
       duration: this.durationInSeconds * 1000,
-      data:{message:this.message},
+      data:{message:message},
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       panelClass: ['alert-snackbar-success']
@@ -246,14 +328,16 @@ export class ChartsComponent implements OnInit {
   //ASHKAN API RO NNVSHTM, FQT BARA SNACKBAR GFTM YE JA BASHE VQTI CLICK MKNE
   //BQYE CODETO OONJA K ZDM API BNVIS
 
-  postCharts() {
+
+  // changed to editcharts
+  /*postCharts() {
     
     //SNACKBAR
     this.openSnackBar(); 
 
     //API
 
-  }
+  }*/
 
 
   //FOR UNIVERSITY NAME AND SUBJECT 
@@ -261,7 +345,6 @@ export class ChartsComponent implements OnInit {
   universitySubject: string = '';
 
   getUniversityInfo(){
-
     this._Api.getSettings().subscribe(
       response=>{
         if(response){
@@ -272,9 +355,8 @@ export class ChartsComponent implements OnInit {
   }
 
   postUniversityInfo() {
-    
     //SNACKBAR 
-    this.openSnackBar();
+    this.openSnackBar(this.message);
   
     //API
       let item: any = {

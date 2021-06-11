@@ -92,7 +92,7 @@ export class TaskManagerComponent implements OnInit {
               title:item.title
             };
             this.tasks.push(task);
-            this.firstTasks.push(task2);
+            //this.firstTasks.push(task2);
           }
         }
     });
@@ -318,7 +318,7 @@ export class TaskManagerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         let n = this.tasks.length;
-        let deleteItems: number[] = []
+        let deleteItems: number[] = [];
         for(let i = n-1 ; i >= 0 ; i--){
           if(this.tasks[i].checkList===true){
             if(this.tasks[i].id!=-1){

@@ -103,9 +103,25 @@ export class MyApi {
         return this.httpClient.post(this.chartsUrl, item, { headers: headers })   
     }
 
-    // Chart
+    // CHART:
     getChart(): Observable<any> {    
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.get(this.chartsUrl, { headers: headers });
+    }
+    deleteChart(items): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'delete/', items,{ headers: headers })   
+    }
+    addChart(): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl + 'add/',{ headers: headers })   
+    }
+    editChart(items): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'edit/', items,{ headers: headers })   
+    }
+    dragChart(item): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'dragdrop/', item,{ headers: headers })   
     }
 }
