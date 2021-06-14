@@ -90,6 +90,11 @@ export class MyApi {
     }
 
 
+    getDashboard():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.taskUrl + 'dashboard/', { headers: headers });
+    }
+
 
     // TASK MANAGER:
     getTask(): Observable<any> {    
@@ -112,6 +117,7 @@ export class MyApi {
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.taskUrl + 'dragdrop/', item,{ headers: headers })   
     }
+    
 
     //SETTINGS:
     getSettings(): Observable<any> {    
@@ -132,25 +138,39 @@ export class MyApi {
     // CHART:
     getChart(): Observable<any> {    
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.get(this.chartsUrl, { headers: headers });
+        return this.httpClient.get(this.chartsUrl+ 'ct/', { headers: headers });
     }
     deleteChart(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.chartsUrl + 'delete/', items,{ headers: headers })   
+        return this.httpClient.post(this.chartsUrl + 'ct/delete/', items,{ headers: headers })   
     }
     addChart(): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.get(this.chartsUrl + 'add/',{ headers: headers })   
+        return this.httpClient.get(this.chartsUrl + 'ct/add/',{ headers: headers })   
     }
     editChart(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.chartsUrl + 'edit/', items,{ headers: headers })   
+        return this.httpClient.post(this.chartsUrl + 'ct/edit/', items,{ headers: headers })   
     }
     dragChart(item): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.chartsUrl + 'dragdrop/', item,{ headers: headers })   
+        return this.httpClient.post(this.chartsUrl + 'ct/dragdrop/', item,{ headers: headers })   
     }
-
+    searchChart(university,field): Observable<any>{
+        //let params = new HttpParams().set("amount",amount);//1--> id
+        let params = {};
+        params['university'] = university;
+        params['field'] = field;
+        
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'search/', { headers: headers , params});
+    }
+    /*
+    requestDeposit(amount: string):Observable<any>{
+        let params1 = new HttpParams().set("amount",amount);//1--> id
+        return this.httpClient.get<any>(this.BaseUrl+"market/cash/deposit", {params:params1} );
+    }
+    */
 
 
 

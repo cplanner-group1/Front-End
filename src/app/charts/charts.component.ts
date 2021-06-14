@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Charts,Chart,CourseTrack,Course } from '../shared/chart';
+import { Chart,CourseTrack,Course } from '../shared/chart';
 import { CoursesTrack } from '../shared/courses';
 import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { SelectType, SelectTypeNumberValue} from '../shared/select';
@@ -20,7 +20,7 @@ import { MyApi } from '../services/user.services';
 export class ChartsComponent implements OnInit {
 
   panelOpenState = false;
-  charts: Chart[] = Charts;
+  charts: Chart[] = [];
 
   userCourses: CourseTrack[] = [];
   statusSelectedValue: string = "0";
@@ -45,9 +45,34 @@ export class ChartsComponent implements OnInit {
   ngOnInit(): void {
     this.getUniversityInfo();
     this.getCourses();
+    //this.getCharts();
   }
 
-
+  getCharts(university,subject){
+    this._Api.searchChart(university,subject).subscribe(
+      result=>{
+        //console.log(result);
+        if(result){
+          for(let chart of result.data){
+            let new_chart:Chart = {
+                id: chart.id ,
+                title:  chart.title,
+                owner: chart.owner,
+                
+                used: chart.used,
+        
+                study: chart.study,
+                university:chart.university,
+        
+                date: chart.date,
+                courses: chart.courses
+            }
+            this.charts.push(new_chart);
+          }
+        }
+      }
+    );
+  }
   
   getCourses(){
     this._Api.getChart().subscribe(
@@ -343,6 +368,13 @@ export class ChartsComponent implements OnInit {
   //FOR UNIVERSITY NAME AND SUBJECT 
   universityName: string = '';
   universitySubject: string = '';
+  name: string = '';
+  surname: string = '';
+  
+  entryYear: number;
+  units: number;
+  overallAverage: number;
+  termAverage: number;
 
   getUniversityInfo(){
     this._Api.getSettings().subscribe(
@@ -350,6 +382,14 @@ export class ChartsComponent implements OnInit {
         if(response){
           this.universityName = response.university;
           this.universitySubject = response.field;
+
+          this.name = response.first_name;
+          this.surname = response.last_name;
+
+          this.entryYear = response.entry_year;
+          this.units = response.total_units;
+          this.overallAverage = response.total_gpa;
+          this.termAverage = response.last_semester_gpa;
         }
     });
   }
@@ -362,6 +402,12 @@ export class ChartsComponent implements OnInit {
       let item: any = {
         university: this.universityName,
         field: this.universitySubject,
+        first_name: this.name,
+        last_name: this.surname,
+        entry_year: this.entryYear,
+        total_gpa: this.overallAverage,
+        last_semester_gpa: this.termAverage,
+        total_units: this.units,
       };
       this._Api.addSettings(item).subscribe(
         response=>{

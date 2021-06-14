@@ -24,13 +24,13 @@
                           <mat-form-field  style="width: 100%"
                           class="full-width input-focus-hover font-iran-sans-FA">
                               <mat-label>نام دانشگاه</mat-label>
-                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" value="{{universityName}}">
+                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" [(ngModel)]="universityName">
                           </mat-form-field>
                       </div>
                       <div class="col-md-6 p-2" style="float: left;">
                           <mat-form-field class="full-width input-focus-hover font-iran-sans-FA">
                               <mat-label>رشته</mat-label>
-                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" value="{{universitySubject}}">
+                              <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" [(ngModel)]="universitySubject">
                           </mat-form-field>
                       </div>
                       <div class="center">
@@ -62,12 +62,13 @@
                                      
                                       <div class="col-md-12 p-4" style="margin:0;">
                                         <div class="center">
-                                          <button mat-raised-button class="font-iran-sans-FA styled-button main-button long-button">
+                                          <button (click)="getCharts(universityName,universitySubject)"
+                                            mat-raised-button class="font-iran-sans-FA styled-button main-button long-button">
                                             <mat-icon matSuffix class="pb-3">search</mat-icon>
                                             جستجو بر اساس نام رشته و دانشگاه</button>
                                         </div>
                                       </div>
-                                      <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                                      <div *ngIf="charts.length>0" class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                         <!-- table view for charts  -->
                                         <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
                                           <thead class="thead" style="border-top: none;">
@@ -114,7 +115,7 @@
                                   </div>
                                  </div>
                               </mat-tab>
-                              <mat-tab class="font-iran-sans-FA" label="جستجو دستی">
+                              <!--<mat-tab class="font-iran-sans-FA" label="جستجو دستی">
                                 <div class="row" style="width: 100%; margin: 0;">
                                   <div class="col-md-10">
                                     <mat-form-field class="full-width input-focus-hover font-iran-sans-FA mt-2">
@@ -126,7 +127,6 @@
                                     <button mat-raised-button class="font-iran-sans-FA mt-2 styled-button secondary-button" style="max-width: 100%;">جستجو</button>
                                   </div>
                                   <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
-                                    <!-- table view for charts  -->
                                     <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
                                       <thead class="thead" style="border-top: none;">
                                         <tr style="border-top: none;">
@@ -163,7 +163,7 @@
                                   </div>
                                 </div>
                                 
-                              </mat-tab>
+                              </mat-tab>-->
                             </mat-tab-group>
                           </div>
                           

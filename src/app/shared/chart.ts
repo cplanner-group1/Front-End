@@ -13,7 +13,7 @@ export class Chart{
 
     date: string; // date added
 
-    courses: CourseTrack[]; // list of string babe:)
+    courses: string[]; // list of string babe:)
 }
 export class Course{
     id: number;
@@ -46,7 +46,7 @@ export interface Prerequisite{
 // prerequisites ha id course haro zakhire mikonee k pish niaz ast chon momken ast pish niaz dr daneshgah hae mokhtlf farq kne to courseTrack ovordm
 // suggestedPrerequisites vase ine k hame halat hae ta hala por shde ro dshte bashim k vaqti add krd yeho ezfe kne o oni k nis ro hazf kne
 
-
+/*
 export const Charts: Chart[] = [
     {
         id: 1 ,
@@ -74,4 +74,4 @@ export const Charts: Chart[] = [
         date: "2021/10/12",
         courses:[]
     }
-]
+]*/

@@ -23,7 +23,7 @@ export class SettingComponent implements OnInit {
   surname: string = '';
 
   universityName: string = '';
-  universitySubject: string = ''
+  universitySubject: string = '';
 
   entryYear: number;
   units: number;

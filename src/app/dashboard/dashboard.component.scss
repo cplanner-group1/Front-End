@@ -1,0 +1,39 @@
+
+// progress bar
+
+// priority
+.priority ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #f9b115;
+}
+
+.priority ::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+// to do
+.to-do ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #e14055;
+}
+
+.to-do ::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+// doing
+.doing ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #a8d0e6;
+}
+
+.doing ::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+// done
+.done ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #0cc078;
+}
+
+.done ::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+

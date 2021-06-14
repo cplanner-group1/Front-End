@@ -16,7 +16,7 @@
               </div>
               <div class="c-vr"></div>
               <div class="col">
-                <div class="text-value-xl">80</div>
+                <div class="text-value-xl">{{passedUnit}}</div>
                 <div class="text-uppercase text-muted small">واحد های پاس شده</div>
               </div>
             </div>
@@ -53,13 +53,13 @@
             </div>
             <div class="card-body row text-center">
               <div class="col">
-                <div class="text-value-xl">9</div>
+                <div class="text-value-xl">{{remainingTask}}</div>
                 <div class="text-uppercase text-muted small">کارهایی که باید انجام دهید</div>
               </div>
               <div class="c-vr"></div>
               <div class="col">
-                <div class="text-value-xl">2</div>
-                <div class="text-uppercase text-muted small">کارهای 3 روز آینده</div>
+                <div class="text-value-xl">{{statusCount[1]}}</div>
+                <div class="text-uppercase text-muted small">کارهایی که تا کنون شروع نکردید</div>
               </div>
             </div>
           </div>
@@ -76,14 +76,14 @@
                 <div class="col-sm-6">
                   <div class="row">
                     <div class="col-6">
-                      <div class="c-callout c-callout-danger"><small class="text-muted">انجام نشده</small>
-                        <div class="text-value-lg">8</div>
+                      <div class="c-callout c-callout-danger"><small class="text-muted">شروع نشده</small>
+                        <div class="text-value-lg">{{statusCount[0]}}</div>
                       </div>
                     </div>
                     <!-- /.col-->
                     <div class="col-6">
                       <div class="c-callout c-callout-info"><small class="text-muted">درحال انجام</small>
-                        <div class="text-value-lg">12</div>
+                        <div class="text-value-lg">{{statusCount[1]}}</div>
                       </div>
                     </div>
                     <!-- /.col-->
@@ -95,12 +95,12 @@
                       <span class="material-icons c-icon progress-group-icon mb-1">
                         adjust
                       </span>
-                      <div>انجام نشده</div>
-                      <div class="mfs-auto font-weight-bold">43%</div>
+                      <div>شروع نشده</div>
+                      <div class="mfs-auto font-weight-bold">{{statusPercentage[0]}}%</div>
                     </div>
-                    <div class="progress-group-bars">
+                    <div class="progress-group-bars to-do">
                       <div class="progress progress-xs">
-                        <div class="progress-bar bg-red-color" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                        <mat-progress-bar class="progress-bar" style="height:100%;" role="progressbar" mode="determinate" value="{{statusPercentage[0]}}"></mat-progress-bar>
                       </div>
                     </div>
                   </div>
@@ -110,11 +110,11 @@
                           autorenew
                       </span>
                       <div>در حال انجام</div>
-                      <div class="mfs-auto font-weight-bold">59%</div>
+                      <div class="mfs-auto font-weight-bold">{{statusPercentage[1]}}%</div>
                     </div>
-                    <div class="progress-group-bars">
+                    <div class="progress-group-bars doing">
                       <div class="progress progress-xs">
-                        <div class="progress-bar bg-gray-color" role="progressbar" style="width: 59%" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100"></div>
+                        <mat-progress-bar class="progress-bar" style="height:100%;" role="progressbar" mode="determinate" value="{{statusPercentage[1]}}"></mat-progress-bar>
                       </div>
                     </div>
                   </div>
@@ -124,11 +124,11 @@
                           done
                       </span>
                       <div>انجام شده</div>
-                      <div class="mfs-auto font-weight-bold">37%</div>
+                      <div class="mfs-auto font-weight-bold">{{statusPercentage[2]}}%</div>
                     </div>
-                    <div class="progress-group-bars">
+                    <div class="progress-group-bars done">
                       <div class="progress progress-xs">
-                        <div class="progress-bar bg-green-color" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                        <mat-progress-bar class="progress-bar" style="height:100%;" role="progressbar" mode="determinate" value="{{statusPercentage[2]}}"></mat-progress-bar>
                       </div>
                     </div>
                   </div>
@@ -152,13 +152,13 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="c-callout c-callout-success"><small class="text-muted">انجام شده</small>
-                        <div class="text-value-lg">3</div>
+                        <div class="text-value-lg">{{statusCount[2]}}</div>
                       </div>
                     </div>
                     <!-- /.col-->
                     <div class="col-6">
-                      <div class="c-callout c-callout-warning"><small class="text-muted">اولویت بندی شده</small>
-                        <div class="text-value-lg">8</div>
+                      <div class="c-callout c-callout-warning"><small class="text-muted">اهمیت خیلی بالا</small>
+                        <div class="text-value-lg">{{priorityCount[2]}}</div>
                       </div>
                     </div>
                     <!-- /.col-->
@@ -171,11 +171,12 @@
                         star
                       </span>
                       <div>بالا</div>
-                      <div class="mfs-auto font-weight-bold">43%</div>
+                      <div class="mfs-auto font-weight-bold">{{priorityPercentage[2]}}%</div>
                     </div>
-                    <div class="progress-group-bars">
+                    <div class="progress-group-bars priority">
                       <div class="progress progress-xs">
-                        <div class="progress-bar bg-yellow-color" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                        <mat-progress-bar class="progress-bar" style="height:100%;" role="progressbar" mode="determinate" value="{{priorityPercentage[2]}}"></mat-progress-bar>
+                        <!--<div class="progress-bar bg-yellow-color" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>-->
                       </div>
                     </div>
                   </div>
@@ -185,11 +186,11 @@
                         star_half
                       </span>
                       <div>متوسط</div>
-                      <div class="mfs-auto font-weight-bold">59%</div>
+                      <div class="mfs-auto font-weight-bold">{{priorityPercentage[1]}}%</div>
                     </div>
-                    <div class="progress-group-bars">
+                    <div class="progress-group-bars priority">
                       <div class="progress progress-xs">
-                        <div class="progress-bar bg-yellow-color" role="progressbar" style="width: 59%" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100"></div>
+                        <mat-progress-bar class="progress-bar" style="height:100%;" role="progressbar" mode="determinate" value="{{priorityPercentage[1]}}"></mat-progress-bar>
                       </div>
                     </div>
                   </div>
@@ -199,11 +200,12 @@
                         star_border
                       </span>
                       <div>کم</div>
-                      <div class="mfs-auto font-weight-bold">37%</div>
+                      <div class="mfs-auto font-weight-bold">{{priorityPercentage[0]}}%</div>
                     </div>
-                    <div class="progress-group-bars">
+                    <div class="progress-group-bars priority">
                       <div class="progress progress-xs">
-                        <div class="progress-bar bg-yellow-color" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!--<div class="progress-bar bg-yellow-color" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>-->
+                        <mat-progress-bar class="progress-bar" style="height:100%;" role="progressbar" mode="determinate" value="{{priorityPercentage[0]}}"></mat-progress-bar>
                       </div>
                     </div>
                   </div>
