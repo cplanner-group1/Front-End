@@ -380,7 +380,8 @@ export class CourseSelectionComponent implements OnInit {
   addCourse(){
     const dialogRef = this.dialog.open(AddCourseComponent, {
       width: '1000px',
-      height: '600px'
+      height: '600px',
+      data: {buttonText:'افزودن جدید'}
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
@@ -394,7 +395,21 @@ export class CourseSelectionComponent implements OnInit {
   addOther(){
     const dialogRef = this.dialog.open(AddOtherComponent, {
       width: '1000px',
-      height: '600px'
+      height: '600px',
+      data: {buttonText:'افزودن جدید'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        
+      }
+    });
+  }
+
+  editCourseAndOther(){
+    const dialogRef = this.dialog.open(AddCourseComponent, {
+      width: '1000px',
+      height: '600px',
+      data: {buttonText:'ذخیره تغییرات'} 
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
@@ -403,6 +418,10 @@ export class CourseSelectionComponent implements OnInit {
       }
     });
   }
+
+  
+  
+
 
   todo = [
     'ریاضی 2 - رستمی',

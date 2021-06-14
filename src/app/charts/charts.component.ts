@@ -556,10 +556,15 @@ export class ChartsComponent implements OnInit {
   publishedChart(){
     console.log(this.titleChart);
     if(this.titleChart.length<=0){
-      this.openSnackBar('1');
+      this.openSnackBar('عنوان چارت نباید خالی باشد');
     }else{
-      this.openSnackBar('2');
-
+      this._Api.publishChart(this.titleChart).subscribe(
+        response=>{
+          if(response){
+            console.log(response);
+          }
+        }
+      )
     }
   }
 

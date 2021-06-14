@@ -3,27 +3,27 @@
         <div class="col-md-7">
             <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
                 <mat-label>نام درس ارائه شده</mat-label>
-                <input matInput placeholder="نام درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+                <input matInput [(ngModel)]="termCourse.courses" placeholder="نام درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
             </mat-form-field>
         </div>
         <div class="col-md-5">
             <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
                 <mat-label>نام استاد</mat-label>
-                <input matInput placeholder="استاد ارائه دهنده درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+                <input matInput [(ngModel)]="termCourse.master" placeholder="استاد ارائه دهنده درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
             </mat-form-field>
         </div>
         <div class="col-md-12">
             <mat-divider></mat-divider>
         </div>
         <!--EXAM TIME-->
-        <div class="col-md-12 mt-3">
+        <!--<div class="col-md-12 mt-3">
             <div class="center">
                 <button mat-raised-button class="font-iran-sans-FA styled-button main-button">
                     <mat-icon matSuffix class="pb-3">add</mat-icon>
                     اضافه کردن زمان امتحان
                 </button>
             </div>
-        </div>
+        </div>-->
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12 font-iran-sans-FA">
@@ -42,7 +42,7 @@
                             class="font-iran-sans-FA p-3 text-center shadow-md" 
                             style="background-color: transparent; border:none; width: 100% !important;" 
                             [dpDayPicker]="datePickerConfig"
-                            [(ngModel)]="startTime"
+                            [(ngModel)]="termCourse.finalExam.startTime"
                             
                             mode="time" 
                             dir="rtl" 
@@ -60,7 +60,7 @@
                             class="font-iran-sans-FA p-3 text-center shadow-md" 
                             style="background-color: transparent; border:none; width: 100% !important;" 
                             [dpDayPicker]="datePickerConfig"
-                            [(ngModel)]="endTime"
+                            [(ngModel)]="termCourse.finalExam.endTime"
                             
                             mode="time" 
                             dir="rtl" 
@@ -79,7 +79,7 @@
                             class="font-iran-sans-FA p-3 text-center shadow-md" 
                             style="background-color: transparent; border:none; width: 100% !important;" 
                             [dpDayPicker]="datePickerConfig"
-                            [(ngModel)]="examTime"
+                            [(ngModel)]="termCourse.finalExam.date"
                             
                             mode="day" 
                             dir="rtl" 
@@ -97,17 +97,17 @@
         <!--CLASSES TIME-->
         <div class="col-md-12 mt-3">
             <div class="center">
-                <button mat-raised-button class="font-iran-sans-FA styled-button main-button">
+                <button  (click)="addTime()" mat-raised-button class="font-iran-sans-FA styled-button main-button">
                     <mat-icon matSuffix class="pb-3">add</mat-icon>
                     اضافه کردن زمان کلاس
                 </button>
             </div>
         </div>
         <div class="col-md-12">
-            <div class="row">
+            <div class="row" *ngFor="let item of termCourse.date; index as i">
                 <div class="col-md-12 font-iran-sans-FA">
                     <p>
-                        زمان 1:
+                        زمان {{i+1}}:
                     </p>
                 </div>
                 <div class="col-md-4">
@@ -120,7 +120,7 @@
                             class="font-iran-sans-FA p-3 text-center shadow-md" 
                             style="background-color: transparent; border:none; width: 100% !important;" 
                             [dpDayPicker]="datePickerConfig"
-                            [(ngModel)]="startTime"
+                            [(ngModel)]="item.startTime"
                             
                             mode="time" 
                             dir="rtl" 
@@ -138,7 +138,7 @@
                             class="font-iran-sans-FA p-3 text-center shadow-md" 
                             style="background-color: transparent; border:none; width: 100% !important;" 
                             [dpDayPicker]="datePickerConfig"
-                            [(ngModel)]="endTime"
+                            [(ngModel)]="item.endTime"
                             
                             mode="time" 
                             dir="rtl" 
@@ -154,7 +154,7 @@
                         <mat-select
                           class="font-iran-sans-FA align-center text-center" 
                           style="color: white !important; min-width: 100%; padding: 8px 0 0 0;" 
-                          [(value)]="day"
+                          [(value)]="item.week"
                           name="day">
                           <mat-option [value]="status.value" 
                             class="font-iran-sans-FA" 
@@ -166,7 +166,9 @@
         </div>
 
         <div class="center">
-            <button mat-raised-button class="btn-fab font-iran-sans-FA save-button">افزودن درس</button>
+            <button mat-raised-button  (click)="saveButton()" class="btn-fab font-iran-sans-FA save-button">
+                {{data.buttonText}}
+            </button>
         </div>
 
 

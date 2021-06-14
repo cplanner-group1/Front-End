@@ -5,7 +5,7 @@ export class TermCourse{
     id: number;
     master: string;
     date:Date[]; 
-    courses: CourseTrack;
+    courses: string;
     finalExam: Date;
     priority: string;
     // 1 --> should be taken
@@ -31,7 +31,7 @@ export const Semester: TermCourse[] = [
     {
         id: 1,
         master: 'کیانی',
-        courses: CoursesTrack[0],
+        courses: 'ریاضی1',
         priority: '1',
         date:[
             {
@@ -59,7 +59,7 @@ export const Semester: TermCourse[] = [
     {
         id: 2,
         master: 'سعیدی',
-        courses: CoursesTrack[0],
+        courses: 'ریاضی 2',
         priority: '1',
         date:[
             {
@@ -87,7 +87,7 @@ export const Semester: TermCourse[] = [
     {
         id: 3,
         master: 'ساکی',
-        courses: CoursesTrack[0],
+        courses: 'ریاضی 2',
         priority: '1',
         date:[
             {
@@ -115,7 +115,7 @@ export const Semester: TermCourse[] = [
     {
         id: 4,
         master: 'زارع',
-        courses: CoursesTrack[1],
+        courses: 'مبانی نظریه محاسبه',
         priority: '2',
         date:[
             {

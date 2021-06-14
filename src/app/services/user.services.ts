@@ -186,7 +186,12 @@ export class MyApi {
         return this.httpClient.get(this.chartsUrl+ 'add-chart-ct/', { headers: headers , params});
     }
     publishChart(title):Observable<any>{
-        return;
+        let params = {};
+        params['title'] = title;
+
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'add-ct-chart/', { headers: headers , params});
+
     }
     /*
     requestDeposit(amount: string):Observable<any>{
