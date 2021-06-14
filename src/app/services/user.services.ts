@@ -136,9 +136,13 @@ export class MyApi {
     }
 
     // CHART:
-    getChart(): Observable<any> {    
+    getCourses(): Observable<any> {    
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.get(this.chartsUrl+ 'ct/', { headers: headers });
+    }
+    getCoursesOrdered(): Observable<any> {    
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'ct/order/alpha/', { headers: headers });
     }
     deleteChart(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
@@ -156,14 +160,33 @@ export class MyApi {
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.chartsUrl + 'ct/dragdrop/', item,{ headers: headers })   
     }
-    searchChart(university,field): Observable<any>{
+    searchChartUnif(university,field): Observable<any>{
         //let params = new HttpParams().set("amount",amount);//1--> id
         let params = {};
         params['university'] = university;
         params['field'] = field;
         
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.get(this.chartsUrl+ 'search/', { headers: headers , params});
+        return this.httpClient.get(this.chartsUrl+ 'search/unif/', { headers: headers , params});
+    }
+    searchChartTitle(title): Observable<any>{
+        //let params = new HttpParams().set("amount",amount);//1--> id
+        let params = {};
+        params['title'] = title;
+        
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'search/title/', { headers: headers , params});
+    }
+    selectChart(id):Observable<any>{
+        //let params = new HttpParams().set("amount",amount);//1--> id
+        let params = {};
+        params['id'] = id;
+
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'add-chart-ct/', { headers: headers , params});
+    }
+    publishChart(title):Observable<any>{
+        return;
     }
     /*
     requestDeposit(amount: string):Observable<any>{

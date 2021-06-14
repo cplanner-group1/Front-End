@@ -101,7 +101,7 @@
                                                         style="min-width: 80px;">
                                                         مشاهده
                                                 </button>
-                                                <button mat-raised-button class="font-iran-sans-FA ml-3 styled-button main-button"
+                                                <button mat-raised-button (click)="selectChart(chart)" class="font-iran-sans-FA ml-3 styled-button main-button"
                                                         style="min-width: 80px;">
                                                         انتخاب
                                                 </button>
@@ -115,18 +115,18 @@
                                   </div>
                                  </div>
                               </mat-tab>
-                              <!--<mat-tab class="font-iran-sans-FA" label="جستجو دستی">
+                              <mat-tab class="font-iran-sans-FA" label="جستجو بر اساس عنوان">
                                 <div class="row" style="width: 100%; margin: 0;">
                                   <div class="col-md-10">
                                     <mat-form-field class="full-width input-focus-hover font-iran-sans-FA mt-2">
                                       <mat-label>جستجو کنید</mat-label>
-                                      <input matInput style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا علوم کامپیوتر امیرکبیر">
+                                      <input matInput [(ngModel)]="searchChartsTitle" style="font-size: 16px; height: 50px; padding-bottom: 5px;" placeholder="مثلا علوم کامپیوتر امیرکبیر">
                                     </mat-form-field>  
                                   </div>
                                   <div class="col-md-2 mt-3">
-                                    <button mat-raised-button class="font-iran-sans-FA mt-2 styled-button secondary-button" style="max-width: 100%;">جستجو</button>
+                                    <button mat-raised-button (click)="getCharts2(searchChartsTitle)" class="font-iran-sans-FA mt-2 styled-button secondary-button" style="max-width: 100%;">جستجو</button>
                                   </div>
-                                  <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                                  <div *ngIf="charts2.length>0" class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                     <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
                                       <thead class="thead" style="border-top: none;">
                                         <tr style="border-top: none;">
@@ -138,7 +138,7 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr *ngFor="let chart of charts;index as i">
+                                        <tr *ngFor="let chart of charts2;index as i">
                                           <td class="text-center">
                                             {{i+1}}
                                           </td>
@@ -153,9 +153,15 @@
                                             <div>{{chart.date}}</div>
                                           </td>
                                           <td class="text-center" style="max-width: 225px;"> 
-                                            <button mat-raised-button class="font-iran-sans-FA ml-3 mb-2 styled-button secondary-button" style="min-width: 80px;">مشاهده</button>
-                                            <button mat-raised-button class="font-iran-sans-FA ml-3 styled-button main-button"           style="min-width: 80px;">انتخاب</button>
-    
+                                            <button mat-raised-button (click)="chartsDetails(chart)" 
+                                                    class="font-iran-sans-FA ml-3 mb-2 styled-button secondary-button" 
+                                                    style="min-width: 80px;">
+                                                    مشاهده
+                                            </button>
+                                            <button mat-raised-button (click)="selectChart(chart)" class="font-iran-sans-FA ml-3 styled-button main-button"
+                                                    style="min-width: 80px;">
+                                                    انتخاب
+                                            </button>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -163,7 +169,7 @@
                                   </div>
                                 </div>
                                 
-                              </mat-tab>-->
+                              </mat-tab>
                             </mat-tab-group>
                           </div>
                           
@@ -400,7 +406,7 @@
         <div class="card shadow-sm">
           <div class="card-header">تغییر شیوه نمایش</div>
           <div class="card-body pr-0 pl-0">
-            <div class="col-md-12 mt-3">
+            <!--<div class="col-md-12 mt-3">
               <mat-form-field appearance="none"
                   class="shadow-md"
                   style="padding-top: 10px; border-radius: 4px; overflow: visible; width: 100%; box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
@@ -414,9 +420,28 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
+            </div>-->
+            <div class="col-md-12 mt-3 center">
+              <button (click)="getCoursesOrdered()" mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی بر اساس الفبا</button>
+            </div>  
+          </div>
+        </div>
+        <div class="card shadow-sm">
+          <div class="card-header">اشتراک گذاری</div>
+          <div class="card-body pr-0 pl-0">
+            <p class="col-md-12" style="text-align: justify; text-justify: inter-word;">
+               با این امکان شما میتوانید چارتی که ساختید را عمومی کنید تا باقی دانشجویان نیز از آن استفاده کنند. موقع عمومی کردن فقط لیست دروس و واحد آنها منتشر میشود.
+            </p>
+            <div class="col-md-12">
+              <form *ngIf="userCourses.length>0" class="search-form">
+                <mat-form-field class="w-100">
+                  <mat-label class="pb-2">عنوان چارت</mat-label>
+                  <input type="text" [(ngModel)]="titleChart" name="title" matInput style="padding-bottom:10px; margin-top: 10px;">
+                </mat-form-field>
+              </form>
             </div>
             <div class="col-md-12 mt-3 center">
-              <button mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی بر اساس الفبا</button>
+              <button mat-raised-button (click)="publishedChart()" class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">چارت را به بقیه معرفی کن</button>
             </div>  
           </div>
         </div>

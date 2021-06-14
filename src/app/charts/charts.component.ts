@@ -20,7 +20,8 @@ import { MyApi } from '../services/user.services';
 export class ChartsComponent implements OnInit {
 
   panelOpenState = false;
-  charts: Chart[] = [];
+  charts: Chart[] = [];  // for unif search
+  charts2: Chart[] = []; // for title search
 
   userCourses: CourseTrack[] = [];
   statusSelectedValue: string = "0";
@@ -45,14 +46,14 @@ export class ChartsComponent implements OnInit {
   ngOnInit(): void {
     this.getUniversityInfo();
     this.getCourses();
-    //this.getCharts();
   }
 
   getCharts(university,subject){
-    this._Api.searchChart(university,subject).subscribe(
+    this._Api.searchChartUnif(university,subject).subscribe(
       result=>{
         //console.log(result);
         if(result){
+          this.charts = [];
           for(let chart of result.data){
             let new_chart:Chart = {
                 id: chart.id ,
@@ -69,16 +70,50 @@ export class ChartsComponent implements OnInit {
             }
             this.charts.push(new_chart);
           }
+          if(this.charts.length<=0){
+            this.openSnackBar('چارت با این رشته و دانشگاه یافت نشد');
+        }
+        }
+      }
+    );
+  }
+
+  searchChartsTitle: string = '';
+  getCharts2(title){
+    this._Api.searchChartTitle(title).subscribe(
+      result=>{
+        //console.log(result);
+        if(result){
+          this.charts2 = [];
+          for(let chart of result.data){
+            let new_chart:Chart = {
+                id: chart.id ,
+                title:  chart.title,
+                owner: chart.owner,
+                
+                used: chart.used,
+        
+                study: chart.study,
+                university:chart.university,
+        
+                date: chart.date,
+                courses: chart.courses
+            }
+            this.charts2.push(new_chart);
+          }
+          if(this.charts2.length<=0){
+              this.openSnackBar('چارت با این عنوان یافت نشد');
+          }
         }
       }
     );
   }
   
   getCourses(){
-    this._Api.getChart().subscribe(
+    this._Api.getCourses().subscribe(
       response=>{
         if(response){
-          console.log(response);
+          //console.log(response);
           for(let item of response.data){
             let course: CourseTrack={
               course:
@@ -101,7 +136,34 @@ export class ChartsComponent implements OnInit {
         }
     });
   }
-
+  getCoursesOrdered(){
+    this._Api.getCoursesOrdered().subscribe(
+      response=>{
+        if(response){
+          this.userCourses = [];
+          //console.log(response);
+          for(let item of response.data){
+            let course: CourseTrack={
+              course:
+              {
+                  id: item.id,
+                  title: item.title,
+                  suggestedPrerequisites: [] 
+              },
+              prerequisites: [],
+              status: item.status, 
+              grade: item.grade,
+              label: item.label+'',
+              description: item.description,
+              unit: item.unit,
+              checkList:false
+            };
+            this.userCourses.push(course);
+            //this.firstTasks.push(task2);
+          }
+        }
+    });
+  }
   chartsDetails(chart:Chart){
     const dialogRef = this.dialog.open(ChartDetailsComponent, {
       width: '600px',
@@ -112,6 +174,78 @@ export class ChartsComponent implements OnInit {
         //console.log(result);        
       }
     });
+  }
+  selectChart(chart){
+    if(this.userCourses.length>0){
+      const dialogRef = this.dialog.open(DeleteAlertComponent, {
+        minWidth: '400',
+        maxWidth: '90%',
+        data: { 
+          title: "آیا مطمئن هستید؟",
+          message: "با انتخاب چارت جدید، چارت قدیمی شما پاک می‌شود. "
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result){
+          this._Api.selectChart(chart.id).subscribe(
+            response=>{
+              console.log(response);
+              if(response){
+                this.userCourses = [];
+                for(let item of response.data){
+                  let course: CourseTrack={
+                    course:
+                    {
+                        id: item.id,
+                        title: item.title,
+                        suggestedPrerequisites: [] 
+                    },
+                    prerequisites: [],
+                    status: item.status, 
+                    grade: item.grade,
+                    label: item.label+'',
+                    description: item.description,
+                    unit: item.unit,
+                    checkList:false
+                  };
+                  this.userCourses.push(course);
+                }
+              }
+            }
+          );
+  
+        }
+      });
+    }else{
+      this._Api.selectChart(chart.id).subscribe(
+        response=>{
+          if(response){
+            this.userCourses = [];
+            for(let item of response.data){
+              let course: CourseTrack={
+                course:
+                {
+                    id: item.id,
+                    title: item.title,
+                    suggestedPrerequisites: [] 
+                },
+                prerequisites: [],
+                status: item.status, 
+                grade: item.grade,
+                label: item.label+'',
+                description: item.description,
+                unit: item.unit,
+                checkList:false
+              };
+              this.userCourses.push(course);
+            }
+          }
+        }
+      );
+    }
+    
+    
+   
   }
 
   // view more about course:
@@ -416,7 +550,18 @@ export class ChartsComponent implements OnInit {
           }
         }
       )
+  }
+
+  titleChart: string = '';
+  publishedChart(){
+    console.log(this.titleChart);
+    if(this.titleChart.length<=0){
+      this.openSnackBar('1');
+    }else{
+      this.openSnackBar('2');
+
     }
+  }
 
 }
 
