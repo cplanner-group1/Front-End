@@ -13,7 +13,7 @@ export class Chart{
 
     date: string; // date added
 
-    courses: CourseTrack[];
+    courses: CourseTrack[]; // list of string babe:)
 }
 export class Course{
     id: number;
@@ -39,6 +39,7 @@ export interface Prerequisite{
     title: string;
     id: number;
 }
+
 
 // intorie ke chart shamele majmoe ei courseTrack hast va har courseTrack marbot b yek farde khase ama course global e 
 // dar course age title motefavet bood id jadid bde behesh 

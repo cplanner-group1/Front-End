@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as moment from 'jalali-moment';
 
 
 @Injectable()
@@ -21,7 +22,17 @@ export class MyApi {
         return localStorage.getItem('token');
     }
     loggedIn(): boolean{
-        return !!localStorage.getItem('token');
+        let enterDate = localStorage.getItem('added');
+        let nowDate = moment();
+        let enterDateObject = moment(enterDate);
+        //console.log(nowDate);
+        //console.log(enterDateObject);
+        let enterDateWithExp  = enterDateObject.add(1,'days');
+
+        let diffDate = enterDateWithExp.diff(nowDate, 'seconds');
+
+
+        return (!!localStorage.getItem('token')) && (diffDate>=0) ;
     }
     
 
@@ -33,6 +44,9 @@ export class MyApi {
                 //console.log(response);
                 const user = response;
                 if(user){
+                    console.log(moment());
+                    console.log(moment().format());
+                    localStorage.setItem('added',moment().format());
                     localStorage.setItem('token',user.tokens.access);
                     localStorage.setItem('refresh',user.tokens.refresh);
                 }
@@ -42,15 +56,28 @@ export class MyApi {
     logout(): Observable<any> {
         //console.log(user);
         let refresh = localStorage.getItem('refresh');
-        //console.log(refresh);
-        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.authUrl + 'logout/',{refresh: refresh }, { headers: headers }).pipe(
-            map((response:any)=>{
-                //console.log(response);
-                localStorage.removeItem('token');
-                localStorage.removeItem('refresh');
-            })
-        )
+        let enterDate = localStorage.getItem('added');
+        let nowDate = moment();
+        let enterDateObject = moment(enterDate);
+        //console.log(nowDate);
+        //console.log(enterDateObject);
+        let enterDateWithExp  = enterDateObject.add(1,'days');
+
+        let diffDate = enterDateWithExp.diff(nowDate, 'seconds');
+        if(diffDate>=0){
+            console.log(diffDate);
+            //console.log(refresh);
+            const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+            return this.httpClient.post(this.authUrl + 'logout/',{refresh: refresh }, { headers: headers }).pipe(
+                map((response:any)=>{
+                    //console.log(response);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('refresh');
+                    localStorage.removeItem('added');
+                })
+            )
+        }
+        
     }
 
     //http://cplanner-group1.herokuapp.com/account/register/
@@ -58,7 +85,6 @@ export class MyApi {
         return this.httpClient.post(this.authUrl + 'register/', user).pipe(
             map((response:any)=>{
                 console.log(response);
-                
             })
         )
     }
@@ -124,4 +150,22 @@ export class MyApi {
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.chartsUrl + 'dragdrop/', item,{ headers: headers })   
     }
+
+
+
+
+
+    //COURSE SELECTION:
+    getTimeTable(): Observable<any> {    
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl + 'timetable/', { headers: headers });
+    }
+    postTimeTable(timetable): Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'timetable/', timetable,{ headers: headers })   
+    }
+
 }
+
+
+

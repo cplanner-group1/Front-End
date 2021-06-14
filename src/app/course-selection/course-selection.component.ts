@@ -216,8 +216,167 @@ export class CourseSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.postTimeTable();
   }
+
+  getTimeTable(){
+    this._Api.getTimeTable().subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+      }
+    );
+  }
+  postTimeTable(){
+    let item = [
+      {
+        name: "ریاضی 1",
+        data: [
+          {
+            x: "شنبه",
+            y: [
+              18,
+              24
+            ]
+          },
+          {
+            x: "یک شنبه",
+            y: [
+              
+            ]
+          },
+          {
+            x: "دو شنبه",
+            y: [
+              18,
+              24
+            ]
+          },
+          {
+            x: "سه شنبه",
+            y: [
+              
+            ]
+          },
+          {
+            x: "چهار شنبه",
+            y: [
+              18,
+              24
+            ]
+          }
+        ]
+      },
+      {
+        name: "برنامه نویسی پیشرفته",
+        data: [
+          {
+            x: "شنبه",
+            y: []
+          },
+          {
+            x: "یک شنبه",
+            y: [
+              13,
+              15
+            ]
+          },
+          {
+            x: "دو شنبه",
+            y: [
+            ]
+          },
+          {
+            x: "سه شنبه",
+            y: [
+              13,
+              15
+            ]
+          }
+        ]
+      },
+      {
+        name: "ریاضی 2",
+        data: [
+          {
+            x: "شنبه",
+            y: [
+              15,
+              17
+            ]
+          },
+          {
+            x: "یک شنبه",
+            y: [
+            ]
+          },
+          {
+            x: "دو شنبه",
+            y: [
+              15,
+              17
+            ]
+          },
+          {
+            x: "سه شنبه",
+            y: [
+            ]
+          },
+          {
+            x: "چهار شنبه",
+            y: [
+            ]
+          },
+        ]
+      },
+      {
+        name: "ریاضی 3",
+        data: [
+          {
+            x: "شنبه",
+            y: [
+              15.5,
+              17
+            ]
+          },
+          {
+            x: "یک شنبه",
+            y: [
+            ]
+          },
+          {
+            x: "دو شنبه",
+            y: [
+              15.5,
+              17
+            ]
+          },
+          {
+            x: "سه شنبه",
+            y: [
+            ]
+          },
+          {
+            x: "چهار شنبه",
+            y: [
+            ]
+          },
+        ]
+      }
+    ];
+
+    this._Api.postTimeTable(item).subscribe(
+      response=>{
+        if(response){
+          console.log(response);
+        }
+      }
+    )
+  }
+
+
+
   addCourse(){
     const dialogRef = this.dialog.open(AddCourseComponent, {
       width: '1000px',

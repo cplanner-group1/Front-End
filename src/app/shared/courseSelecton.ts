@@ -10,6 +10,10 @@ export class TermCourse{
     priority: string;
     // 1 --> should be taken
     // 2 --> not important
+    description: string;
+    selected: number;
+    // 0 --> not picked
+    // 1 --> picked
 }
 export class Date{
     startTime: string;
@@ -48,7 +52,9 @@ export const Semester: TermCourse[] = [
             endTime: "12:00:00",
             date: "2021/3/21",
             week: ''
-        }
+        },
+        description: '-',
+        selected: 0
     },
     {
         id: 2,
@@ -74,7 +80,9 @@ export const Semester: TermCourse[] = [
             endTime: "12:00:00",
             date: "2021/3/21",
             week: ''
-        }
+        },
+        description: '-',
+        selected: 0
     },
     {
         id: 3,
@@ -100,7 +108,9 @@ export const Semester: TermCourse[] = [
             endTime: "12:00:00",
             date: "2021/3/21",
             week: ''
-        }
+        },
+        description: '-',
+        selected: 0
     },
     {
         id: 4,
@@ -126,6 +136,8 @@ export const Semester: TermCourse[] = [
             endTime: "13:00:00",
             date: "2021/06/23",
             week: ''
-        }
+        },
+        description: '-',
+        selected: 0
     }
 ]
