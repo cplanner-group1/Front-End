@@ -34,7 +34,7 @@
                           </mat-form-field>
                       </div>
                       <div class="center">
-                        <button mat-raised-button class="btn-fab font-iran-sans-FA save-button" (click)="postUniversityInfo()">ذخیره</button>
+                        <button mat-raised-button class="btn-fab font-iran-sans-FA save-button main-button" (click)="postUniversityInfo()">ذخیره</button>
                       </div>
                   </div>
                 </div>
@@ -97,7 +97,7 @@
                                               </td>
                                               <td class="text-center" style="max-width: 225px;"> 
                                                 <button mat-raised-button (click)="chartsDetails(chart)" 
-                                                        class="font-iran-sans-FA ml-3 mb-2 styled-button secondary-button" 
+                                                        class="font-iran-sans-FA ml-3 mb-2 styled-button" 
                                                         style="min-width: 80px;">
                                                         مشاهده
                                                 </button>
@@ -124,7 +124,7 @@
                                     </mat-form-field>  
                                   </div>
                                   <div class="col-md-2 mt-3">
-                                    <button mat-raised-button (click)="getCharts2(searchChartsTitle)" class="font-iran-sans-FA mt-2 styled-button secondary-button" style="max-width: 100%;">جستجو</button>
+                                    <button mat-raised-button (click)="getCharts2(searchChartsTitle)" class="font-iran-sans-FA mt-2 styled-button" style="max-width: 100%;">جستجو</button>
                                   </div>
                                   <div *ngIf="charts2.length>0" class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                     <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
@@ -154,7 +154,7 @@
                                           </td>
                                           <td class="text-center" style="max-width: 225px;"> 
                                             <button mat-raised-button (click)="chartsDetails(chart)" 
-                                                    class="font-iran-sans-FA ml-3 mb-2 styled-button secondary-button" 
+                                                    class="font-iran-sans-FA ml-3 mb-2 styled-button" 
                                                     style="min-width: 80px;">
                                                     مشاهده
                                             </button>
@@ -195,8 +195,8 @@
           <div class="card-header">نمایش درس ها</div>
           <div class="card-body">
             <div class="col-md-12">
-              <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
-                      style="float: right; background-color: #84CAE9;" (click)="addCourse()">
+              <button mat-fab class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
+                      style="float: right; background-color: #374785;" (click)="addCourse()">
                       +
               </button>
             </div>
@@ -209,12 +209,12 @@
           <div class="card-body">
             <div class="col-md-12">
               <button mat-fab class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
-                      style="float: right; background-color: #84CAE9;" (click)="addCourse()">
+                      style="float: right; background-color: #374785;" (click)="addCourse()">
                       +
               </button>
               <button *ngIf="!editView && userCourses.length>0" (click)="enableEdit()"
                       mat-fab
-                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #84CAE9;"
+                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #374785;"
                       matTooltip="ویرایش" [matTooltipPosition]="'above'">
                 <span class="material-icons">
                   create
@@ -223,7 +223,7 @@
               <button *ngIf="editView && userCourses.length>0" (click)="enableEdit()"
                       mat-fab
                       matTooltip="غیر فعال کردن ویرایش" [matTooltipPosition]="'above'"
-                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1; background-color: #84CAE9;">
+                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1; background-color: #374785;">
                 <span class="material-icons">
                   create
                 </span>
@@ -231,7 +231,7 @@
               <button *ngIf="editView && userCourses.length>0" (click)="deleteSelectedRow()"
                       mat-fab
                       matTooltip="حذف" [matTooltipPosition]="'above'"
-                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #24305E;">
+                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #D03B4E;">
                 <span class="material-icons">
                   delete
                 </span>
@@ -422,7 +422,10 @@
               </mat-form-field>
             </div>-->
             <div class="col-md-12 mt-3 center">
-              <button (click)="getCoursesOrdered()" mat-raised-button class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">مرتب سازی بر اساس الفبا</button>
+              <button (click)="getCoursesOrdered()" mat-raised-button class="font-iran-sans-FA w-100 styled-button main-button" style="min-width: 80px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 0 24 24" width="22px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
+                مرتب سازی بر اساس الفبا
+              </button>
             </div>  
           </div>
         </div>
@@ -441,7 +444,10 @@
               </form>
             </div>
             <div class="col-md-12 mt-3 center">
-              <button mat-raised-button (click)="publishedChart()" class="font-iran-sans-FA w-100 styled-button secondary-button" style="min-width: 80px;">چارت را به بقیه معرفی کن</button>
+              <button mat-raised-button (click)="publishedChart()" class="font-iran-sans-FA w-100 styled-button main-button" style="min-width: 80px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 0 24 24" width="22px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+                انتشار چارت
+              </button>
             </div>  
           </div>
         </div>

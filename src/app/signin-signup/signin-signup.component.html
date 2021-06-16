@@ -5,9 +5,9 @@
         <form action="#">
           <h1 class="header">Create Account</h1>
           <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/></svg></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"><img class="icon" src="https://img.icons8.com/fluent/48/000000/google-logo.png"/></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"><svg class="icon" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#0177b5"/><path fill="#fff" d="M92,32H36a4,4,0,0,0-4,4V92a4,4,0,0,0,4,4H92a4,4,0,0,0,4-4V36A4,4,0,0,0,92,32ZM52,86H42V56H52ZM47,52a6,6,0,1,1,6-6A6,6,0,0,1,47,52ZM86,86H76V66c0-1.66-2.24-3-5-3-4,0-5,5.34-5,7V86H56V56H66v7c0-5,4.48-7,10-7A10,10,0,0,1,86,66Z"/></svg></i></a>
+            <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-facebook-f"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/></svg></i></a>
+            <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-google-plus-g"><img class="icon" src="https://img.icons8.com/fluent/48/000000/google-logo.png"/></i></a>
+            <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-linkedin-in"><svg class="icon" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#0177b5"/><path fill="#fff" d="M92,32H36a4,4,0,0,0-4,4V92a4,4,0,0,0,4,4H92a4,4,0,0,0,4-4V36A4,4,0,0,0,92,32ZM52,86H42V56H52ZM47,52a6,6,0,1,1,6-6A6,6,0,0,1,47,52ZM86,86H76V66c0-1.66-2.24-3-5-3-4,0-5,5.34-5,7V86H56V56H66v7c0-5,4.48-7,10-7A10,10,0,0,1,86,66Z"/></svg></i></a>
           </div>
           <span>or use your email for registration</span>
           <input type="text" name="username" [(ngModel)]="username" placeholder="Username" />
@@ -21,9 +21,9 @@
         <form action="#">
           <h1 class="header">Sign in</h1>
           <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/></svg></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"><img class="icon" src="https://img.icons8.com/fluent/48/000000/google-logo.png"/></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"><svg class="icon" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#0177b5"/><path fill="#fff" d="M92,32H36a4,4,0,0,0-4,4V92a4,4,0,0,0,4,4H92a4,4,0,0,0,4-4V36A4,4,0,0,0,92,32ZM52,86H42V56H52ZM47,52a6,6,0,1,1,6-6A6,6,0,0,1,47,52ZM86,86H76V66c0-1.66-2.24-3-5-3-4,0-5,5.34-5,7V86H56V56H66v7c0-5,4.48-7,10-7A10,10,0,0,1,86,66Z"/></svg></i></a>
+            <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-facebook-f"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/></svg></i></a>
+            <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-google-plus-g"><img class="icon" src="https://img.icons8.com/fluent/48/000000/google-logo.png"/></i></a>
+            <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-linkedin-in"><svg class="icon" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#0177b5"/><path fill="#fff" d="M92,32H36a4,4,0,0,0-4,4V92a4,4,0,0,0,4,4H92a4,4,0,0,0,4-4V36A4,4,0,0,0,92,32ZM52,86H42V56H52ZM47,52a6,6,0,1,1,6-6A6,6,0,0,1,47,52ZM86,86H76V66c0-1.66-2.24-3-5-3-4,0-5,5.34-5,7V86H56V56H66v7c0-5,4.48-7,10-7A10,10,0,0,1,86,66Z"/></svg></i></a>
           </div>
           <span>or use your account</span>
           <input type="email" name="email" [(ngModel)]="email" placeholder="Email" />
@@ -55,12 +55,12 @@
           <div class="overlay-panel overlay-left">
             <h1>Welcome Back</h1>
             <p>We knew you couldn't resist our good looks</p>
-            <button class="ghost" id="signIn" (click)="panelPositionRemove()">Sign In</button>
+            <button class="ghost btn-fab" id="signIn" (click)="panelPositionRemove()">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
             <h1>Welcome</h1>
             <p>Organizing is hard work, so let us do it for you</p>
-            <button class="ghost" id="signUp" (click)="panelPositionAdd()">Sign Up</button>
+            <button class="ghost btn-fab" id="signUp" (click)="panelPositionAdd()">Sign Up</button>
           </div>
         </div>
       </div>
@@ -70,15 +70,15 @@
 
 
 
-<!--FOR MOBILE VIEW-->
+<!--FOR MOBILE VIEW      DOESNT WORK-->
 <div class="sign-up-mobile-view">
   <div class="form-container sign-up-container col-sm-6">
     <form action="#">
       <h1 class="header">Create Account</h1>
       <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/></svg></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"><img class="icon" src="https://img.icons8.com/fluent/48/000000/google-logo.png"/></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"><svg class="icon" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#0177b5"/><path fill="#fff" d="M92,32H36a4,4,0,0,0-4,4V92a4,4,0,0,0,4,4H92a4,4,0,0,0,4-4V36A4,4,0,0,0,92,32ZM52,86H42V56H52ZM47,52a6,6,0,1,1,6-6A6,6,0,0,1,47,52ZM86,86H76V66c0-1.66-2.24-3-5-3-4,0-5,5.34-5,7V86H56V56H66v7c0-5,4.48-7,10-7A10,10,0,0,1,86,66Z"/></svg></i></a>
+        <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-facebook-f"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="126.445 2.281 589 589"><circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a"/><path fill="#fff" d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"/></svg></i></a>
+        <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-google-plus-g"><img class="icon" src="https://img.icons8.com/fluent/48/000000/google-logo.png"/></i></a>
+        <a href="#" [routerLink]="['/admin']" class="social"><i class="fab fa-linkedin-in"><svg class="icon" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#0177b5"/><path fill="#fff" d="M92,32H36a4,4,0,0,0-4,4V92a4,4,0,0,0,4,4H92a4,4,0,0,0,4-4V36A4,4,0,0,0,92,32ZM52,86H42V56H52ZM47,52a6,6,0,1,1,6-6A6,6,0,0,1,47,52ZM86,86H76V66c0-1.66-2.24-3-5-3-4,0-5,5.34-5,7V86H56V56H66v7c0-5,4.48-7,10-7A10,10,0,0,1,86,66Z"/></svg></i></a>
       </div>
       <span>or use your email for registration</span>
       <input type="text" name="username" [(ngModel)]="username" placeholder="Username" />

@@ -7,14 +7,14 @@
           <div class="card-header">نمایش کارها</div>
           <div class="card-body">
             <div class="col-md-12">
-              <button mat-fab color="accent" class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
-                      style="float: right; background-color: #84CAE9;" (click)="addTask()">
+              <button mat-fab class="btn-fab" matTooltip="اضافه کردن درس" [matTooltipPosition]="'above'"
+                      style="float: right;" (click)="addTask()">
                       +
               </button>
               
               <button *ngIf="!editView && tasks.length>0" (click)="enableEdit()"
                       mat-fab
-                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #84CAE9;"
+                      class="btn-fab" style="margin-right: 7px; float: right;"
                       matTooltip="ویرایش" [matTooltipPosition]="'above'">
                 <span class="material-icons">
                   create
@@ -23,7 +23,7 @@
               <button *ngIf="editView && tasks.length>0" (click)="enableEdit()"
                       mat-fab
                       matTooltip="غیر فعال کردن ویرایش" [matTooltipPosition]="'above'"
-                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1; background-color: #84CAE9;">
+                      class="btn-fab" style="margin-right: 7px; float: right; opacity: 1;">
                 <span class="material-icons">
                   create
                 </span>
@@ -31,7 +31,7 @@
               <button *ngIf="editView && tasks.length>0" (click)="deleteSelectedRow()"
                       mat-fab
                       matTooltip="حذف" [matTooltipPosition]="'above'"
-                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #24305E;">
+                      class="btn-fab" style="margin-right: 7px; float: right; background-color: #D03B4E;">
                 <span class="material-icons">
                   delete
                 </span>

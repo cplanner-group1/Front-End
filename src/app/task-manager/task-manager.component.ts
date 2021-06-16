@@ -127,7 +127,7 @@ export class TaskManagerComponent implements OnInit {
             priority: '1',
     
             lastChangeDate:'همین الان',
-            description: "توضیحات مربوط به ویژگی را اینجا وارد کنید"
+            description: " "
           }
           //new_task.id = response.id;
           this.tasks.push(new_task);

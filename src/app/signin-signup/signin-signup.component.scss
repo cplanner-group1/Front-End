@@ -104,6 +104,15 @@ button.ghost {
 	border-color: #FFFFFF;
 }
 
+.btn-fab{
+    opacity: 0.85;
+    transition: all 0.3s ease-in-out 0s;
+}
+.btn-fab:hover{
+    transition: all 0.3s ease-in-out 0s;
+    opacity: 1;
+}
+
 form {
 	background-color: #FFFFFF;
 	display: flex;
@@ -313,11 +322,14 @@ input:focus {
 }
 
 #forgot-password {
+	font-weight: bold;
 	border: none;
+	opacity: 0.8;
 }
 
 #forgot-password:hover{
 	background-color: transparent;
+	opacity: 1;
 }
 
 .forgot-password-button{

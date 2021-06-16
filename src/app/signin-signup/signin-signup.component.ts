@@ -98,7 +98,7 @@ export class SigninSignupComponent implements OnInit {
       maxWidth: '90%',
       data: { 
         title: "توجه",
-        message: "لطفا ایمیل ارسال شده را تایید کنید سپس برای ورود به صفحه‌ی لاگین بروید."
+        message: "لطفا برای تایید حساب کاربری خود ایمیلتان را چک کنید. سپس به صفحه لاگین برگردید و وارد شوید."
       }
     });
   }
