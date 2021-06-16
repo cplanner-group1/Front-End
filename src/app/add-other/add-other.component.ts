@@ -95,6 +95,11 @@ export class AddOtherComponent implements OnInit {
     }
 
   }
+  deleteRow(i){
+    if(i!==-1){
+      this.termCourse.date.splice(i,1);
+    }
+  }
 
 
 }

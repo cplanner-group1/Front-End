@@ -106,9 +106,21 @@
         <div class="col-md-12">
             <div class="row" *ngFor="let item of termCourse.date; index as i">
                 <div class="col-md-12 font-iran-sans-FA">
-                    <p>
-                        زمان {{i+1}}:
-                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="float:right; width: 100px;">
+                                زمان {{i+1}}: 
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button *ngIf="termCourse.date.length>1" 
+                                mat-button (click)="deleteRow(i)" class="btn-delete" 
+                                matTooltip="حذف زمان" [matTooltipPosition]="'above'" 
+                                style="color: #E14055; float: left; max-width: 80px;">
+                                <span class="material-icons">delete</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field appearance="none"
