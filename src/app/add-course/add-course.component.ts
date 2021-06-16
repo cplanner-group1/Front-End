@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CourseSelectionComponent } from '../course-selection/course-selection.component';
+import { MyApi } from '../services/user.services';
 import { TermCourse } from '../shared/courseSelecton';
 import { SelectType, SelectTypeNumberValue } from '../shared/select';
 
@@ -14,8 +15,12 @@ export class AddCourseComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<CourseSelectionComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private _Api: MyApi) {
         //this.buttonTest = this.data.buttonText;
+        if(data.status===1){
+          this.termCourse = data.course;
+        }
   }
 
   datePickerConfig = {
@@ -39,7 +44,7 @@ export class AddCourseComponent implements OnInit {
     id: -1,
     master: '',
     courses: '',
-    priority: '1',
+    priority: false,
     date:[
         {
             startTime: "8:00:00",
@@ -55,7 +60,8 @@ export class AddCourseComponent implements OnInit {
         week: ''
     },
     description: '-',
-    selected: 0 
+    selected: false,
+    status: 0
   };
 
   addTime(){
@@ -74,7 +80,20 @@ export class AddCourseComponent implements OnInit {
   }
   
   saveButton(){
-    this.dialogRef.close(this.termCourse);
+    if(this.data.status===0){
+      this._Api.addSemesterCourse(this.termCourse).subscribe(
+        result=>{
+          this.dialogRef.close(result);
+        }
+      );
+    }else if(this.data.status===1){
+      this._Api.editSemesterCourse(this.termCourse).subscribe(
+        result=>{
+          this.dialogRef.close(result);
+        }
+      );
+    }
+    
   }
 
 }

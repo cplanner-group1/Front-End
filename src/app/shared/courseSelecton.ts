@@ -7,13 +7,16 @@ export class TermCourse{
     date:Date[]; 
     courses: string;
     finalExam: Date;
-    priority: string;
-    // 1 --> should be taken
-    // 2 --> not important
+    priority: boolean;
+    // true --> should be taken
+    // false --> not important
     description: string;
-    selected: number;
+    selected: boolean;
     // 0 --> not picked
     // 1 --> picked
+    status: number;
+    // 0 --> university
+    // 1 --> موسسه
 }
 export class Date{
     startTime: string;
@@ -26,7 +29,7 @@ export class Date{
     // 6 --> jome
 }
 
-
+/*
 export const Semester: TermCourse[] = [
     {
         id: 1,
@@ -141,3 +144,4 @@ export const Semester: TermCourse[] = [
         selected: 0
     }
 ]
+*/

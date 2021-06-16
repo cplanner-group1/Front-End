@@ -23,7 +23,7 @@
                                     <tr style="border-top: none;">
                                     <th class="text-center"></th>
                                     <th>نام درس</th>
-                                    <th class="text-center">استاد</th>
+                                    <th class="text-center">استاد/ موسسه</th>
                                     <th class="text-center">زمان</th>
                                     <th class="text-center">نوع</th>
                                     <th></th>
@@ -44,14 +44,15 @@
                                         </td>
                                         <td style="min-width: 130px;" class="text-center">
                                           <div>
-                                              
+                                            {{item.date.length}} جلسه در هفته
                                           </div>
                                         </td>
                                         <td class="text-center">
-                                            <div>دانشگاه</div>
+                                            <div *ngIf="item.status===0">دانشگاه</div>
+                                            <div *ngIf="item.status===1">موسسه</div>
                                         </td>
                                         <td style="background-color: white;">
-                                          <button mat-button class="btn-fab" matTooltip="ویرایش" [matTooltipPosition]="'above'" style="color: #0CC078;">
+                                          <button mat-button (click)="editCourseAndOther(item,item.status)" class="btn-fab" matTooltip="ویرایش" [matTooltipPosition]="'above'" style="color: #0CC078;">
                                             <span class="material-icons">create</span>
                                           </button>
 

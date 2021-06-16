@@ -32,7 +32,7 @@ export class MyApi {
         let diffDate = enterDateWithExp.diff(nowDate, 'seconds');
 
 
-        return (!!localStorage.getItem('token')) && (diffDate>=0) ;
+        return (!!localStorage.getItem('token')) && (diffDate>=0) && (!!localStorage.getItem('added'));
     }
     
 
@@ -204,13 +204,34 @@ export class MyApi {
 
 
     //COURSE SELECTION:
+    getSemesterCourse():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl + 'sc/', { headers: headers });
+    }
+    addSemesterCourse(item):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'sc/', item,{ headers: headers })
+    }
+    editSemesterCourse(item):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'sc/edit/', item,{ headers: headers })
+    }
+    deleteSemesterCourse(id):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'sc/delete/', id,{ headers: headers })
+    }
+    dragDropSemesterCourse(id):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.post(this.chartsUrl + 'sc/dragdrop/', id,{ headers: headers })
+    }
+
     getTimeTable(): Observable<any> {    
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.get(this.chartsUrl + 'timetable/', { headers: headers });
     }
     postTimeTable(timetable): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.post(this.chartsUrl + 'timetable/', timetable,{ headers: headers })   
+        return this.httpClient.post(this.chartsUrl + 'timetable/', timetable,{ headers: headers });   
     }
 
 }

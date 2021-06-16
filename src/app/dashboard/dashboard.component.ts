@@ -30,14 +30,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  passedUnit: number = 0;
 
   taskCount: number = 0; 
   statusCount: number[] = [0,0,0];
   statusPercentage: number[] = [0,0,0];
   remainingTask: number = 0;
-
-
-  passedUnit: number = 0;
   priorityCount: number[] = [0,0,0];
   priorityPercentage: number[] = [0,0,0];
 
