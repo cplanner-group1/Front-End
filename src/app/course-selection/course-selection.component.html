@@ -6,9 +6,11 @@
             <div class="card-header">انتخاب واحد</div>
             <div class="card-body" style="padding: 0;">
               <div class="col-md-12" style="margin: 0; padding:0;"> 
-                    <mat-horizontal-stepper [linear]="isLinear" class="font-iran-sans-FA" #stepper>
+                    <mat-horizontal-stepper [linear]="isLinear" (selectionChange)="selectionChange($event)" class="font-iran-sans-FA" #stepper>
                         <mat-step>
-                            <ng-template matStepLabel>تعیین دروس ارائه شده</ng-template>
+                            <ng-template matStepLabel>
+                              تعیین دروس ارائه شده
+                            </ng-template>
                             <div class="col-md-12 p-4 center" style="margin:0;">
                               <div class="row">
                                 <div class="col-sm-6"><button mat-raised-button class="font-iran-sans-FA m-3 save-button btn-fab" (click)="addCourse()">اضافه کردن کلاس دانشگاهی</button></div>
@@ -82,10 +84,10 @@
                                     <h2>ارائه شده</h2>                                
                                     <div
                                       cdkDropList
-                                      [cdkDropListData]="todo"
+                                      [cdkDropListData]="todoList"
                                       class="example-list"
                                       (cdkDropListDropped)="drop($event)">
-                                      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                                      <div class="example-box" *ngFor="let item of todoList" cdkDrag>{{item.courses}} | {{item.master}}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -95,10 +97,10 @@
                                 
                                     <div
                                       cdkDropList
-                                      [cdkDropListData]="done"
+                                      [cdkDropListData]="doneList"
                                       class="example-list"
                                       (cdkDropListDropped)="drop($event)">
-                                      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                                      <div class="example-box" *ngFor="let item of doneList" cdkDrag>{{item.courses}} | {{item.master}}</div>
                                     </div>
                                   </div>
                                 </div> 

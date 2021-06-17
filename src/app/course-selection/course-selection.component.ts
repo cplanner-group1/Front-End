@@ -18,6 +18,7 @@ import { MyApi } from '../services/user.services';
 import { AddCourseComponent } from '../add-course/add-course.component';
 import { AddOtherComponent } from '../add-other/add-other.component';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
+import { dragTwoList } from '../shared/courseSelecton';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -27,6 +28,8 @@ export type ChartOptions = {
   xaxis: ApexXAxis;
   plotOptions: ApexPlotOptions;
 };
+
+
 
 @Component({
   selector: 'app-course-selection',
@@ -522,23 +525,53 @@ export class CourseSelectionComponent implements OnInit {
 
   
   
+  selectionChange(event){
+    if(event.selectedIndex===0){
+      this.getCourses();
+    }else if(event.selectedIndex===1){
+      this.selectionOne();
+    }else{
+      this.selectionTwo();
+    }
+  }
+  selectionOne(){
+    this.todoList = [];
+    this.doneList = [];
+    for(let item of this.mySemester){
+      if(item.selected===true){
+        let doneTemp: dragTwoList = {
+          id: item.id,
+          courses: item.courses,
+          master: item.master,
+          date: item.date,
+          priority: item.priority,
+          selected: item.selected
+        }
+        this.doneList.push(doneTemp);
+        continue;
+      }
+      if(item.selected===false){
+        let todoTemp: dragTwoList = {
+          id: item.id,
+          courses: item.courses,
+          master: item.master,
+          date: item.date,
+          priority: item.priority,
+          selected: item.selected
+        }
+        this.todoList.push(todoTemp);
+        continue;
+      }
+    }
+  }
+  selectionTwo(){
 
+  }
 
-  todo = [
-    'ریاضی 2 - رستمی',
-    'ریاضی 2 - کیانی',
-    'ریاضی 2 - سعیدی مدنی',
-    'ریاضی 2 - نجفی',
+  todoList: dragTwoList[] = [];
+  doneList: dragTwoList[] = [];
 
-  ];
-
-  done = [
-    'برنامه نویسی پیشرفته - غیبی',
-    'برنامه نویسی پیشرفته - شیری',
-    'برنامه نویسی پیشرفته - زارع',
-    'ساختمان داده - عسگری پور',
-    'ساختمان داده - اکبری'
-  ];
+ 
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

@@ -28,6 +28,14 @@ export class Date{
     // ...
     // 6 --> jome
 }
+export interface dragTwoList {
+    id: number;
+    courses: string;
+    master: string;
+    date: Date[];
+    priority: boolean;
+    selected: boolean;
+}
 
 /*
 export const Semester: TermCourse[] = [
