@@ -531,6 +531,7 @@ export class CourseSelectionComponent implements OnInit {
     }else if(event.selectedIndex===1){
       this.selectionOne();
     }else{
+      this.getCourses();
       this.selectionTwo();
     }
   }
@@ -577,6 +578,21 @@ export class CourseSelectionComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      //let item = event.previousContainer.data[event.previousIndex];
+      let id = event.previousContainer.data[event.previousIndex]['id'];
+      let status = event.previousContainer.data[event.previousIndex]['status'];
+      let data = {id: id};
+      this._Api.dragDropSemesterCourse(data).subscribe(
+        response=>{
+          console.log(response);
+        }
+      );
+      if(status===false){
+        event.previousContainer.data[event.previousIndex]['status'] = true;
+      }else{
+        event.previousContainer.data[event.previousIndex]['status'] = false;  
+      }
+      //console.log(event.container.data);
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
                         event.previousIndex,
