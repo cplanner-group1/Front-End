@@ -215,6 +215,25 @@ table td{
   margin: 0;
 }
 
+.moshahede-button {
+  color: #2a3666;
+  opacity: 0.9;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.moshahede-button:hover {
+  transition: all 0.3s ease-in-out 0s;
+  opacity: 1;
+}
+
+.moshahede-button:active {
+  transform: scale(0.95);
+}
+
+.moshahede-button:focus {
+  outline: none;
+}
+
 //drag
 .custom-drag-placeholder{
   background: #ccc;
