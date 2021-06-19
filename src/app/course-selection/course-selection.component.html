@@ -18,7 +18,7 @@
                               </div>
                             </div>  
                              
-                            <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                            <div *ngIf="mySemester.length>0" class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                 <!-- table view for charts  -->
                                 <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
                                 <thead class="thead" style="border-top: none;">
@@ -120,7 +120,10 @@
                         <mat-step>
                           <ng-template matStepLabel>نمایش چارت</ng-template>
                          
-                          <div id="chart">
+                          <div *ngIf="timeTableData.length===0">
+                            درسی انتخاب نشده است.
+                          </div>
+                          <div id="chart" *ngIf="timeTableData.length>0">
                             <apx-chart
                               class="font-iran-sans-FA"
                               [series]="chartOptions.series"

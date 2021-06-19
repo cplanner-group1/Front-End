@@ -4,6 +4,8 @@ import { MyApi } from '../services/user.services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfoAlertComponent } from '../info-alert/info-alert.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-signin-signup',
@@ -23,7 +25,8 @@ export class SigninSignupComponent implements OnInit {
               private _Api: MyApi,
               private route: ActivatedRoute,
               private router: Router,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              private _snackBar: MatSnackBar) {}
 
 
   open(content) {
@@ -128,4 +131,23 @@ export class SigninSignupComponent implements OnInit {
  
     } 
   }
+
+    //SNACKBAR FOR 'SAVE' BUTTON
+    durationInSeconds = 5;
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
+    message: string = '✔️  ذخیره شد.';
+  
+    openSnackBar(message: string) {
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        duration: this.durationInSeconds * 1000,
+        data:{message:message},
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['alert-snackbar-success']
+      });
+    }
+  
+
+
 }

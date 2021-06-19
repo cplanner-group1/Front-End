@@ -19,6 +19,8 @@ import { AddCourseComponent } from '../add-course/add-course.component';
 import { AddOtherComponent } from '../add-other/add-other.component';
 import { DeleteAlertComponent } from '../delete-alert/delete-alert.component';
 import { dragTwoList } from '../shared/courseSelecton';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -29,7 +31,14 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
 };
 
-
+export interface timetable{
+  name: string;
+  data: xy[];
+}
+export interface xy{
+  x: string;
+  y: number[];
+}
 
 @Component({
   selector: 'app-course-selection',
@@ -48,144 +57,10 @@ export class CourseSelectionComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
 
     constructor(public dialog: MatDialog,
-                private _Api: MyApi) {
+                private _Api: MyApi,
+                private _snackBar: MatSnackBar) {
     this.chartOptions = {
-      series: [
-        {
-          name: "ریاضی 1",
-          data: [
-            {
-              x: "شنبه",
-              y: [
-                18,
-                24
-              ]
-            },
-            {
-              x: "یک شنبه",
-              y: [
-                
-              ]
-            },
-            {
-              x: "دو شنبه",
-              y: [
-                18,
-                24
-              ]
-            },
-            {
-              x: "سه شنبه",
-              y: [
-                
-              ]
-            },
-            {
-              x: "چهار شنبه",
-              y: [
-                18,
-                24
-              ]
-            }
-          ]
-        },
-        {
-          name: "برنامه نویسی پیشرفته",
-          data: [
-            {
-              x: "شنبه",
-              y: []
-            },
-            {
-              x: "یک شنبه",
-              y: [
-                13,
-                15
-              ]
-            },
-            {
-              x: "دو شنبه",
-              y: [
-              ]
-            },
-            {
-              x: "سه شنبه",
-              y: [
-                13,
-                15
-              ]
-            }
-          ]
-        },
-        {
-          name: "ریاضی 2",
-          data: [
-            {
-              x: "شنبه",
-              y: [
-                15,
-                17
-              ]
-            },
-            {
-              x: "یک شنبه",
-              y: [
-              ]
-            },
-            {
-              x: "دو شنبه",
-              y: [
-                15,
-                17
-              ]
-            },
-            {
-              x: "سه شنبه",
-              y: [
-              ]
-            },
-            {
-              x: "چهار شنبه",
-              y: [
-              ]
-            },
-          ]
-        },
-        {
-          name: "ریاضی 3",
-          data: [
-            {
-              x: "شنبه",
-              y: [
-                15.5,
-                17
-              ]
-            },
-            {
-              x: "یک شنبه",
-              y: [
-              ]
-            },
-            {
-              x: "دو شنبه",
-              y: [
-                15.5,
-                17
-              ]
-            },
-            {
-              x: "سه شنبه",
-              y: [
-              ]
-            },
-            {
-              x: "چهار شنبه",
-              y: [
-              ]
-            },
-          ]
-        }
-      ],
+      series: this.timeTableData,
       chart: {
         height: 450,
         type: "rangeBar"
@@ -221,164 +96,24 @@ export class CourseSelectionComponent implements OnInit {
 
   ngOnInit() {
     this.getCourses();
-    this.postTimeTable();
   }
 
-  getTimeTable(){
-    this._Api.getTimeTable().subscribe(
-      response=>{
-        if(response){
-          console.log(response);
-        }
-      }
-    );
-  }
-  postTimeTable(){
-    let item = [
-      {
-        name: "ریاضی 1",
-        data: [
-          {
-            x: "شنبه",
-            y: [
-              18,
-              24
-            ]
-          },
-          {
-            x: "یک شنبه",
-            y: [
-              
-            ]
-          },
-          {
-            x: "دو شنبه",
-            y: [
-              18,
-              24
-            ]
-          },
-          {
-            x: "سه شنبه",
-            y: [
-              
-            ]
-          },
-          {
-            x: "چهار شنبه",
-            y: [
-              18,
-              24
-            ]
-          }
-        ]
-      },
-      {
-        name: "برنامه نویسی پیشرفته",
-        data: [
-          {
-            x: "شنبه",
-            y: []
-          },
-          {
-            x: "یک شنبه",
-            y: [
-              13,
-              15
-            ]
-          },
-          {
-            x: "دو شنبه",
-            y: [
-            ]
-          },
-          {
-            x: "سه شنبه",
-            y: [
-              13,
-              15
-            ]
-          }
-        ]
-      },
-      {
-        name: "ریاضی 2",
-        data: [
-          {
-            x: "شنبه",
-            y: [
-              15,
-              17
-            ]
-          },
-          {
-            x: "یک شنبه",
-            y: [
-            ]
-          },
-          {
-            x: "دو شنبه",
-            y: [
-              15,
-              17
-            ]
-          },
-          {
-            x: "سه شنبه",
-            y: [
-            ]
-          },
-          {
-            x: "چهار شنبه",
-            y: [
-            ]
-          },
-        ]
-      },
-      {
-        name: "ریاضی 3",
-        data: [
-          {
-            x: "شنبه",
-            y: [
-              15.5,
-              17
-            ]
-          },
-          {
-            x: "یک شنبه",
-            y: [
-            ]
-          },
-          {
-            x: "دو شنبه",
-            y: [
-              15.5,
-              17
-            ]
-          },
-          {
-            x: "سه شنبه",
-            y: [
-            ]
-          },
-          {
-            x: "چهار شنبه",
-            y: [
-            ]
-          },
-        ]
-      }
-    ];
+  //SNACKBAR FOR 'SAVE' BUTTON
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  message: string = '✔️  ذخیره شد.';
 
-    this._Api.postTimeTable(item).subscribe(
-      response=>{
-        if(response){
-          console.log(response);
-        }
-      }
-    )
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data:{message:message},
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      panelClass: ['alert-snackbar-success']
+    });
   }
+
 
   getCourses(){
     this._Api.getSemesterCourse().subscribe(
@@ -443,6 +178,7 @@ export class CourseSelectionComponent implements OnInit {
             let deleteData = {'id':this.mySemester[i].id}
             this._Api.deleteSemesterCourse(deleteData).subscribe(
               response=>{
+                this.openSnackBar(response);
                 //console.log(response);
                 this.mySemester.splice(i,1);
               }
@@ -464,6 +200,8 @@ export class CourseSelectionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         //console.log(result);
+        this.openSnackBar("با موفقیت اضافه شد");
+
         this.getCourses();
       }
     });
@@ -478,6 +216,8 @@ export class CourseSelectionComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
+        this.openSnackBar("با موفقیت اضافه شد");
+
         this.getCourses(); 
       }
     });
@@ -498,6 +238,7 @@ export class CourseSelectionComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         if(result){
+          this.openSnackBar("با موفقیت ویرایش شد");
           //console.log(result);
         }
       });
@@ -515,7 +256,7 @@ export class CourseSelectionComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         if(result){
-          console.log(item);
+          this.openSnackBar("با موفقیت ویرایش شد");
           
         }
       });
@@ -532,6 +273,7 @@ export class CourseSelectionComponent implements OnInit {
       this.selectionOne();
     }else{
       this.getCourses();
+      this.selectionOne();
       this.selectionTwo();
     }
   }
@@ -566,12 +308,89 @@ export class CourseSelectionComponent implements OnInit {
     }
   }
   selectionTwo(){
+    this.timeTableList = [];
+    for(let item of this.mySemester){
+      if(item.selected===true){
+        let doneTemp: dragTwoList = {
+          id: item.id,
+          courses: item.courses,
+          master: item.master,
+          date: item.date,
+          priority: item.priority,
+          selected: item.selected
+        }
+        this.timeTableList.push(doneTemp);
+        continue;
+      }
+      
+    }
+    this.createTimeTable();
+  }
+
+  timeTableData: timetable[] = [];
+  createTimeTable(){
+    this.timeTableData = [];
+    for(let item of this.timeTableList){
+      let xyList: xy[] = [];
+      for(let day of item.date){
+        let startArrayString = day.startTime.split(":", 2); 
+        let endArrayString = day.endTime.split(":", 2);
+
+        let startArrayNumber: number[] = [0,0];
+        let endArrayNumber: number[] = [0,0];
+        let i = 0;
+        for(let obj of startArrayString){
+          if(i==0){
+            startArrayNumber[i] = parseInt(startArrayString[i]);
+            endArrayNumber[i] = parseInt(endArrayString[i]);
+          }
+          if(i==1){
+            startArrayNumber[i] = parseInt(startArrayString[i])/60;
+            endArrayNumber[i] = parseInt(endArrayString[i])/60;
+          }
+          i++;
+        }
+        let start = startArrayNumber[0]+startArrayNumber[1];
+        let end = endArrayNumber[0]+endArrayNumber[1];
+
+        let xyObject: xy = {
+          x: this.getDay(day.week),
+          y: [start,end]
+        }
+        xyList.push(xyObject);
+      }
+      let oneUnit:timetable = {
+        name: item.courses + '|' + item.master,
+        data: xyList
+      };
+      this.timeTableData.push(oneUnit);
+
+      // add to time table:
+      this.chartOptions.series = this.timeTableData;
+    }
+  }
+  getDay(day: string): string{
+    if(day=='0'){
+      return 'شنبه';
+    }else if(day=='1'){
+      return 'یک شنبه';
+    }else if(day=='2'){
+      return 'دو شنبه';
+    }else if(day=='3'){
+      return 'سه شنبه';
+    }else if(day=='4'){
+      return 'چهار شنبه';
+    }else if(day=='5'){
+      return 'پنج شنبه';
+    }else{
+      return 'جمعه';
+    }
 
   }
 
   todoList: dragTwoList[] = [];
   doneList: dragTwoList[] = [];
-
+  timeTableList: dragTwoList[] = [];
  
 
   drop(event: CdkDragDrop<string[]>) {
@@ -580,18 +399,21 @@ export class CourseSelectionComponent implements OnInit {
     } else {
       //let item = event.previousContainer.data[event.previousIndex];
       let id = event.previousContainer.data[event.previousIndex]['id'];
-      let status = event.previousContainer.data[event.previousIndex]['status'];
+      //let status = event.previousContainer.data[event.previousIndex]['status'];
       let data = {id: id};
       this._Api.dragDropSemesterCourse(data).subscribe(
         response=>{
-          console.log(response);
+          //console.log(response);
+          this.openSnackBar(response);
+          this.getCourses();
+          //this.selectionOne();
         }
       );
-      if(status===false){
+      /*if(status===false){
         event.previousContainer.data[event.previousIndex]['status'] = true;
       }else{
         event.previousContainer.data[event.previousIndex]['status'] = false;  
-      }
+      }*/
       //console.log(event.container.data);
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
