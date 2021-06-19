@@ -109,7 +109,7 @@ export class SigninSignupComponent implements OnInit {
                   localStorage.setItem('refresh',user.tokens.refresh);
                   window.location.href = '/dashboard';
               }else{
-                  console.log(user.status);
+                  this.openSnackBar(user.status)
               }
             }
         }
@@ -130,8 +130,6 @@ export class SigninSignupComponent implements OnInit {
   }
 
   signup(){
-    //ALERT
-    this.checkEmailAlert();
     
     //API
     if(this.email && this.password && this.username){
@@ -141,7 +139,7 @@ export class SigninSignupComponent implements OnInit {
         password: this.password,
         username: this.username
       }
-
+    
       /*const myObserver = {
         next: (x) => {
           console.log('user registered in');
@@ -151,14 +149,21 @@ export class SigninSignupComponent implements OnInit {
       };*/
 
 
-
+     
       this._Api.register(item).subscribe(
-        response=>{
-          console.log(response);
+        result=>{
+          if(result){
+            console.log(result['data']);
+            //ALERT
+            this.checkEmailAlert();
+            
+            //this.openSnackBar(response);
+          }
+          
         }
       );
- 
-    } 
+    }
+    
   }
 
     //SNACKBAR FOR 'SAVE' BUTTON
