@@ -19,9 +19,6 @@ export class SigninSignupComponent implements OnInit {
   ngOnInit(): void {
   }  
 
-  //FORGOT PASSWORD MODAL
-  closeResult = '';
-
   constructor(private modalService: NgbModal,
               private _Api: MyApi,
               private route: ActivatedRoute,
@@ -30,6 +27,9 @@ export class SigninSignupComponent implements OnInit {
               private _snackBar: MatSnackBar) {}
 
 
+  //FORGOT PASSWORD MODAL
+  closeResult = '';
+
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -37,6 +37,7 @@ export class SigninSignupComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+  
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -58,13 +59,6 @@ export class SigninSignupComponent implements OnInit {
     container?.classList.remove("right-panel-active");
   }
 
-  //signup for mobile view doesnt work 
-  signUpMobile() {
-    let body = document.getElementById('body');
-    body.classList.remove("heading");
-    console.log(body);
-  }
-
   title = 'padis';
 
 
@@ -75,7 +69,6 @@ export class SigninSignupComponent implements OnInit {
   // password: "itismypassali78"
 
   signin(){
-    //console.log(1);
     if(this.email && this.password){
       let item = 
       {
@@ -199,6 +192,5 @@ export class SigninSignupComponent implements OnInit {
       });
     }
   
-
 
 }
