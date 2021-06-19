@@ -4,6 +4,9 @@ import { MyApi } from '../services/user.services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfoAlertComponent } from '../info-alert/info-alert.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signin-signup',
@@ -23,7 +26,8 @@ export class SigninSignupComponent implements OnInit {
               private _Api: MyApi,
               private route: ActivatedRoute,
               private router: Router,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              private _snackBar: MatSnackBar) {}
 
 
   open(content) {
@@ -78,11 +82,13 @@ export class SigninSignupComponent implements OnInit {
         email: this.email,
         password: this.password
       }
-
+/*
       const myObserver = {
         next: (x) => {
           console.log('user logged in');
-          this.router.navigate(['/dashboard']);
+          window.location.href = '/dashboard';
+
+          //this.router.navigate(['/dashboard']);
         },
         error: (err: Error) => {
           console.error(err);
@@ -91,8 +97,28 @@ export class SigninSignupComponent implements OnInit {
         }
         
       };
-
-      this._Api.login(item).subscribe(myObserver);
+*/
+      this._Api.login(item).subscribe(
+        response=>{
+          const user = response;
+            if(user){
+              /*console.log(user);
+              localStorage.setItem('added',moment().format());
+              localStorage.setItem('token',user.tokens.access);
+              localStorage.setItem('refresh',user.tokens.refresh);
+              window.location.href = '/dashboard';
+              */
+             if(user.status==='1'){
+                  localStorage.setItem('added',moment().format());
+                  localStorage.setItem('token',user.tokens.access);
+                  localStorage.setItem('refresh',user.tokens.refresh);
+                  window.location.href = '/dashboard';
+              }else{
+                  this.openSnackBar(user.status)
+              }
+            }
+        }
+      );
  
     }
   }
@@ -129,57 +155,50 @@ export class SigninSignupComponent implements OnInit {
         password: this.password,
         username: this.username
       }
-      //PARIA CHECK
-      this.validation();
-
-      const myObserver = {
+    
+      /*const myObserver = {
         next: (x) => {
           this.checkEmailAlert();
           console.log('user registered in');
           //this.router.navigate(['/dashboard']);
         },
-        error: (err: Error) => {
-          console.error(err);
-          this.usernameError();
+        error: (err: Error) => console.log('err')
+      };*/
+
+
+     
+      this._Api.register(item).subscribe(
+        result=>{
+          if(result){
+            console.log(result['data']);
+            //ALERT
+            this.checkEmailAlert();
+            
+            //this.openSnackBar(response);
+          }
+          
         }
-      };
-
-      this._Api.register(item).subscribe(myObserver);
- 
-    } 
-    else if(this.email == '') {
-      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-      pColor[1].style.color = "red";
+      );
     }
-    else if(this.email != '') {
-      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-      pColor[1].style.color = "white";
-    }
-    else if (this.username != '') {
-      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-      pColor[0].style.color = "white";
-    }
-    else if (this.username == '') {
-      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-      pColor[0].style.color = "red";
-    }
-    else if (this.password != ''){
-      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-      pColor[2].style.color = "white";
-    }
-    else if (this.password == ''){
-      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-      pColor[2].style.color = "red";
-    }
-  }
-
-  validation() {
-
-  }
-
-  usernameError () {
-    let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
-    pColor[0].style.color = "red";
     
   }
+
+    //SNACKBAR FOR 'SAVE' BUTTON
+    durationInSeconds = 5;
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
+    message: string = '✔️  ذخیره شد.';
+  
+    openSnackBar(message: string) {
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        duration: this.durationInSeconds * 1000,
+        data:{message:message},
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['alert-snackbar-success']
+      });
+    }
+  
+
+
 }

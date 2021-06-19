@@ -18,7 +18,7 @@
                               </div>
                             </div>  
                              
-                            <div class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
+                            <div *ngIf="mySemester.length>0" class="col-md-12 table-responsive-sm" style="padding: 0; margin:0; border-top: none;">
                                 <!-- table view for charts  -->
                                 <table class="table table-responsive-sm table-hover" style="border-top: none; margin-bottom: 0 !important;">
                                 <thead class="thead" style="border-top: none;">
@@ -120,7 +120,10 @@
                         <mat-step>
                           <ng-template matStepLabel>نمایش چارت</ng-template>
                          
-                          <div id="chart">
+                          <div *ngIf="timeTableData.length===0">
+                            درسی انتخاب نشده است.
+                          </div>
+                          <div id="chart" *ngIf="timeTableData.length>0">
                             <apx-chart
                               class="font-iran-sans-FA"
                               [series]="chartOptions.series"
@@ -135,10 +138,10 @@
                               <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="15px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12"/></g></svg>
                               مرحله قبل
                             </button>
-                            <button mat-button (click)="stepper.reset()" class="font-iran-sans-FA btn-delete" style="margin-top: 20px; float: left;">
+                            <!--<button mat-button (click)="stepper.reset()" class="font-iran-sans-FA btn-delete" style="margin-top: 20px; float: left;">
                               <span class="material-icons">delete</span>
                               حذف تمام تغییرات
-                            </button>
+                            </button>-->
                           </div>
                         </mat-step>
                     </mat-horizontal-stepper>
