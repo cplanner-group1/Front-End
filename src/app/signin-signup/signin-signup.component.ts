@@ -54,7 +54,7 @@ export class SigninSignupComponent implements OnInit {
     container?.classList.remove("right-panel-active");
   }
 
-  //signup for mobile view 
+  //signup for mobile view doesnt work 
   signUpMobile() {
     let body = document.getElementById('body');
     body.classList.remove("heading");
@@ -84,12 +84,28 @@ export class SigninSignupComponent implements OnInit {
           console.log('user logged in');
           this.router.navigate(['/dashboard']);
         },
-        error: (err: Error) => console.error(err)
+        error: (err: Error) => {
+          console.error(err);
+          console.log('error');
+          this.emailOrPasswordError (); 
+        }
+        
       };
 
       this._Api.login(item).subscribe(myObserver);
  
     }
+  }
+
+  emailOrPasswordError () {
+    const dialogRef = this.dialog.open(InfoAlertComponent, {
+      minWidth: '400',
+      maxWidth: '90%',
+      data: { 
+        title: "خطا",
+        message: "ایمیل/نام کاربری یا رمز شما اشتباه است. لطفا چک کنید و دوباره وارد کنید."
+      }
+    });
   }
 
   checkEmailAlert(){
@@ -104,8 +120,6 @@ export class SigninSignupComponent implements OnInit {
   }
 
   signup(){
-    //ALERT
-    this.checkEmailAlert();
     
     //API
     if(this.email && this.password && this.username){
@@ -115,17 +129,57 @@ export class SigninSignupComponent implements OnInit {
         password: this.password,
         username: this.username
       }
+      //PARIA CHECK
+      this.validation();
 
       const myObserver = {
         next: (x) => {
+          this.checkEmailAlert();
           console.log('user registered in');
           //this.router.navigate(['/dashboard']);
         },
-        error: (err: Error) => console.error(err)
+        error: (err: Error) => {
+          console.error(err);
+          this.usernameError();
+        }
       };
 
       this._Api.register(item).subscribe(myObserver);
  
     } 
+    else if(this.email == '') {
+      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+      pColor[1].style.color = "red";
+    }
+    else if(this.email != '') {
+      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+      pColor[1].style.color = "white";
+    }
+    else if (this.username != '') {
+      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+      pColor[0].style.color = "white";
+    }
+    else if (this.username == '') {
+      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+      pColor[0].style.color = "red";
+    }
+    else if (this.password != ''){
+      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+      pColor[2].style.color = "white";
+    }
+    else if (this.password == ''){
+      let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+      pColor[2].style.color = "red";
+    }
+  }
+
+  validation() {
+
+  }
+
+  usernameError () {
+    let pColor = document.getElementsByClassName('errors') as HTMLCollectionOf<HTMLElement>;
+    pColor[0].style.color = "red";
+    
   }
 }
