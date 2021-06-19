@@ -4,7 +4,18 @@
                 <mat-form-field appearance="none"
                      class="full-width input-focus-hover font-iran-sans-FA">
                     <mat-label>نام درس</mat-label>
-                    <input matInput [(ngModel)]="course.course.title" placeholder="مثلا تمرین سری 1" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+                    <input  matInput 
+                            [(ngModel)]="course.course.title"
+                            placeholder="مثلا تمرین سری 1" 
+                            style="font-size: 16px; height: 30px; padding-bottom: 5px;"
+                            [matAutocomplete]="course2"
+                            (ngModelChange)="suggestCourse(course.course.title)"       
+                            (focus)="suggestCourse(course.course.title)">
+                    <mat-autocomplete #course2="matAutocomplete">
+                        <mat-option class="font-iran-sans-FA" *ngFor="let option of suggestedCourse" [value]="option">
+                          {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
             </div>
             <div class="col-md-3 pt-2" style="float: left;">
@@ -28,7 +39,7 @@
                                     (removed)="remove(prerequisite)"
                                     class="mb-2">
                             
-                                    {{prerequisite.title}}
+                                    {{prerequisite}}
                             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                         </mat-chip>
                         <input  class="pb-2 pt-2"
@@ -36,8 +47,18 @@
                                 [matChipInputFor]="chipList" 
                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes" 
                                 (matChipInputTokenEnd)="add($event)" 
-                                name="prerequisite">
+                                name="prerequisite"
+
+                                [matAutocomplete]="prerequisite"
+                                (ngModelChange)="suggestPrerequisite(course.course.title)"       
+                                (focus)="suggestPrerequisite(course.course.title)">
+                        
                     </mat-chip-list>
+                    <mat-autocomplete #prerequisite="matAutocomplete">
+                        <mat-option class="font-iran-sans-FA" *ngFor="let option of suggestedPrerequisite" (onSelectionChange)='selectOptions(option)' [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
                 <div class="text-center">
                     <p  class="font-iran-sans-FA mt-3" 

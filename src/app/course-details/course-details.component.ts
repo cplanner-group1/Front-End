@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SelectType, SelectTypeNumberValue } from '../shared/select';
 import { CourseTrack,Course } from '../shared/chart';
-import { Courses } from '../shared/courses';
 import { ChartsComponent } from '../charts/charts.component';
 
 // text area:
@@ -18,6 +17,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/
 import { MatChipInputEvent} from '@angular/material/chips';
 import { Observable} from 'rxjs';
 import { map, startWith} from 'rxjs/operators';
+import { MyApi } from '../services/user.services';
 
 
 export interface Pre{
@@ -39,7 +39,8 @@ export class CourseDetailsComponent implements OnInit {
   ];
   constructor(public dialogRef: MatDialogRef<ChartsComponent>,
               @Inject(MAT_DIALOG_DATA) public data: CourseTrack,
-              private _snackBar: MatSnackBar) { 
+              private _snackBar: MatSnackBar,
+              private _Api: MyApi) { 
         this.course = data;
         //console.log(this.course);
   }
@@ -60,6 +61,8 @@ export class CourseDetailsComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER /*, COMMA*/];
 
+
+  prerequisiteData: string = '';
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -67,8 +70,10 @@ export class CourseDetailsComponent implements OnInit {
     // Add our fruit
     if ((value || '').trim()) {
       // @TODO --> inja byd aval y search knm k age vojod dsht qablan fqt id bgird
-      let temp : Pre = {title:value.trim(),id:-1};
-      this.course.prerequisites.push(temp);
+      let temp : string = value.trim();
+      if(!this.course.prerequisites.includes(temp)){
+        this.course.prerequisites.push(temp);
+      }
     }
 
     // Reset the input value
@@ -76,14 +81,58 @@ export class CourseDetailsComponent implements OnInit {
       input.value = '';
     }
   }
+  selectOptions(text){
+    let value = text;
+    if ((value || '').trim()) {
+      // @TODO --> inja byd aval y search knm k age vojod dsht qablan fqt id bgird
+      let temp : string = value.trim();
+      if(!this.course.prerequisites.includes(temp)){
+        this.course.prerequisites.push(temp);
+      }
+    }
+  }
 
-  remove(prerequisite: Pre): void {
+  remove(prerequisite: string): void {
     const index = this.course.prerequisites.indexOf(prerequisite);
     if (index >= 0) {
       this.course.prerequisites.splice(index, 1);
     }
   }
+
   submit(){
-   
+    
+  }
+
+  suggestedPrerequisite: string[] = [];
+  suggestPrerequisite(text){
+    this._Api.suggestionPrerequisites(text).subscribe(
+      response => {
+        if(response){
+          this.suggestedPrerequisite = [];
+          this.suggestedPrerequisite = response['suggestions'];
+          //console.log(response['suggestions']);
+        }
+        
+      }
+    );
+  }
+
+  suggestedCourse: string[] = [];
+  suggestCourse(text){
+    this._Api.suggestionCourseChart(text).subscribe(
+      response => {
+        if(response){
+          this.suggestedCourse = [];
+          for(let item of response['courses']){
+            if(!this.suggestedCourse.includes(item.title)){
+              this.suggestedCourse.push(item.title);
+            }
+          }
+          //this.suggestedCourse = response['courses'];
+          //console.log(response['suggestions']);
+        }
+        
+      }
+    );
   }
 }

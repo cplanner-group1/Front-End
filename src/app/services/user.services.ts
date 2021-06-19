@@ -222,14 +222,27 @@ export class MyApi {
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.chartsUrl + 'timetable/', timetable,{ headers: headers });   
     }
-    suggestionCourse(text){
+    suggestionCourse(text): Observable<any>{
         let params = {};
         params['text'] = text;
 
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.get(this.chartsUrl+ 'sc/autocomplete/', { headers: headers , params});
     }
+    suggestionPrerequisites(text): Observable<any>{
+        let params = {};
+        params['text'] = text;
 
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'course/suggest-pre/', { headers: headers , params});
+    }
+    suggestionCourseChart(text): Observable<any>{
+        let params = {};
+        params['text'] = text;
+
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'course/suggest/', { headers: headers , params});
+    }
 }
 
 

@@ -294,7 +294,15 @@
                             aria-describedby="title" 
                             placeholder="نام درس!" 
                             style="padding: 0 !important; margin: 0 !important;"
-                            maxlength="255" style="min-width:180px; max-width: 100%; padding: 0;">
+                            maxlength="255" style="min-width:180px; max-width: 100%; padding: 0;"
+                            [matAutocomplete]="course2"
+                            (ngModelChange)="suggestCourse(item.course.title)"       
+                            (focus)="suggestCourse(item.course.title)">
+                            <mat-autocomplete #course2="matAutocomplete">
+                                <mat-option class="font-iran-sans-FA" *ngFor="let option of suggestedCourse" [value]="option">
+                                  {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
                           </mat-form-field>
                         </div>
                       </div>

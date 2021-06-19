@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart,CourseTrack,Course } from '../shared/chart';
-import { CoursesTrack } from '../shared/courses';
 import { CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { SelectType, SelectTypeNumberValue} from '../shared/select';
 import { CourseDetailsComponent } from '../course-details/course-details.component';
@@ -122,7 +121,7 @@ export class ChartsComponent implements OnInit {
                   title: item.title,
                   suggestedPrerequisites: [] 
               },
-              prerequisites: [],
+              prerequisites: item.prerequisites,
               status: item.status, 
               grade: item.grade,
               label: item.label+'',
@@ -150,7 +149,7 @@ export class ChartsComponent implements OnInit {
                   title: item.title,
                   suggestedPrerequisites: [] 
               },
-              prerequisites: [],
+              prerequisites: item.prerequisites,
               status: item.status, 
               grade: item.grade,
               label: item.label+'',
@@ -200,7 +199,7 @@ export class ChartsComponent implements OnInit {
                         title: item.title,
                         suggestedPrerequisites: [] 
                     },
-                    prerequisites: [],
+                    prerequisites: item.prerequisites,
                     status: item.status, 
                     grade: item.grade,
                     label: item.label+'',
@@ -229,7 +228,7 @@ export class ChartsComponent implements OnInit {
                     title: item.title,
                     suggestedPrerequisites: [] 
                 },
-                prerequisites: [],
+                prerequisites: item.prerequisites,
                 status: item.status, 
                 grade: item.grade,
                 label: item.label+'',
@@ -561,11 +560,31 @@ export class ChartsComponent implements OnInit {
       this._Api.publishChart(this.titleChart).subscribe(
         response=>{
           if(response){
-            console.log(response);
+            this.openSnackBar(response);
           }
         }
       )
     }
+  }
+
+
+  suggestedCourse: string[] = [];
+  suggestCourse(text){
+    this._Api.suggestionCourseChart(text).subscribe(
+      response => {
+        if(response){
+          this.suggestedCourse= [];
+          for(let item of response['courses']){
+            if(!this.suggestedCourse.includes(item.title)){
+              this.suggestedCourse.push(item.title);
+            }
+          }
+          //this.suggestedCourse = response['courses'];
+          //console.log(response['suggestions']);
+        }
+        
+      }
+    );
   }
 
 }

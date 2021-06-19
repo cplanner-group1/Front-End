@@ -1,5 +1,3 @@
-import { CourseTrack } from "./chart";
-import { CoursesTrack } from "./courses"
 
 export class TermCourse{
     id: number;

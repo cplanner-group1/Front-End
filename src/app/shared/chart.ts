@@ -1,4 +1,3 @@
-import { CoursesTrack } from "./courses";
 
 export class Chart{
     id: number; 
@@ -22,7 +21,7 @@ export class Course{
 }
 export class CourseTrack{
     course: Course;
-    prerequisites: Prerequisite[]; // list of id of courses which prerequisite of this course
+    prerequisites: string[]; // list of id of courses which prerequisite of this course
     status: number; 
         // 0 --> not done
         // 1 --> done

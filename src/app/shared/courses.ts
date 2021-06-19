@@ -1,5 +1,5 @@
 import { Course, CourseTrack } from './chart';
-
+/*
 export const Courses: Course[] = [
     {
         id: 1,
@@ -93,8 +93,8 @@ export const Courses: Course[] = [
             }
         ] 
     }   
-];
-
+];*/
+/*
 export const CoursesTrack: CourseTrack[] = [
     {
         course: 
@@ -339,3 +339,4 @@ export const CoursesTrack: CourseTrack[] = [
     }
     
 ]
+*/
