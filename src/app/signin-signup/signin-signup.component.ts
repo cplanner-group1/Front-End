@@ -85,7 +85,9 @@ export class SigninSignupComponent implements OnInit {
       const myObserver = {
         next: (x) => {
           console.log('user logged in');
-          this.router.navigate(['/dashboard']);
+          window.location.href = '/dashboard';
+
+          //this.router.navigate(['/dashboard']);
         },
         error: (err: Error) => console.error(err)
       };

@@ -75,11 +75,11 @@
       </ul>
     </li>-->
     <li class="c-sidebar-nav-item">
-      <a class="c-sidebar-nav-link" [routerLink]="['/settings']">
+      <a class="c-sidebar-nav-link" [routerLink]="['/task']">
         <span class="material-icons c-sidebar-nav-icon" style="font-size: 15pt; margin-top: -6px;">
           add_alert
         </span>
-        تسک منیجر
+        مدیریت کارها
       </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -91,7 +91,7 @@
       </a>
     </li>
     <li class="c-sidebar-nav-item"  >
-      <a class="c-sidebar-nav-link" (click)="logout()">
+      <a class="c-sidebar-nav-link" (click)="logout()" href="/landing">
         <svg class="material-icons c-sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M17,8l-1.41,1.41L17.17,11H9v2h8.17l-1.58,1.58L17,16l4-4L17,8z M5,5h7V3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h7v-2H5V5z"/></g></svg>
           خروج
       </a>
@@ -106,9 +106,9 @@
     <button style="padding:4px;"  class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
       <span class="material-icons">
         menu
-        </span>
+      </span>
     </button>
-    <a class="c-header-brand d-lg-none" href="#">
+    <a class="c-header-brand d-lg-none" href="/dashboard">
       {{userName}}
       <!--
       <svg width="118" height="46" alt="CoreUI Logo">
@@ -118,8 +118,23 @@
     <button style="padding:4px;" class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
       <span class="material-icons">
         menu
-        </span>
+      </span>
     </button>
+    <!--
+      <button style="padding:4px;"  class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+        <span class="material-icons">
+          menu
+        </span>
+      </button>
+      <a class="c-header-brand d-lg-none" href="#">
+        {{userName}}
+      </a>
+      <button style="padding:4px;" class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+        <span class="material-icons">
+          menu
+          </span>
+      </button>
+    -->
     <!--
     <ul class="c-header-nav d-md-down-none">
       <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">داشبورد</a></li>
@@ -194,9 +209,9 @@
     <main class="c-main">
       <router-outlet></router-outlet>
     </main>
-    <footer class="c-footer">
+    <footer class="c-footer" style="float:left; direction: ltr;">
       <div><a href="#">Charter</a> &copy; 2021.</div>
-      <div class="ml-auto">Powered by&nbsp;<a href="#">C PLANNER</a></div>
+      <!--<div class="ml-auto">Powered by&nbsp;<a href="#">C PLANNER</a></div>-->
     </footer>
   </div>
   </div>
