@@ -222,6 +222,13 @@ export class MyApi {
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.post(this.chartsUrl + 'timetable/', timetable,{ headers: headers });   
     }
+    suggestionCourse(text){
+        let params = {};
+        params['text'] = text;
+
+        const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
+        return this.httpClient.get(this.chartsUrl+ 'sc/autocomplete/', { headers: headers , params});
+    }
 
 }
 

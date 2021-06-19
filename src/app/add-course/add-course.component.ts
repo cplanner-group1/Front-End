@@ -101,4 +101,17 @@ export class AddCourseComponent implements OnInit {
     }
   }
 
+  suggestedCourse: any[] = [];
+  suggestCourse(text){
+    this._Api.suggestionCourse(text).subscribe(
+      response => {
+        if(response){
+          this.suggestedCourse = response['courses'];
+          console.log(response['courses']);
+        }
+        
+      }
+    );
+  }
+
 }

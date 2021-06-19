@@ -3,7 +3,18 @@
         <div class="col-md-7">
             <mat-form-field appearance="none" class="full-width input-focus-hover font-iran-sans-FA">
                 <mat-label>نام درس ارائه شده</mat-label>
-                <input matInput [(ngModel)]="termCourse.courses" placeholder="نام درس را وارد کنید" style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+                <input 
+                    matInput [(ngModel)]="termCourse.courses"     
+                    placeholder="نام درس را وارد کنید" 
+                    [matAutocomplete]="course"
+                    (ngModelChange)="suggestCourse(termCourse.courses)"       
+                    (focus)="suggestCourse(termCourse.courses)"
+                    style="font-size: 16px; height: 30px; padding-bottom: 5px;">
+                <mat-autocomplete #course="matAutocomplete">
+                    <mat-option class="font-iran-sans-FA" *ngFor="let option of suggestedCourse" [value]="option.title">
+                      {{option.title}}
+                    </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
         </div>
         <div class="col-md-5">
