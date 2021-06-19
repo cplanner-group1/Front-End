@@ -39,19 +39,12 @@ export class MyApi {
     // sign in:
     login(user:any): Observable<any> {
         //console.log(user);
-        return this.httpClient.post(this.authUrl + 'login/', user).pipe(
+        return this.httpClient.post(this.authUrl + 'login/', user);/*.pipe(
             map((response:any)=>{
                 //console.log(response);
-                const user = response;
-                if(user){
-                    console.log(moment());
-                    console.log(moment().format());
-                    localStorage.setItem('added',moment().format());
-                    localStorage.setItem('token',user.tokens.access);
-                    localStorage.setItem('refresh',user.tokens.refresh);
-                }
+                
             })
-        )
+        )*/
     }
     logout(): Observable<any> {
         //console.log(user);
@@ -66,27 +59,23 @@ export class MyApi {
         let diffDate = enterDateWithExp.diff(nowDate, 'seconds');
         if(diffDate>=0){
             console.log(diffDate);
-            //console.log(refresh);
             const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
             return this.httpClient.post(this.authUrl + 'logout/',{refresh: refresh }, { headers: headers }).pipe(
                 map((response:any)=>{
-                    //console.log(response);
                     localStorage.removeItem('token');
                     localStorage.removeItem('refresh');
                     localStorage.removeItem('added');
                 })
             )
         }
+
         
     }
 
     //http://cplanner-group1.herokuapp.com/account/register/
     register(user:any){
-        return this.httpClient.post(this.authUrl + 'register/', user).pipe(
-            map((response:any)=>{
-                console.log(response);
-            })
-        )
+        return this.httpClient.post(this.authUrl + 'register/', user);
+        
     }
 
 

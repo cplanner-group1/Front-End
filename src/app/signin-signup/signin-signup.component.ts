@@ -6,6 +6,7 @@ import { InfoAlertComponent } from '../info-alert/info-alert.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signin-signup',
@@ -81,7 +82,7 @@ export class SigninSignupComponent implements OnInit {
         email: this.email,
         password: this.password
       }
-
+/*
       const myObserver = {
         next: (x) => {
           console.log('user logged in');
@@ -91,8 +92,28 @@ export class SigninSignupComponent implements OnInit {
         },
         error: (err: Error) => console.error(err)
       };
-
-      this._Api.login(item).subscribe(myObserver);
+*/
+      this._Api.login(item).subscribe(
+        response=>{
+          const user = response;
+            if(user){
+              /*console.log(user);
+              localStorage.setItem('added',moment().format());
+              localStorage.setItem('token',user.tokens.access);
+              localStorage.setItem('refresh',user.tokens.refresh);
+              window.location.href = '/dashboard';
+              */
+             if(user.status==='1'){
+                  localStorage.setItem('added',moment().format());
+                  localStorage.setItem('token',user.tokens.access);
+                  localStorage.setItem('refresh',user.tokens.refresh);
+                  window.location.href = '/dashboard';
+              }else{
+                  console.log(user.status);
+              }
+            }
+        }
+      );
  
     }
   }
@@ -121,15 +142,21 @@ export class SigninSignupComponent implements OnInit {
         username: this.username
       }
 
-      const myObserver = {
+      /*const myObserver = {
         next: (x) => {
           console.log('user registered in');
           //this.router.navigate(['/dashboard']);
         },
-        error: (err: Error) => console.error(err)
-      };
+        error: (err: Error) => console.log('err')
+      };*/
 
-      this._Api.register(item).subscribe(myObserver);
+
+
+      this._Api.register(item).subscribe(
+        response=>{
+          console.log(response);
+        }
+      );
  
     } 
   }
