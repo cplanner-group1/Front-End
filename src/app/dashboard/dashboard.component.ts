@@ -13,6 +13,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDashboardInfo();
+    if(localStorage.getItem('status')==='1'){
+      localStorage.removeItem('status');
+      location.reload();
+    }
   }
 
   allUnits: number = 0;

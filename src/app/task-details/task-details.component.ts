@@ -42,9 +42,9 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     //convert string of date to moment object
-    console.log(this.task.deadlineDateTime);
+    //console.log(this.task.deadlineDateTime);
     let tempTime = moment(this.task.deadlineDateTime,"YYYY,MM,DD HH:mm:ss");
-    console.log(tempTime.locale('fa'));
+    //console.log(tempTime.locale('fa'));
     if(tempTime.isValid()){
       this.dateObject = tempTime.locale('fa');
     }else{

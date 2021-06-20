@@ -41,6 +41,7 @@ export class TaskManagerComponent implements OnInit {
   dateObject = moment('1395-11-22','jYYYY,jMM,jDD');
 
   ngOnInit() {
+    //console.log(console.log(Intl.DateTimeFormat().resolvedOptions().timeZone));
     this.getTasks();
   }
   //SNACKBAR FOR 'SAVE' BUTTON
@@ -60,7 +61,9 @@ export class TaskManagerComponent implements OnInit {
   }
 
   getTasks(){
-    this._Api.getTask().subscribe(
+    
+    let now = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    this._Api.getTask(now).subscribe(
       response=>{
         if(response){
           //console.log(response.tasks_list);
@@ -78,19 +81,7 @@ export class TaskManagerComponent implements OnInit {
               status:item.status+'',
               title:item.title
             };
-            let task2: Task={
-              checkList:false,
-              deadlineDateTime:item.deadline,
-              deadlineDaysRemaining:item.remained_time,
-              deadlinePercentage:"",
-              lastChangeDate:"",
-              description:item.description,
-              priority:item.priority,
-              id:item.id,
-              owner:item.group,
-              status:item.status+'',
-              title:item.title
-            };
+            
             this.tasks.push(task);
             //this.firstTasks.push(task2);
           }

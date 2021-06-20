@@ -123,7 +123,7 @@ export class CourseSelectionComponent implements OnInit {
           this.mySemester = [];
           for(let item of response.user_semester_course){
             let tempDate = [];
-            console.log(item[0]);
+            //console.log(item[0]);
             //let index = 0;
             for(let dateItem of item[0].date){
               let tempInnerDate = {

@@ -7,7 +7,6 @@ import * as moment from 'jalali-moment';
 
 @Injectable()
 export class MyApi {
-    //baseUrl = "https://zoi.ir/api/shop/product/";
     baseUrl = 'http://cplanner-group1.herokuapp.com/';
     authUrl = this.baseUrl + 'account/';
     taskUrl = this.baseUrl + 'task/';
@@ -86,9 +85,12 @@ export class MyApi {
 
 
     // TASK MANAGER:
-    getTask(): Observable<any> {    
+    getTask(now): Observable<any> {    
+        let params = {};
+        params['now'] = now;
+
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
-        return this.httpClient.get(this.taskUrl, { headers: headers });
+        return this.httpClient.get(this.taskUrl, { headers: headers , params});
     }
     deleteTask(items): Observable<any>{
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
@@ -180,7 +182,6 @@ export class MyApi {
 
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+ this.getToken());
         return this.httpClient.get(this.chartsUrl+ 'add-ct-chart/', { headers: headers , params});
-
     }
     /*
     requestDeposit(amount: string):Observable<any>{

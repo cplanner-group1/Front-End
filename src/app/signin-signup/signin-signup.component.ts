@@ -8,6 +8,8 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import * as moment from 'moment';
 
+
+
 @Component({
   selector: 'app-signin-signup',
   templateUrl: './signin-signup.component.html',
@@ -105,7 +107,8 @@ export class SigninSignupComponent implements OnInit {
                   localStorage.setItem('added',moment().format());
                   localStorage.setItem('token',user.tokens.access);
                   localStorage.setItem('refresh',user.tokens.refresh);
-                  window.location.href = '/dashboard';
+                  localStorage.setItem('status','1');
+                  window.location.href = 'http://localhost:4200/dashboard';
               }else{
                   this.openSnackBar(user.status)
               }
@@ -149,29 +152,32 @@ export class SigninSignupComponent implements OnInit {
         username: this.username
       }
     
-      /*const myObserver = {
+      const myObserver = {
         next: (x) => {
           this.checkEmailAlert();
           console.log('user registered in');
           //this.router.navigate(['/dashboard']);
         },
-        error: (err: Error) => console.log('err')
-      };*/
-
-
-     
-      this._Api.register(item).subscribe(
-        result=>{
-          if(result){
-            console.log(result['data']);
-            //ALERT
-            this.checkEmailAlert();
-            
-            //this.openSnackBar(response);
-          }
-          
+        error: (err: Error) => {
+          //this.openSnackBar("اطلاعات وارد شده مشکل دارد.");
+          this.openSnackBar("توجه کنید ایمیل و نام کاربردی تکراری و رمز کمتر از 6 عدد صحیح نیست.");
+          //console.log('err');
         }
-      );
+      };
+
+/*
+      result=>{
+        if(result){
+          console.log(result['data']);
+          //ALERT
+          this.checkEmailAlert();
+          
+          //this.openSnackBar(response);
+        }
+        
+      }
+  */
+     this._Api.register(item).subscribe(myObserver);
     }
     
   }
