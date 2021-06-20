@@ -171,3 +171,9 @@ dp-calendar-nav.dp-material .dp-nav-header-btn{
     height: 35px !important;
     padding:0 !important;
 }
+
+
+// modal
+.modal-backdrop ,.fade ,.show ,.modal-basic-title{
+	z-index: 999 !important;
+}
