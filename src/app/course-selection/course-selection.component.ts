@@ -331,7 +331,36 @@ export class CourseSelectionComponent implements OnInit {
   createTimeTable(){
     this.timeTableData = [];
     for(let item of this.timeTableList){
-      let xyList: xy[] = [];
+      let xyList: xy[] = [
+        {
+          x: 'شنبه',
+          y: []
+        },
+        {
+          x: 'یک شنبه',
+          y: []
+        },
+        {
+          x: 'دو شنبه',
+          y: []
+        },
+        {
+          x: 'سه شنبه',
+          y: []
+        },
+        {
+          x: 'چهار شنبه',
+          y: []
+        },
+        {
+          x: 'پنج شنبه',
+          y: []
+        },
+        {
+          x: 'جمعه',
+          y: []
+        }
+      ];
       for(let day of item.date){
         let startArrayString = day.startTime.split(":", 2); 
         let endArrayString = day.endTime.split(":", 2);
@@ -353,11 +382,17 @@ export class CourseSelectionComponent implements OnInit {
         let start = startArrayNumber[0]+startArrayNumber[1];
         let end = endArrayNumber[0]+endArrayNumber[1];
 
-        let xyObject: xy = {
+        
+        /*let xyObject: xy = {
           x: this.getDay(day.week),
           y: [start,end]
+        }*/
+        for(let object of xyList){
+          if(object.x===this.getDay(day.week)){
+            object.y=[start,end];
+          }
         }
-        xyList.push(xyObject);
+        //xyList.push(xyObject);
       }
       let oneUnit:timetable = {
         name: item.courses + '|' + item.master,

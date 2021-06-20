@@ -317,7 +317,7 @@ export class ChartsComponent implements OnInit {
           }
           //new_task.id = response.id;
           this.userCourses.push(new_course);
-          this.openSnackBar("درس جدید اضافه شد."); 
+          this.openSnackBar("درس جدید در انتهای لیست اضافه شد."); 
         }
       }
     )
